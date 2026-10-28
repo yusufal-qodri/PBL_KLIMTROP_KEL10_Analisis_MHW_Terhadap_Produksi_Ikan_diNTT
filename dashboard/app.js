@@ -29,50 +29,21 @@ const REGIONS = {
   sumba: { name: 'Selat Sumba & Barat NTT', bounds: [[-10.2, 118.0], [-8.8, 120.5]], center: [-9.5, 119.5], zoom: 8 }
 };
 
-// Color Palettes
+// Color Palettes (kept for backward compat; smooth versions used by map)
 function getSstColor(val) {
-  if (val === null || val === undefined || isNaN(val)) return 'rgba(200, 200, 200, 0.2)';
-  // Range: 25.0 to 31.0 °C
-  const t = Math.max(0, Math.min(1, (val - 25.0) / (31.0 - 25.0)));
-  // Interpolate: Blue -> Cyan -> Yellow -> Orange -> Red -> Crimson
-  if (t < 0.2) return '#313695';
-  if (t < 0.35) return '#4575b4';
-  if (t < 0.5) return '#74add1';
-  if (t < 0.65) return '#ffffbf';
-  if (t < 0.8) return '#fdae61';
-  if (t < 0.9) return '#f46d43';
-  return '#d73027';
+  return getSstColorSmooth(val) || 'rgba(200, 200, 200, 0.2)';
 }
 
 function getChlaColor(val) {
-  if (val === null || val === undefined || isNaN(val)) return 'rgba(200, 200, 200, 0.2)';
-  // Range: 0.08 to 0.80 mg/m³
-  const t = Math.max(0, Math.min(1, (val - 0.08) / (0.80 - 0.08)));
-  if (t < 0.15) return '#440154';
-  if (t < 0.35) return '#3b528b';
-  if (t < 0.55) return '#21918c';
-  if (t < 0.75) return '#5ec962';
-  return '#fde725';
+  return getChlaColorSmooth(val) || 'rgba(200, 200, 200, 0.2)';
 }
 
 function getMhwDaysColor(val) {
-  if (val === null || val === undefined || isNaN(val)) return 'rgba(200, 200, 200, 0.2)';
-  // Range: 0 to 600 days
-  const t = Math.max(0, Math.min(1, val / 550));
-  if (t < 0.2) return '#fef08a';
-  if (t < 0.45) return '#f97316';
-  if (t < 0.75) return '#dc2626';
-  return '#7f1d1d';
+  return getMhwDaysColorSmooth(val) || 'rgba(200, 200, 200, 0.2)';
 }
 
 function getMhwIntColor(val) {
-  if (val === null || val === undefined || isNaN(val)) return 'rgba(200, 200, 200, 0.2)';
-  // Range: 0.5 to 3.5 °C
-  const t = Math.max(0, Math.min(1, (val - 0.5) / 3.0));
-  if (t < 0.25) return '#fde047';
-  if (t < 0.5) return '#fb923c';
-  if (t < 0.75) return '#ef4444';
-  return '#991b1b';
+  return getMhwIntColorSmooth(val) || 'rgba(200, 200, 200, 0.2)';
 }
 
 // Sub-region detector from coordinates
@@ -132,7 +103,8 @@ async function loadDatasets() {
     ['daily_series', 'data/daily_regional_series.json'],
     ['chla_analysis', 'data/chla_analysis.json'],
     ['fisheries', 'data/fisheries_data.json'],
-    ['synthesis', 'data/synthesis_methodology.json']
+    ['synthesis', 'data/synthesis_methodology.json'],
+    ['coastline', 'data/ntt_coastline.geojson']
   ];
 
   for (const [key, path] of files) {
@@ -350,23 +322,94 @@ function setupMap() {
     minZoom: 6,
     maxZoom: 10,
     zoomControl: true,
-    attributionControl: false
+    attributionControl: true
   });
 
-  // Base tile layer (CartoDB Positron - crisp white theme)
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    maxZoom: 19,
-    subdomains: 'abcd',
-  }).addTo(state.map);
+  // -------------------------------------------------------------------------
+  // Basemap options (Semua GRATIS, Tanpa Watermark "API KEY REQUIRED")
+  // -------------------------------------------------------------------------
+  const esriOceanBase = L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}',
+    {
+      attribution: 'Basemap &copy; <a href="https://www.esri.com">Esri</a>, GEBCO, NOAA, Nat. Geo.',
+      maxZoom: 13,
+      opacity: 1.0
+    }
+  );
 
-  // NTT Ocean Bounding Box Indicator
-  const nttBounds = [[-13.0, 117.5], [-7.0, 127.5]];
-  L.rectangle(nttBounds, {
+  const esriGrayBase = L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+    {
+      attribution: 'Basemap &copy; <a href="https://www.esri.com">Esri</a>, HERE, Garmin',
+      maxZoom: 16,
+      opacity: 1.0
+    }
+  );
+
+  const osmBase = L.tileLayer(
+    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+      opacity: 1.0
+    }
+  );
+
+  // Basemap default: ESRI Ocean
+  esriOceanBase.addTo(state.map);
+
+  const baseMaps = {
+    "ESRI Ocean (Oseanografi)": esriOceanBase,
+    "ESRI Light Gray (Minimalis)": esriGrayBase,
+    "OpenStreetMap (Standar)": osmBase
+  };
+
+  L.control.layers(baseMaps, null, { position: 'topright' }).addTo(state.map);
+
+  // Ocean Reference overlay (nama pulau & batas administrasi - dirender di atas data)
+  const esriOceanRef = L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Reference/MapServer/tile/{z}/{y}/{x}',
+    {
+      attribution: '',
+      maxZoom: 13,
+      opacity: 0.9,
+      pane: 'overlayPane'
+    }
+  );
+
+  // -------------------------------------------------------------------------
+  // Coastline / Land polygon overlay dari Natural Earth 10m
+  // Menampilkan daratan & pulau-pulau NTT dengan garis pantai tegas
+  // -------------------------------------------------------------------------
+  state.coastlineLayer = null;
+  if (state.datasets.coastline) {
+    state.coastlineLayer = L.geoJSON(state.datasets.coastline, {
+      style: {
+        color: '#1e293b',        // garis batas pantai tegas
+        weight: 1.0,
+        fillColor: '#cbd5e1',    // warna daratan pulau NTT (slate-300 yang kontras)
+        fillOpacity: 0.95,
+        interactive: false       // klik diteruskan ke inspektor grid
+      }
+    });
+    state.coastlineLayer.addTo(state.map);
+  }
+
+  // Lapisan label referensi laut di atas daratan dan raster
+  esriOceanRef.addTo(state.map);
+  state.esriOceanRef = esriOceanRef;
+
+  // Indikator batas bounding box wilayah kajian NTT (garis putus-putus biru)
+  L.rectangle([[-13.0, 117.5], [-7.0, 127.5]], {
     color: '#0284c7',
     weight: 1.5,
-    dashArray: '4, 4',
-    fill: false
+    dashArray: '5, 6',
+    fill: false,
+    interactive: false
   }).addTo(state.map);
+
+  // Skala peta metrik
+  L.control.scale({ imperial: false, metric: true, position: 'bottomright' }).addTo(state.map);
 
   // Layer selector change
   const layerSelect = document.getElementById('map-layer-select');
@@ -385,127 +428,345 @@ function setupMap() {
     });
   }
 
-  // Render initial grid
+  // Render layer peta awal
   updateMapLayer();
+}
+
+// ---------------------------------------------------------------------------
+// Linear color interpolation helper
+// ---------------------------------------------------------------------------
+function lerpColor(a, b, t) {
+  const ah = parseInt(a.replace('#',''), 16);
+  const bh = parseInt(b.replace('#',''), 16);
+  const ar = (ah >> 16) & 0xff, ag = (ah >> 8) & 0xff, ab = ah & 0xff;
+  const br = (bh >> 16) & 0xff, bg = (bh >> 8) & 0xff, bb = bh & 0xff;
+  const r = Math.round(ar + (br - ar) * t);
+  const g = Math.round(ag + (bg - ag) * t);
+  const bl2 = Math.round(ab + (bb - ab) * t);
+  return '#' + [r,g,bl2].map(v => v.toString(16).padStart(2,'0')).join('');
+}
+
+// Smooth SST colormap (blue-white-red, range 25–32°C, realistic NTT range)
+function getSstColorSmooth(val) {
+  if (val === null || val === undefined || isNaN(val)) return null;
+  const stops = [
+    [25.0, '#313695'],
+    [26.0, '#4575b4'],
+    [27.0, '#74add1'],
+    [27.8, '#abd9e9'],
+    [28.3, '#e0f3f8'],
+    [28.8, '#fffec8'],
+    [29.3, '#fee090'],
+    [29.8, '#fdae61'],
+    [30.3, '#f46d43'],
+    [31.0, '#d73027'],
+    [32.0, '#a50026'],
+  ];
+  if (val <= stops[0][0]) return stops[0][1];
+  if (val >= stops[stops.length-1][0]) return stops[stops.length-1][1];
+  for (let i = 1; i < stops.length; i++) {
+    if (val <= stops[i][0]) {
+      const t = (val - stops[i-1][0]) / (stops[i][0] - stops[i-1][0]);
+      return lerpColor(stops[i-1][1], stops[i][1], t);
+    }
+  }
+  return '#d73027';
+}
+
+// Smooth Chl-a colormap (viridis-like, log-scaled, range 0.05–0.8 mg/m³)
+function getChlaColorSmooth(val) {
+  if (val === null || val === undefined || isNaN(val)) return null;
+  // log-transform agar variasi konsentrasi rendah tetap kontras
+  const logMin = Math.log10(0.05);
+  const logMax = Math.log10(0.80);
+  const logVal = Math.log10(Math.max(0.05, Math.min(0.80, val)));
+  const t = (logVal - logMin) / (logMax - logMin);
+  const stops = [
+    [0.00, '#440154'],
+    [0.15, '#3b528b'],
+    [0.35, '#21918c'],
+    [0.60, '#5ec962'],
+    [0.80, '#b5de2b'],
+    [1.00, '#fde725'],
+  ];
+  if (t <= 0) return stops[0][1];
+  if (t >= 1) return stops[stops.length-1][1];
+  for (let i = 1; i < stops.length; i++) {
+    if (t <= stops[i][0]) {
+      const s = (t - stops[i-1][0]) / (stops[i][0] - stops[i-1][0]);
+      return lerpColor(stops[i-1][1], stops[i][1], s);
+    }
+  }
+  return '#fde725';
+}
+
+// Smooth MHW days colormap (0–550 days)
+function getMhwDaysColorSmooth(val) {
+  if (val === null || val === undefined || isNaN(val)) return null;
+  const t = Math.max(0, Math.min(1, val / 520));
+  const stops = [
+    [0.00, '#fff7bc'],
+    [0.15, '#fee391'],
+    [0.35, '#fec44f'],
+    [0.55, '#fe9929'],
+    [0.70, '#ec7014'],
+    [0.85, '#cc4c02'],
+    [1.00, '#8c2d04'],
+  ];
+  if (t <= 0) return stops[0][1];
+  if (t >= 1) return stops[stops.length-1][1];
+  for (let i = 1; i < stops.length; i++) {
+    if (t <= stops[i][0]) {
+      const s = (t - stops[i-1][0]) / (stops[i][0] - stops[i-1][0]);
+      return lerpColor(stops[i-1][1], stops[i][1], s);
+    }
+  }
+  return '#8c2d04';
+}
+
+// Smooth MHW max intensity colormap (0.5–3.5°C)
+function getMhwIntColorSmooth(val) {
+  if (val === null || val === undefined || isNaN(val)) return null;
+  const t = Math.max(0, Math.min(1, (val - 0.3) / (3.5 - 0.3)));
+  const stops = [
+    [0.00, '#feebe2'],
+    [0.25, '#fcc5c0'],
+    [0.45, '#fa9fb5'],
+    [0.65, '#f768a1'],
+    [0.80, '#c51b8a'],
+    [1.00, '#7a0177'],
+  ];
+  if (t <= 0) return stops[0][1];
+  if (t >= 1) return stops[stops.length-1][1];
+  for (let i = 1; i < stops.length; i++) {
+    if (t <= stops[i][0]) {
+      const s = (t - stops[i-1][0]) / (stops[i][0] - stops[i-1][0]);
+      return lerpColor(stops[i-1][1], stops[i][1], s);
+    }
+  }
+  return '#7a0177';
 }
 
 // Update Map Layer based on selected layer & time state
 function updateMapLayer() {
   if (!state.map || !state.datasets.spatial || !state.datasets.metadata) return;
 
+  // Remove existing data grid layer
   if (state.gridLayer) {
     state.map.removeLayer(state.gridLayer);
+    state.gridLayer = null;
   }
 
   const { lat_coords, lon_coords } = state.datasets.metadata.region;
   const spatial = state.datasets.spatial;
   const layer = state.selectedMapLayer;
+  const mode = state.timeMode;
+  const year = state.selectedYear ? String(state.selectedYear) : "2016";
+  const month = state.selectedMonth ? String(state.selectedMonth) : "6";
+  const decade = state.selectedDecade || "2010_2019";
+  const date = state.selectedDate || "2016-06-25";
 
-  // Determine which 2D matrix to use
+  const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+
   let matrix = null;
-  let getColorFn = getSstColor;
+  let getColorFn = getSstColorSmooth;
   let unit = '°C';
-  let legendMin = '25°C', legendMid = '28°C', legendMax = '31°C';
-  let legendClass = 'colorbar-sst';
+  let legendConfig = {};
 
   if (layer === 'sst') {
-    matrix = spatial.sst_mean_all;
-    getColorFn = getSstColor;
+    getColorFn = getSstColorSmooth;
     unit = '°C';
-    legendMin = '25°C'; legendMid = '28°C'; legendMax = '31°C';
-    legendClass = 'colorbar-sst';
+    let periodLabel = 'Rerata 2000–2020';
+
+    if (mode === 'tahunan') {
+      matrix = (spatial.sst_annual && spatial.sst_annual[year]) || spatial.sst_mean_all;
+      periodLabel = `Tahun ${year}`;
+    } else if (mode === 'bulanan') {
+      matrix = (spatial.sst_monthly && spatial.sst_monthly[month]) || spatial.sst_mean_all;
+      periodLabel = `Bulan ${monthNames[parseInt(month) - 1]}`;
+    } else if (mode === 'mingguan') {
+      matrix = (spatial.sst_monthly && spatial.sst_monthly[month]) || spatial.sst_mean_all;
+      periodLabel = `Siklus Bulanan (${monthNames[parseInt(month) - 1]})`;
+    } else if (mode === 'dekadal') {
+      matrix = (spatial.sst_decadal && spatial.sst_decadal[decade]) || spatial.sst_mean_all;
+      periodLabel = `Dekade ${decade.replace('_', '–')}`;
+    } else if (mode === 'harian') {
+      let sampleMatch = Object.values(spatial.sample_days || {}).find(s => s.date === date);
+      if (sampleMatch && sampleMatch.sst) {
+        matrix = sampleMatch.sst;
+        periodLabel = `${date} (${sampleMatch.desc.split('(')[0].trim()})`;
+      } else {
+        const yrStr = date.split('-')[0];
+        matrix = (spatial.sst_annual && spatial.sst_annual[yrStr]) || spatial.sst_mean_all;
+        periodLabel = `Tanggal ${date}`;
+      }
+    } else {
+      matrix = spatial.sst_mean_all;
+    }
+
+    legendConfig = {
+      title: `SST ${periodLabel} (°C)`,
+      min: '25°C', mid: '28.5°C', max: '32°C',
+      barClass: 'colorbar-sst',
+      range: '25 – 32'
+    };
+
   } else if (layer === 'chla') {
-    matrix = spatial.chla_mean_all;
-    getColorFn = getChlaColor;
+    getColorFn = getChlaColorSmooth;
     unit = 'mg/m³';
-    legendMin = '0.08'; legendMid = '0.35'; legendMax = '0.80 mg/m³';
-    legendClass = 'colorbar-chla';
+    let periodLabel = 'Rerata 2002–2020';
+
+    if (mode === 'tahunan') {
+      matrix = (spatial.chla_annual && spatial.chla_annual[year]) || spatial.chla_mean_all;
+      periodLabel = `Tahun ${year}`;
+    } else if (mode === 'bulanan') {
+      matrix = (spatial.chla_monthly && spatial.chla_monthly[month]) || spatial.chla_mean_all;
+      periodLabel = `Bulan ${monthNames[parseInt(month) - 1]}`;
+    } else if (mode === 'mingguan') {
+      matrix = (spatial.chla_monthly && spatial.chla_monthly[month]) || spatial.chla_mean_all;
+      periodLabel = `Siklus Bulanan (${monthNames[parseInt(month) - 1]})`;
+    } else if (mode === 'dekadal') {
+      matrix = (spatial.chla_decadal && spatial.chla_decadal[decade]) || spatial.chla_mean_all;
+      periodLabel = `Dekade ${decade.replace('_', '–')}`;
+    } else if (mode === 'harian') {
+      let sampleMatch = Object.values(spatial.sample_days || {}).find(s => s.date === date);
+      if (sampleMatch && sampleMatch.chla) {
+        matrix = sampleMatch.chla;
+        periodLabel = `${date} (${sampleMatch.desc.split('(')[0].trim()})`;
+      } else {
+        const yrStr = date.split('-')[0];
+        matrix = (spatial.chla_annual && spatial.chla_annual[yrStr]) || spatial.chla_mean_all;
+        periodLabel = `Tanggal ${date}`;
+      }
+    } else {
+      matrix = spatial.chla_mean_all;
+    }
+
+    legendConfig = {
+      title: `Chlorophyll-a ${periodLabel} (mg/m³)`,
+      min: '0.05', mid: '0.25', max: '0.80 mg/m³',
+      barClass: 'colorbar-chla',
+      range: '0.05 – 0.80'
+    };
+
   } else if (layer === 'mhw_days') {
     matrix = spatial.total_mhw_days;
-    getColorFn = getMhwDaysColor;
-    unit = 'Hari';
-    legendMin = '0'; legendMid = '250'; legendMax = '550 Hari';
-    legendClass = 'colorbar-mhw';
+    getColorFn = getMhwDaysColorSmooth;
+    unit = 'Hari MHW';
+    legendConfig = {
+      title: 'Total Hari MHW 2000–2020',
+      min: '0 Hari', mid: '260 Hari', max: '520 Hari',
+      barClass: 'colorbar-mhw',
+      range: '0 – 520'
+    };
+
   } else if (layer === 'mhw_int') {
     matrix = spatial.max_intensity;
-    getColorFn = getMhwIntColor;
-    unit = '°C';
-    legendMin = '0.5'; legendMid = '2.0'; legendMax = '3.5 °C';
-    legendClass = 'colorbar-mhw';
+    getColorFn = getMhwIntColorSmooth;
+    unit = '°C anomali';
+    legendConfig = {
+      title: 'Intensitas Maks MHW (°C anomali)',
+      min: '0.3°C', mid: '1.8°C', max: '3.5°C',
+      barClass: 'colorbar-mhw-int',
+      range: '0.3 – 3.5'
+    };
   }
 
   // Update floating legend
-  const legendBar = document.getElementById('legend-bar');
+  const legendBar   = document.getElementById('legend-bar');
   const legendTitle = document.getElementById('legend-title');
   const legendRange = document.getElementById('legend-range');
-  const lMin = document.getElementById('legend-min');
-  const lMid = document.getElementById('legend-mid');
-  const lMax = document.getElementById('legend-max');
+  const lMin        = document.getElementById('legend-min');
+  const lMid        = document.getElementById('legend-mid');
+  const lMax        = document.getElementById('legend-max');
 
-  if (legendBar && legendTitle) {
-    legendBar.className = `h-3 rounded-full border border-slate-200 ${legendClass}`;
-    legendTitle.textContent = layer === 'sst' ? 'SST Rerata (°C)' : layer === 'chla' ? 'Chlorophyll-a (mg/m³)' : layer === 'mhw_days' ? 'Hari MHW Spasial' : 'Intensitas Maks MHW';
-    legendRange.textContent = `${legendMin} – ${legendMax}`;
-    if (lMin) lMin.textContent = legendMin;
-    if (lMid) lMid.textContent = legendMid;
-    if (lMax) lMax.textContent = legendMax;
+  if (legendBar && legendTitle && legendConfig.title) {
+    legendBar.className = `h-3 rounded-full border border-slate-200 ${legendConfig.barClass}`;
+    legendTitle.textContent  = legendConfig.title;
+    legendRange.textContent  = legendConfig.range;
+    if (lMin) lMin.textContent = legendConfig.min;
+    if (lMid) lMid.textContent = legendConfig.mid;
+    if (lMax) lMax.textContent = legendConfig.max;
   }
 
-  // Build grid layer using SVG polygons for crisp performance
+  if (!matrix) return;
+
+  // Simpan matriks aktif pada state agar dapat dibaca langsung oleh inspektor titik
+  state.activeMatrix = matrix;
+  state.activeUnit = unit;
+
+  // -------------------------------------------------------------------------
+  // Render grid data oseanografi 0.25°
+  // Nilai daratan/hilang (null) dilewati sehingga pulau NTT tampak alami
+  // -------------------------------------------------------------------------
   const gridGroup = L.layerGroup();
-  const halfLat = 0.125;
+  const halfLat = 0.125;   // setengah resolusi 0.25°
   const halfLon = 0.125;
 
   for (let r = 0; r < lat_coords.length; r++) {
     const lat = lat_coords[r];
     for (let c = 0; c < lon_coords.length; c++) {
       const lon = lon_coords[c];
-      const val = matrix && matrix[r] ? matrix[r][c] : null;
+      const val = matrix[r] ? matrix[r][c] : null;
 
-      if (val === null || val === undefined || isNaN(val)) continue;
+      // Lewati sel daratan (null) dan data kosong
+      if (val === null || val === undefined) continue;
+
+      const color = getColorFn(val);
+      if (!color) continue;
 
       const bounds = [
         [lat - halfLat, lon - halfLon],
         [lat + halfLat, lon + halfLon]
       ];
 
-      const color = getColorFn(val);
-
       const cell = L.rectangle(bounds, {
-        color: 'transparent',
-        weight: 0,
-        fillColor: color,
-        fillOpacity: 0.65
+        color:       'none',
+        weight:      0,
+        fillColor:   color,
+        fillOpacity: 0.75,
+        interactive: true
       });
 
-      // Hover Tooltip
-      cell.bindTooltip(`
-        <div class="text-xs font-sans">
-          <div class="font-bold text-slate-800">${detectSubRegion(lat, lon)}</div>
-          <div class="font-mono text-slate-600">${lat.toFixed(3)}° LS, ${lon.toFixed(3)}° BT</div>
-          <div class="font-semibold text-brand-700 mt-0.5">${val} ${unit}</div>
-        </div>
-      `, { sticky: true, opacity: 0.95 });
+      const valDisplay = typeof val === 'number' ? val.toFixed(3) : val;
+      cell.bindTooltip(
+        `<div style="font-family:sans-serif;font-size:12px;line-height:1.5">
+           <strong>${detectSubRegion(lat, lon)}</strong><br>
+           <span style="color:#475569">${Math.abs(lat).toFixed(3)}°LS, ${lon.toFixed(3)}°BT</span><br>
+           <span style="font-size:13px;font-weight:700;color:#1e293b">${valDisplay} ${unit}</span>
+         </div>`,
+        { sticky: true, opacity: 0.97, className: 'leaflet-tooltip-ntt' }
+      );
 
-      // Click Inspector
-      cell.on('click', () => {
-        inspectCell(lat, lon, r, c);
-      });
+      cell.on('click', () => inspectCell(lat, lon, r, c));
 
-      cell.addTo(gridGroup);
+      gridGroup.addLayer(cell);
     }
   }
 
   state.gridLayer = gridGroup;
   state.gridLayer.addTo(state.map);
+
+  // Pastikan layer garis pantai dan pulau selalu berada di atas layer raster laut
+  if (state.coastlineLayer) {
+    state.coastlineLayer.bringToFront();
+  }
+  // Pastikan label referensi laut (nama selat, pulau) tetap di paling atas
+  if (state.esriOceanRef) {
+    state.esriOceanRef.bringToFront();
+  }
 }
 
 // Point Inspector on Click
 function inspectCell(lat, lon, r, c) {
   const spatial = state.datasets.spatial;
-  const sstVal = spatial && spatial.sst_mean_all && spatial.sst_mean_all[r] ? spatial.sst_mean_all[r][c] : 28.65;
-  const chlaVal = spatial && spatial.chla_mean_all && spatial.chla_mean_all[r] ? spatial.chla_mean_all[r][c] : 0.274;
-  const mhwDays = spatial && spatial.total_mhw_days && spatial.total_mhw_days[r] ? spatial.total_mhw_days[r][c] : 545;
+  const activeMat = state.activeMatrix;
+
+  // Baca nilai dari matriks aktif atau data rata-rata
+  let currentVal = activeMat && activeMat[r] ? activeMat[r][c] : null;
+  const sstVal = spatial && spatial.sst_mean_all && spatial.sst_mean_all[r] ? spatial.sst_mean_all[r][c] : null;
+  const chlaVal = spatial && spatial.chla_mean_all && spatial.chla_mean_all[r] ? spatial.chla_mean_all[r][c] : null;
+  const mhwDays = spatial && spatial.total_mhw_days && spatial.total_mhw_days[r] ? spatial.total_mhw_days[r][c] : null;
   const regionName = detectSubRegion(lat, lon);
 
   // Update inspector DOM
@@ -518,15 +779,33 @@ function inspectCell(lat, lon, r, c) {
 
   if (inspectCoords) inspectCoords.textContent = `${lat.toFixed(3)}° LS, ${lon.toFixed(3)}° BT`;
   if (inspectRegion) inspectRegion.textContent = regionName;
-  if (inspectSst) inspectSst.textContent = sstVal !== null ? `${sstVal} °C` : 'N/A';
-  if (inspectChla) inspectChla.textContent = chlaVal !== null ? `${chlaVal} mg/m³` : 'Data Berawan';
+
+  if (inspectSst) {
+    if (sstVal === null) {
+      inspectSst.innerHTML = `<span class="text-slate-400 italic">Daratan / Pulau NTT</span>`;
+    } else {
+      inspectSst.textContent = `${sstVal.toFixed(2)} °C`;
+    }
+  }
+
+  if (inspectChla) {
+    if (chlaVal === null) {
+      inspectChla.innerHTML = `<span class="text-slate-400 italic">Data Tidak Tersedia / Daratan</span>`;
+    } else {
+      inspectChla.textContent = `${chlaVal.toFixed(3)} mg/m³`;
+    }
+  }
+
   if (inspectMhw) {
-    if (mhwDays > 400) {
+    if (mhwDays === null) {
+      inspectMhw.innerHTML = `<span class="text-slate-400 italic">Daratan (Bukan Laut)</span>`;
+    } else if (mhwDays > 400) {
       inspectMhw.innerHTML = `<span class="text-rose-600 font-bold">Rentan MHW (${mhwDays} Hari)</span>`;
     } else {
       inspectMhw.innerHTML = `<span class="text-emerald-600 font-semibold">Normal (${mhwDays} Hari)</span>`;
     }
   }
+
   if (inspectorTag) inspectorTag.textContent = 'Terpilih';
 
   // Highlight active cell marker on map
@@ -575,6 +854,11 @@ function updateDashboardViews() {
   // Update Charts if active
   if (state.charts.sstDaily) {
     updateSstDailyChart();
+  }
+
+  // Update Map Layer based on active filters
+  if (state.map) {
+    updateMapLayer();
   }
 }
 
@@ -1089,3 +1373,4 @@ function setupModalViewer() {
     if (e.target === modal) modal.classList.add('hidden');
   });
 }
+
