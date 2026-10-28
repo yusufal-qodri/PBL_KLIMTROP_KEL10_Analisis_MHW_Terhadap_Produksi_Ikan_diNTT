@@ -1,0 +1,1832 @@
+[
+  {
+    "doy": 1,
+    "climatology": 29.63,
+    "threshold": 30.59
+  },
+  {
+    "doy": 2,
+    "climatology": 29.61,
+    "threshold": 30.57
+  },
+  {
+    "doy": 3,
+    "climatology": 29.59,
+    "threshold": 30.55
+  },
+  {
+    "doy": 4,
+    "climatology": 29.57,
+    "threshold": 30.53
+  },
+  {
+    "doy": 5,
+    "climatology": 29.55,
+    "threshold": 30.5
+  },
+  {
+    "doy": 6,
+    "climatology": 29.53,
+    "threshold": 30.48
+  },
+  {
+    "doy": 7,
+    "climatology": 29.51,
+    "threshold": 30.45
+  },
+  {
+    "doy": 8,
+    "climatology": 29.49,
+    "threshold": 30.43
+  },
+  {
+    "doy": 9,
+    "climatology": 29.47,
+    "threshold": 30.41
+  },
+  {
+    "doy": 10,
+    "climatology": 29.45,
+    "threshold": 30.38
+  },
+  {
+    "doy": 11,
+    "climatology": 29.43,
+    "threshold": 30.36
+  },
+  {
+    "doy": 12,
+    "climatology": 29.42,
+    "threshold": 30.34
+  },
+  {
+    "doy": 13,
+    "climatology": 29.4,
+    "threshold": 30.32
+  },
+  {
+    "doy": 14,
+    "climatology": 29.38,
+    "threshold": 30.3
+  },
+  {
+    "doy": 15,
+    "climatology": 29.37,
+    "threshold": 30.28
+  },
+  {
+    "doy": 16,
+    "climatology": 29.35,
+    "threshold": 30.26
+  },
+  {
+    "doy": 17,
+    "climatology": 29.34,
+    "threshold": 30.24
+  },
+  {
+    "doy": 18,
+    "climatology": 29.32,
+    "threshold": 30.23
+  },
+  {
+    "doy": 19,
+    "climatology": 29.31,
+    "threshold": 30.21
+  },
+  {
+    "doy": 20,
+    "climatology": 29.3,
+    "threshold": 30.2
+  },
+  {
+    "doy": 21,
+    "climatology": 29.29,
+    "threshold": 30.19
+  },
+  {
+    "doy": 22,
+    "climatology": 29.28,
+    "threshold": 30.18
+  },
+  {
+    "doy": 23,
+    "climatology": 29.27,
+    "threshold": 30.17
+  },
+  {
+    "doy": 24,
+    "climatology": 29.26,
+    "threshold": 30.16
+  },
+  {
+    "doy": 25,
+    "climatology": 29.25,
+    "threshold": 30.15
+  },
+  {
+    "doy": 26,
+    "climatology": 29.24,
+    "threshold": 30.15
+  },
+  {
+    "doy": 27,
+    "climatology": 29.23,
+    "threshold": 30.14
+  },
+  {
+    "doy": 28,
+    "climatology": 29.22,
+    "threshold": 30.14
+  },
+  {
+    "doy": 29,
+    "climatology": 29.22,
+    "threshold": 30.13
+  },
+  {
+    "doy": 30,
+    "climatology": 29.21,
+    "threshold": 30.13
+  },
+  {
+    "doy": 31,
+    "climatology": 29.21,
+    "threshold": 30.13
+  },
+  {
+    "doy": 32,
+    "climatology": 29.2,
+    "threshold": 30.13
+  },
+  {
+    "doy": 33,
+    "climatology": 29.2,
+    "threshold": 30.13
+  },
+  {
+    "doy": 34,
+    "climatology": 29.19,
+    "threshold": 30.13
+  },
+  {
+    "doy": 35,
+    "climatology": 29.19,
+    "threshold": 30.14
+  },
+  {
+    "doy": 36,
+    "climatology": 29.19,
+    "threshold": 30.14
+  },
+  {
+    "doy": 37,
+    "climatology": 29.19,
+    "threshold": 30.14
+  },
+  {
+    "doy": 38,
+    "climatology": 29.19,
+    "threshold": 30.15
+  },
+  {
+    "doy": 39,
+    "climatology": 29.18,
+    "threshold": 30.15
+  },
+  {
+    "doy": 40,
+    "climatology": 29.18,
+    "threshold": 30.15
+  },
+  {
+    "doy": 41,
+    "climatology": 29.18,
+    "threshold": 30.16
+  },
+  {
+    "doy": 42,
+    "climatology": 29.18,
+    "threshold": 30.16
+  },
+  {
+    "doy": 43,
+    "climatology": 29.18,
+    "threshold": 30.17
+  },
+  {
+    "doy": 44,
+    "climatology": 29.18,
+    "threshold": 30.17
+  },
+  {
+    "doy": 45,
+    "climatology": 29.18,
+    "threshold": 30.17
+  },
+  {
+    "doy": 46,
+    "climatology": 29.18,
+    "threshold": 30.18
+  },
+  {
+    "doy": 47,
+    "climatology": 29.18,
+    "threshold": 30.18
+  },
+  {
+    "doy": 48,
+    "climatology": 29.19,
+    "threshold": 30.18
+  },
+  {
+    "doy": 49,
+    "climatology": 29.19,
+    "threshold": 30.18
+  },
+  {
+    "doy": 50,
+    "climatology": 29.19,
+    "threshold": 30.18
+  },
+  {
+    "doy": 51,
+    "climatology": 29.19,
+    "threshold": 30.19
+  },
+  {
+    "doy": 52,
+    "climatology": 29.19,
+    "threshold": 30.19
+  },
+  {
+    "doy": 53,
+    "climatology": 29.2,
+    "threshold": 30.19
+  },
+  {
+    "doy": 54,
+    "climatology": 29.2,
+    "threshold": 30.19
+  },
+  {
+    "doy": 55,
+    "climatology": 29.2,
+    "threshold": 30.2
+  },
+  {
+    "doy": 56,
+    "climatology": 29.21,
+    "threshold": 30.2
+  },
+  {
+    "doy": 57,
+    "climatology": 29.21,
+    "threshold": 30.2
+  },
+  {
+    "doy": 58,
+    "climatology": 29.21,
+    "threshold": 30.2
+  },
+  {
+    "doy": 59,
+    "climatology": 29.22,
+    "threshold": 30.21
+  },
+  {
+    "doy": 60,
+    "climatology": 29.22,
+    "threshold": 30.21
+  },
+  {
+    "doy": 61,
+    "climatology": 29.23,
+    "threshold": 30.22
+  },
+  {
+    "doy": 62,
+    "climatology": 29.23,
+    "threshold": 30.22
+  },
+  {
+    "doy": 63,
+    "climatology": 29.24,
+    "threshold": 30.23
+  },
+  {
+    "doy": 64,
+    "climatology": 29.24,
+    "threshold": 30.23
+  },
+  {
+    "doy": 65,
+    "climatology": 29.25,
+    "threshold": 30.23
+  },
+  {
+    "doy": 66,
+    "climatology": 29.26,
+    "threshold": 30.24
+  },
+  {
+    "doy": 67,
+    "climatology": 29.27,
+    "threshold": 30.25
+  },
+  {
+    "doy": 68,
+    "climatology": 29.27,
+    "threshold": 30.25
+  },
+  {
+    "doy": 69,
+    "climatology": 29.28,
+    "threshold": 30.26
+  },
+  {
+    "doy": 70,
+    "climatology": 29.29,
+    "threshold": 30.27
+  },
+  {
+    "doy": 71,
+    "climatology": 29.3,
+    "threshold": 30.27
+  },
+  {
+    "doy": 72,
+    "climatology": 29.31,
+    "threshold": 30.28
+  },
+  {
+    "doy": 73,
+    "climatology": 29.32,
+    "threshold": 30.29
+  },
+  {
+    "doy": 74,
+    "climatology": 29.33,
+    "threshold": 30.3
+  },
+  {
+    "doy": 75,
+    "climatology": 29.34,
+    "threshold": 30.3
+  },
+  {
+    "doy": 76,
+    "climatology": 29.34,
+    "threshold": 30.31
+  },
+  {
+    "doy": 77,
+    "climatology": 29.35,
+    "threshold": 30.32
+  },
+  {
+    "doy": 78,
+    "climatology": 29.36,
+    "threshold": 30.33
+  },
+  {
+    "doy": 79,
+    "climatology": 29.37,
+    "threshold": 30.34
+  },
+  {
+    "doy": 80,
+    "climatology": 29.38,
+    "threshold": 30.35
+  },
+  {
+    "doy": 81,
+    "climatology": 29.39,
+    "threshold": 30.36
+  },
+  {
+    "doy": 82,
+    "climatology": 29.4,
+    "threshold": 30.37
+  },
+  {
+    "doy": 83,
+    "climatology": 29.41,
+    "threshold": 30.38
+  },
+  {
+    "doy": 84,
+    "climatology": 29.42,
+    "threshold": 30.38
+  },
+  {
+    "doy": 85,
+    "climatology": 29.43,
+    "threshold": 30.39
+  },
+  {
+    "doy": 86,
+    "climatology": 29.43,
+    "threshold": 30.4
+  },
+  {
+    "doy": 87,
+    "climatology": 29.44,
+    "threshold": 30.41
+  },
+  {
+    "doy": 88,
+    "climatology": 29.45,
+    "threshold": 30.41
+  },
+  {
+    "doy": 89,
+    "climatology": 29.45,
+    "threshold": 30.42
+  },
+  {
+    "doy": 90,
+    "climatology": 29.46,
+    "threshold": 30.42
+  },
+  {
+    "doy": 91,
+    "climatology": 29.47,
+    "threshold": 30.43
+  },
+  {
+    "doy": 92,
+    "climatology": 29.47,
+    "threshold": 30.43
+  },
+  {
+    "doy": 93,
+    "climatology": 29.47,
+    "threshold": 30.43
+  },
+  {
+    "doy": 94,
+    "climatology": 29.48,
+    "threshold": 30.43
+  },
+  {
+    "doy": 95,
+    "climatology": 29.48,
+    "threshold": 30.43
+  },
+  {
+    "doy": 96,
+    "climatology": 29.48,
+    "threshold": 30.43
+  },
+  {
+    "doy": 97,
+    "climatology": 29.48,
+    "threshold": 30.43
+  },
+  {
+    "doy": 98,
+    "climatology": 29.48,
+    "threshold": 30.42
+  },
+  {
+    "doy": 99,
+    "climatology": 29.48,
+    "threshold": 30.42
+  },
+  {
+    "doy": 100,
+    "climatology": 29.48,
+    "threshold": 30.41
+  },
+  {
+    "doy": 101,
+    "climatology": 29.47,
+    "threshold": 30.4
+  },
+  {
+    "doy": 102,
+    "climatology": 29.47,
+    "threshold": 30.39
+  },
+  {
+    "doy": 103,
+    "climatology": 29.46,
+    "threshold": 30.38
+  },
+  {
+    "doy": 104,
+    "climatology": 29.45,
+    "threshold": 30.37
+  },
+  {
+    "doy": 105,
+    "climatology": 29.45,
+    "threshold": 30.36
+  },
+  {
+    "doy": 106,
+    "climatology": 29.44,
+    "threshold": 30.34
+  },
+  {
+    "doy": 107,
+    "climatology": 29.43,
+    "threshold": 30.33
+  },
+  {
+    "doy": 108,
+    "climatology": 29.42,
+    "threshold": 30.31
+  },
+  {
+    "doy": 109,
+    "climatology": 29.4,
+    "threshold": 30.29
+  },
+  {
+    "doy": 110,
+    "climatology": 29.39,
+    "threshold": 30.27
+  },
+  {
+    "doy": 111,
+    "climatology": 29.37,
+    "threshold": 30.25
+  },
+  {
+    "doy": 112,
+    "climatology": 29.36,
+    "threshold": 30.23
+  },
+  {
+    "doy": 113,
+    "climatology": 29.34,
+    "threshold": 30.21
+  },
+  {
+    "doy": 114,
+    "climatology": 29.32,
+    "threshold": 30.19
+  },
+  {
+    "doy": 115,
+    "climatology": 29.3,
+    "threshold": 30.17
+  },
+  {
+    "doy": 116,
+    "climatology": 29.28,
+    "threshold": 30.14
+  },
+  {
+    "doy": 117,
+    "climatology": 29.26,
+    "threshold": 30.12
+  },
+  {
+    "doy": 118,
+    "climatology": 29.24,
+    "threshold": 30.09
+  },
+  {
+    "doy": 119,
+    "climatology": 29.22,
+    "threshold": 30.07
+  },
+  {
+    "doy": 120,
+    "climatology": 29.2,
+    "threshold": 30.04
+  },
+  {
+    "doy": 121,
+    "climatology": 29.18,
+    "threshold": 30.01
+  },
+  {
+    "doy": 122,
+    "climatology": 29.15,
+    "threshold": 29.98
+  },
+  {
+    "doy": 123,
+    "climatology": 29.13,
+    "threshold": 29.95
+  },
+  {
+    "doy": 124,
+    "climatology": 29.1,
+    "threshold": 29.92
+  },
+  {
+    "doy": 125,
+    "climatology": 29.08,
+    "threshold": 29.89
+  },
+  {
+    "doy": 126,
+    "climatology": 29.05,
+    "threshold": 29.87
+  },
+  {
+    "doy": 127,
+    "climatology": 29.02,
+    "threshold": 29.84
+  },
+  {
+    "doy": 128,
+    "climatology": 29.0,
+    "threshold": 29.81
+  },
+  {
+    "doy": 129,
+    "climatology": 28.97,
+    "threshold": 29.78
+  },
+  {
+    "doy": 130,
+    "climatology": 28.94,
+    "threshold": 29.75
+  },
+  {
+    "doy": 131,
+    "climatology": 28.91,
+    "threshold": 29.72
+  },
+  {
+    "doy": 132,
+    "climatology": 28.88,
+    "threshold": 29.69
+  },
+  {
+    "doy": 133,
+    "climatology": 28.85,
+    "threshold": 29.66
+  },
+  {
+    "doy": 134,
+    "climatology": 28.83,
+    "threshold": 29.63
+  },
+  {
+    "doy": 135,
+    "climatology": 28.8,
+    "threshold": 29.6
+  },
+  {
+    "doy": 136,
+    "climatology": 28.77,
+    "threshold": 29.57
+  },
+  {
+    "doy": 137,
+    "climatology": 28.74,
+    "threshold": 29.54
+  },
+  {
+    "doy": 138,
+    "climatology": 28.71,
+    "threshold": 29.52
+  },
+  {
+    "doy": 139,
+    "climatology": 28.68,
+    "threshold": 29.49
+  },
+  {
+    "doy": 140,
+    "climatology": 28.65,
+    "threshold": 29.46
+  },
+  {
+    "doy": 141,
+    "climatology": 28.62,
+    "threshold": 29.43
+  },
+  {
+    "doy": 142,
+    "climatology": 28.59,
+    "threshold": 29.4
+  },
+  {
+    "doy": 143,
+    "climatology": 28.56,
+    "threshold": 29.38
+  },
+  {
+    "doy": 144,
+    "climatology": 28.54,
+    "threshold": 29.35
+  },
+  {
+    "doy": 145,
+    "climatology": 28.51,
+    "threshold": 29.32
+  },
+  {
+    "doy": 146,
+    "climatology": 28.48,
+    "threshold": 29.3
+  },
+  {
+    "doy": 147,
+    "climatology": 28.45,
+    "threshold": 29.27
+  },
+  {
+    "doy": 148,
+    "climatology": 28.42,
+    "threshold": 29.24
+  },
+  {
+    "doy": 149,
+    "climatology": 28.39,
+    "threshold": 29.22
+  },
+  {
+    "doy": 150,
+    "climatology": 28.36,
+    "threshold": 29.19
+  },
+  {
+    "doy": 151,
+    "climatology": 28.33,
+    "threshold": 29.17
+  },
+  {
+    "doy": 152,
+    "climatology": 28.31,
+    "threshold": 29.14
+  },
+  {
+    "doy": 153,
+    "climatology": 28.28,
+    "threshold": 29.11
+  },
+  {
+    "doy": 154,
+    "climatology": 28.25,
+    "threshold": 29.09
+  },
+  {
+    "doy": 155,
+    "climatology": 28.22,
+    "threshold": 29.06
+  },
+  {
+    "doy": 156,
+    "climatology": 28.19,
+    "threshold": 29.04
+  },
+  {
+    "doy": 157,
+    "climatology": 28.16,
+    "threshold": 29.01
+  },
+  {
+    "doy": 158,
+    "climatology": 28.13,
+    "threshold": 28.98
+  },
+  {
+    "doy": 159,
+    "climatology": 28.1,
+    "threshold": 28.96
+  },
+  {
+    "doy": 160,
+    "climatology": 28.07,
+    "threshold": 28.93
+  },
+  {
+    "doy": 161,
+    "climatology": 28.05,
+    "threshold": 28.91
+  },
+  {
+    "doy": 162,
+    "climatology": 28.02,
+    "threshold": 28.88
+  },
+  {
+    "doy": 163,
+    "climatology": 27.99,
+    "threshold": 28.85
+  },
+  {
+    "doy": 164,
+    "climatology": 27.96,
+    "threshold": 28.83
+  },
+  {
+    "doy": 165,
+    "climatology": 27.93,
+    "threshold": 28.8
+  },
+  {
+    "doy": 166,
+    "climatology": 27.9,
+    "threshold": 28.77
+  },
+  {
+    "doy": 167,
+    "climatology": 27.88,
+    "threshold": 28.74
+  },
+  {
+    "doy": 168,
+    "climatology": 27.85,
+    "threshold": 28.71
+  },
+  {
+    "doy": 169,
+    "climatology": 27.82,
+    "threshold": 28.69
+  },
+  {
+    "doy": 170,
+    "climatology": 27.79,
+    "threshold": 28.66
+  },
+  {
+    "doy": 171,
+    "climatology": 27.76,
+    "threshold": 28.63
+  },
+  {
+    "doy": 172,
+    "climatology": 27.74,
+    "threshold": 28.6
+  },
+  {
+    "doy": 173,
+    "climatology": 27.71,
+    "threshold": 28.57
+  },
+  {
+    "doy": 174,
+    "climatology": 27.68,
+    "threshold": 28.54
+  },
+  {
+    "doy": 175,
+    "climatology": 27.65,
+    "threshold": 28.51
+  },
+  {
+    "doy": 176,
+    "climatology": 27.62,
+    "threshold": 28.48
+  },
+  {
+    "doy": 177,
+    "climatology": 27.6,
+    "threshold": 28.45
+  },
+  {
+    "doy": 178,
+    "climatology": 27.57,
+    "threshold": 28.42
+  },
+  {
+    "doy": 179,
+    "climatology": 27.54,
+    "threshold": 28.39
+  },
+  {
+    "doy": 180,
+    "climatology": 27.51,
+    "threshold": 28.36
+  },
+  {
+    "doy": 181,
+    "climatology": 27.49,
+    "threshold": 28.34
+  },
+  {
+    "doy": 182,
+    "climatology": 27.46,
+    "threshold": 28.31
+  },
+  {
+    "doy": 183,
+    "climatology": 27.43,
+    "threshold": 28.28
+  },
+  {
+    "doy": 184,
+    "climatology": 27.41,
+    "threshold": 28.25
+  },
+  {
+    "doy": 185,
+    "climatology": 27.38,
+    "threshold": 28.23
+  },
+  {
+    "doy": 186,
+    "climatology": 27.36,
+    "threshold": 28.2
+  },
+  {
+    "doy": 187,
+    "climatology": 27.33,
+    "threshold": 28.17
+  },
+  {
+    "doy": 188,
+    "climatology": 27.31,
+    "threshold": 28.15
+  },
+  {
+    "doy": 189,
+    "climatology": 27.28,
+    "threshold": 28.12
+  },
+  {
+    "doy": 190,
+    "climatology": 27.26,
+    "threshold": 28.1
+  },
+  {
+    "doy": 191,
+    "climatology": 27.24,
+    "threshold": 28.07
+  },
+  {
+    "doy": 192,
+    "climatology": 27.22,
+    "threshold": 28.05
+  },
+  {
+    "doy": 193,
+    "climatology": 27.19,
+    "threshold": 28.02
+  },
+  {
+    "doy": 194,
+    "climatology": 27.17,
+    "threshold": 28.0
+  },
+  {
+    "doy": 195,
+    "climatology": 27.15,
+    "threshold": 27.98
+  },
+  {
+    "doy": 196,
+    "climatology": 27.13,
+    "threshold": 27.95
+  },
+  {
+    "doy": 197,
+    "climatology": 27.11,
+    "threshold": 27.93
+  },
+  {
+    "doy": 198,
+    "climatology": 27.09,
+    "threshold": 27.91
+  },
+  {
+    "doy": 199,
+    "climatology": 27.07,
+    "threshold": 27.89
+  },
+  {
+    "doy": 200,
+    "climatology": 27.05,
+    "threshold": 27.87
+  },
+  {
+    "doy": 201,
+    "climatology": 27.04,
+    "threshold": 27.85
+  },
+  {
+    "doy": 202,
+    "climatology": 27.02,
+    "threshold": 27.83
+  },
+  {
+    "doy": 203,
+    "climatology": 27.0,
+    "threshold": 27.81
+  },
+  {
+    "doy": 204,
+    "climatology": 26.98,
+    "threshold": 27.8
+  },
+  {
+    "doy": 205,
+    "climatology": 26.97,
+    "threshold": 27.78
+  },
+  {
+    "doy": 206,
+    "climatology": 26.95,
+    "threshold": 27.76
+  },
+  {
+    "doy": 207,
+    "climatology": 26.94,
+    "threshold": 27.75
+  },
+  {
+    "doy": 208,
+    "climatology": 26.92,
+    "threshold": 27.73
+  },
+  {
+    "doy": 209,
+    "climatology": 26.91,
+    "threshold": 27.72
+  },
+  {
+    "doy": 210,
+    "climatology": 26.9,
+    "threshold": 27.7
+  },
+  {
+    "doy": 211,
+    "climatology": 26.88,
+    "threshold": 27.69
+  },
+  {
+    "doy": 212,
+    "climatology": 26.87,
+    "threshold": 27.68
+  },
+  {
+    "doy": 213,
+    "climatology": 26.86,
+    "threshold": 27.67
+  },
+  {
+    "doy": 214,
+    "climatology": 26.85,
+    "threshold": 27.66
+  },
+  {
+    "doy": 215,
+    "climatology": 26.84,
+    "threshold": 27.65
+  },
+  {
+    "doy": 216,
+    "climatology": 26.84,
+    "threshold": 27.65
+  },
+  {
+    "doy": 217,
+    "climatology": 26.83,
+    "threshold": 27.64
+  },
+  {
+    "doy": 218,
+    "climatology": 26.82,
+    "threshold": 27.63
+  },
+  {
+    "doy": 219,
+    "climatology": 26.82,
+    "threshold": 27.63
+  },
+  {
+    "doy": 220,
+    "climatology": 26.81,
+    "threshold": 27.63
+  },
+  {
+    "doy": 221,
+    "climatology": 26.81,
+    "threshold": 27.62
+  },
+  {
+    "doy": 222,
+    "climatology": 26.81,
+    "threshold": 27.62
+  },
+  {
+    "doy": 223,
+    "climatology": 26.81,
+    "threshold": 27.62
+  },
+  {
+    "doy": 224,
+    "climatology": 26.8,
+    "threshold": 27.62
+  },
+  {
+    "doy": 225,
+    "climatology": 26.8,
+    "threshold": 27.62
+  },
+  {
+    "doy": 226,
+    "climatology": 26.81,
+    "threshold": 27.63
+  },
+  {
+    "doy": 227,
+    "climatology": 26.81,
+    "threshold": 27.63
+  },
+  {
+    "doy": 228,
+    "climatology": 26.81,
+    "threshold": 27.64
+  },
+  {
+    "doy": 229,
+    "climatology": 26.82,
+    "threshold": 27.65
+  },
+  {
+    "doy": 230,
+    "climatology": 26.82,
+    "threshold": 27.65
+  },
+  {
+    "doy": 231,
+    "climatology": 26.83,
+    "threshold": 27.66
+  },
+  {
+    "doy": 232,
+    "climatology": 26.84,
+    "threshold": 27.68
+  },
+  {
+    "doy": 233,
+    "climatology": 26.85,
+    "threshold": 27.69
+  },
+  {
+    "doy": 234,
+    "climatology": 26.86,
+    "threshold": 27.7
+  },
+  {
+    "doy": 235,
+    "climatology": 26.87,
+    "threshold": 27.72
+  },
+  {
+    "doy": 236,
+    "climatology": 26.88,
+    "threshold": 27.74
+  },
+  {
+    "doy": 237,
+    "climatology": 26.9,
+    "threshold": 27.76
+  },
+  {
+    "doy": 238,
+    "climatology": 26.92,
+    "threshold": 27.78
+  },
+  {
+    "doy": 239,
+    "climatology": 26.93,
+    "threshold": 27.8
+  },
+  {
+    "doy": 240,
+    "climatology": 26.95,
+    "threshold": 27.83
+  },
+  {
+    "doy": 241,
+    "climatology": 26.97,
+    "threshold": 27.85
+  },
+  {
+    "doy": 242,
+    "climatology": 27.0,
+    "threshold": 27.88
+  },
+  {
+    "doy": 243,
+    "climatology": 27.02,
+    "threshold": 27.91
+  },
+  {
+    "doy": 244,
+    "climatology": 27.04,
+    "threshold": 27.93
+  },
+  {
+    "doy": 245,
+    "climatology": 27.07,
+    "threshold": 27.96
+  },
+  {
+    "doy": 246,
+    "climatology": 27.09,
+    "threshold": 27.99
+  },
+  {
+    "doy": 247,
+    "climatology": 27.12,
+    "threshold": 28.02
+  },
+  {
+    "doy": 248,
+    "climatology": 27.15,
+    "threshold": 28.05
+  },
+  {
+    "doy": 249,
+    "climatology": 27.18,
+    "threshold": 28.09
+  },
+  {
+    "doy": 250,
+    "climatology": 27.21,
+    "threshold": 28.12
+  },
+  {
+    "doy": 251,
+    "climatology": 27.24,
+    "threshold": 28.15
+  },
+  {
+    "doy": 252,
+    "climatology": 27.27,
+    "threshold": 28.19
+  },
+  {
+    "doy": 253,
+    "climatology": 27.3,
+    "threshold": 28.22
+  },
+  {
+    "doy": 254,
+    "climatology": 27.33,
+    "threshold": 28.26
+  },
+  {
+    "doy": 255,
+    "climatology": 27.37,
+    "threshold": 28.3
+  },
+  {
+    "doy": 256,
+    "climatology": 27.4,
+    "threshold": 28.33
+  },
+  {
+    "doy": 257,
+    "climatology": 27.44,
+    "threshold": 28.37
+  },
+  {
+    "doy": 258,
+    "climatology": 27.47,
+    "threshold": 28.41
+  },
+  {
+    "doy": 259,
+    "climatology": 27.51,
+    "threshold": 28.45
+  },
+  {
+    "doy": 260,
+    "climatology": 27.54,
+    "threshold": 28.49
+  },
+  {
+    "doy": 261,
+    "climatology": 27.58,
+    "threshold": 28.53
+  },
+  {
+    "doy": 262,
+    "climatology": 27.62,
+    "threshold": 28.57
+  },
+  {
+    "doy": 263,
+    "climatology": 27.66,
+    "threshold": 28.61
+  },
+  {
+    "doy": 264,
+    "climatology": 27.69,
+    "threshold": 28.64
+  },
+  {
+    "doy": 265,
+    "climatology": 27.73,
+    "threshold": 28.68
+  },
+  {
+    "doy": 266,
+    "climatology": 27.77,
+    "threshold": 28.72
+  },
+  {
+    "doy": 267,
+    "climatology": 27.8,
+    "threshold": 28.76
+  },
+  {
+    "doy": 268,
+    "climatology": 27.84,
+    "threshold": 28.79
+  },
+  {
+    "doy": 269,
+    "climatology": 27.88,
+    "threshold": 28.83
+  },
+  {
+    "doy": 270,
+    "climatology": 27.92,
+    "threshold": 28.87
+  },
+  {
+    "doy": 271,
+    "climatology": 27.95,
+    "threshold": 28.9
+  },
+  {
+    "doy": 272,
+    "climatology": 27.99,
+    "threshold": 28.94
+  },
+  {
+    "doy": 273,
+    "climatology": 28.03,
+    "threshold": 28.97
+  },
+  {
+    "doy": 274,
+    "climatology": 28.06,
+    "threshold": 29.01
+  },
+  {
+    "doy": 275,
+    "climatology": 28.1,
+    "threshold": 29.04
+  },
+  {
+    "doy": 276,
+    "climatology": 28.14,
+    "threshold": 29.08
+  },
+  {
+    "doy": 277,
+    "climatology": 28.17,
+    "threshold": 29.12
+  },
+  {
+    "doy": 278,
+    "climatology": 28.21,
+    "threshold": 29.15
+  },
+  {
+    "doy": 279,
+    "climatology": 28.25,
+    "threshold": 29.19
+  },
+  {
+    "doy": 280,
+    "climatology": 28.28,
+    "threshold": 29.22
+  },
+  {
+    "doy": 281,
+    "climatology": 28.32,
+    "threshold": 29.26
+  },
+  {
+    "doy": 282,
+    "climatology": 28.36,
+    "threshold": 29.29
+  },
+  {
+    "doy": 283,
+    "climatology": 28.4,
+    "threshold": 29.33
+  },
+  {
+    "doy": 284,
+    "climatology": 28.43,
+    "threshold": 29.36
+  },
+  {
+    "doy": 285,
+    "climatology": 28.47,
+    "threshold": 29.4
+  },
+  {
+    "doy": 286,
+    "climatology": 28.51,
+    "threshold": 29.43
+  },
+  {
+    "doy": 287,
+    "climatology": 28.55,
+    "threshold": 29.47
+  },
+  {
+    "doy": 288,
+    "climatology": 28.58,
+    "threshold": 29.5
+  },
+  {
+    "doy": 289,
+    "climatology": 28.62,
+    "threshold": 29.54
+  },
+  {
+    "doy": 290,
+    "climatology": 28.66,
+    "threshold": 29.57
+  },
+  {
+    "doy": 291,
+    "climatology": 28.69,
+    "threshold": 29.61
+  },
+  {
+    "doy": 292,
+    "climatology": 28.73,
+    "threshold": 29.64
+  },
+  {
+    "doy": 293,
+    "climatology": 28.77,
+    "threshold": 29.68
+  },
+  {
+    "doy": 294,
+    "climatology": 28.8,
+    "threshold": 29.71
+  },
+  {
+    "doy": 295,
+    "climatology": 28.84,
+    "threshold": 29.75
+  },
+  {
+    "doy": 296,
+    "climatology": 28.88,
+    "threshold": 29.78
+  },
+  {
+    "doy": 297,
+    "climatology": 28.92,
+    "threshold": 29.81
+  },
+  {
+    "doy": 298,
+    "climatology": 28.96,
+    "threshold": 29.85
+  },
+  {
+    "doy": 299,
+    "climatology": 29.0,
+    "threshold": 29.88
+  },
+  {
+    "doy": 300,
+    "climatology": 29.03,
+    "threshold": 29.92
+  },
+  {
+    "doy": 301,
+    "climatology": 29.07,
+    "threshold": 29.95
+  },
+  {
+    "doy": 302,
+    "climatology": 29.11,
+    "threshold": 29.99
+  },
+  {
+    "doy": 303,
+    "climatology": 29.15,
+    "threshold": 30.02
+  },
+  {
+    "doy": 304,
+    "climatology": 29.19,
+    "threshold": 30.05
+  },
+  {
+    "doy": 305,
+    "climatology": 29.22,
+    "threshold": 30.09
+  },
+  {
+    "doy": 306,
+    "climatology": 29.26,
+    "threshold": 30.12
+  },
+  {
+    "doy": 307,
+    "climatology": 29.3,
+    "threshold": 30.15
+  },
+  {
+    "doy": 308,
+    "climatology": 29.33,
+    "threshold": 30.18
+  },
+  {
+    "doy": 309,
+    "climatology": 29.37,
+    "threshold": 30.21
+  },
+  {
+    "doy": 310,
+    "climatology": 29.4,
+    "threshold": 30.24
+  },
+  {
+    "doy": 311,
+    "climatology": 29.43,
+    "threshold": 30.27
+  },
+  {
+    "doy": 312,
+    "climatology": 29.47,
+    "threshold": 30.3
+  },
+  {
+    "doy": 313,
+    "climatology": 29.5,
+    "threshold": 30.32
+  },
+  {
+    "doy": 314,
+    "climatology": 29.53,
+    "threshold": 30.35
+  },
+  {
+    "doy": 315,
+    "climatology": 29.56,
+    "threshold": 30.37
+  },
+  {
+    "doy": 316,
+    "climatology": 29.59,
+    "threshold": 30.4
+  },
+  {
+    "doy": 317,
+    "climatology": 29.62,
+    "threshold": 30.42
+  },
+  {
+    "doy": 318,
+    "climatology": 29.65,
+    "threshold": 30.44
+  },
+  {
+    "doy": 319,
+    "climatology": 29.68,
+    "threshold": 30.47
+  },
+  {
+    "doy": 320,
+    "climatology": 29.7,
+    "threshold": 30.49
+  },
+  {
+    "doy": 321,
+    "climatology": 29.73,
+    "threshold": 30.51
+  },
+  {
+    "doy": 322,
+    "climatology": 29.75,
+    "threshold": 30.53
+  },
+  {
+    "doy": 323,
+    "climatology": 29.78,
+    "threshold": 30.55
+  },
+  {
+    "doy": 324,
+    "climatology": 29.8,
+    "threshold": 30.57
+  },
+  {
+    "doy": 325,
+    "climatology": 29.82,
+    "threshold": 30.59
+  },
+  {
+    "doy": 326,
+    "climatology": 29.84,
+    "threshold": 30.61
+  },
+  {
+    "doy": 327,
+    "climatology": 29.86,
+    "threshold": 30.62
+  },
+  {
+    "doy": 328,
+    "climatology": 29.87,
+    "threshold": 30.64
+  },
+  {
+    "doy": 329,
+    "climatology": 29.89,
+    "threshold": 30.66
+  },
+  {
+    "doy": 330,
+    "climatology": 29.9,
+    "threshold": 30.67
+  },
+  {
+    "doy": 331,
+    "climatology": 29.91,
+    "threshold": 30.69
+  },
+  {
+    "doy": 332,
+    "climatology": 29.93,
+    "threshold": 30.7
+  },
+  {
+    "doy": 333,
+    "climatology": 29.94,
+    "threshold": 30.71
+  },
+  {
+    "doy": 334,
+    "climatology": 29.94,
+    "threshold": 30.73
+  },
+  {
+    "doy": 335,
+    "climatology": 29.95,
+    "threshold": 30.74
+  },
+  {
+    "doy": 336,
+    "climatology": 29.96,
+    "threshold": 30.75
+  },
+  {
+    "doy": 337,
+    "climatology": 29.96,
+    "threshold": 30.76
+  },
+  {
+    "doy": 338,
+    "climatology": 29.97,
+    "threshold": 30.77
+  },
+  {
+    "doy": 339,
+    "climatology": 29.97,
+    "threshold": 30.78
+  },
+  {
+    "doy": 340,
+    "climatology": 29.97,
+    "threshold": 30.79
+  },
+  {
+    "doy": 341,
+    "climatology": 29.97,
+    "threshold": 30.8
+  },
+  {
+    "doy": 342,
+    "climatology": 29.97,
+    "threshold": 30.81
+  },
+  {
+    "doy": 343,
+    "climatology": 29.97,
+    "threshold": 30.81
+  },
+  {
+    "doy": 344,
+    "climatology": 29.97,
+    "threshold": 30.82
+  },
+  {
+    "doy": 345,
+    "climatology": 29.96,
+    "threshold": 30.82
+  },
+  {
+    "doy": 346,
+    "climatology": 29.96,
+    "threshold": 30.82
+  },
+  {
+    "doy": 347,
+    "climatology": 29.95,
+    "threshold": 30.83
+  },
+  {
+    "doy": 348,
+    "climatology": 29.95,
+    "threshold": 30.83
+  },
+  {
+    "doy": 349,
+    "climatology": 29.94,
+    "threshold": 30.83
+  },
+  {
+    "doy": 350,
+    "climatology": 29.93,
+    "threshold": 30.83
+  },
+  {
+    "doy": 351,
+    "climatology": 29.92,
+    "threshold": 30.82
+  },
+  {
+    "doy": 352,
+    "climatology": 29.9,
+    "threshold": 30.82
+  },
+  {
+    "doy": 353,
+    "climatology": 29.89,
+    "threshold": 30.82
+  },
+  {
+    "doy": 354,
+    "climatology": 29.88,
+    "threshold": 30.81
+  },
+  {
+    "doy": 355,
+    "climatology": 29.86,
+    "threshold": 30.8
+  },
+  {
+    "doy": 356,
+    "climatology": 29.85,
+    "threshold": 30.79
+  },
+  {
+    "doy": 357,
+    "climatology": 29.83,
+    "threshold": 30.78
+  },
+  {
+    "doy": 358,
+    "climatology": 29.81,
+    "threshold": 30.77
+  },
+  {
+    "doy": 359,
+    "climatology": 29.79,
+    "threshold": 30.75
+  },
+  {
+    "doy": 360,
+    "climatology": 29.77,
+    "threshold": 30.74
+  },
+  {
+    "doy": 361,
+    "climatology": 29.75,
+    "threshold": 30.72
+  },
+  {
+    "doy": 362,
+    "climatology": 29.74,
+    "threshold": 30.7
+  },
+  {
+    "doy": 363,
+    "climatology": 29.72,
+    "threshold": 30.68
+  },
+  {
+    "doy": 364,
+    "climatology": 29.7,
+    "threshold": 30.66
+  },
+  {
+    "doy": 365,
+    "climatology": 29.68,
+    "threshold": 30.64
+  },
+  {
+    "doy": 366,
+    "climatology": 29.65,
+    "threshold": 30.62
+  }
+]

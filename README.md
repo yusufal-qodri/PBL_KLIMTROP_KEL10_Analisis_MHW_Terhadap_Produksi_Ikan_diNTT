@@ -153,6 +153,19 @@ Seluruh notebook ditulis dalam Bahasa Indonesia akademik terstruktur, dilengkapi
 pip install -r requirements.txt
 ```
 
+### Menjalankan Dashboard Interaktif (NTT Marine Insight)
+Dashboard interaktif berbasis web siap pakai sesuai spesifikasi [PRD.DASHBORD.md](PRD.DASHBORD.md):
+`ash
+python run_dashboard.py
+`
+Perintah ini akan menyalakan web server lokal dan membuka browser secara otomatis di http://localhost:8000. Fitur dashboard:
+- **Peta Spasial Interaktif Grid 0.25°** (Lapisan SST, Chlorophyll-a, Total Hari MHW, dan Intensitas Maksimum).
+- **Inspektor Profil Titik Oseanografi** saat sel perairan diklik.
+- **Sistem Filter Waktu Global** (Mode Harian, Mingguan, Bulanan, Tahunan, dan Dekadal 10 Tahunan).
+- **8 Halaman Khusus Terintegrasi**: Overview, SST, MHW, Chlorophyll-a, Analisis Gabungan, Produksi Tangkapan Ikan, Sintesis Hasil, dan Metodologi.
+- **Tabel Interaktif 43 Kejadian MHW** dengan filter pencarian dan tombol ekspor CSV.
+- **Galeri Gambar Sintesis Ilmiah Resolusi Tinggi (300 DPI)** dengan modal viewer.
+
 ### Eksekusi Verifikasi Pipeline
 Untuk memverifikasi eksekusi seluruh notebook dan memastikan semua artifak lengkap:
 ```bash

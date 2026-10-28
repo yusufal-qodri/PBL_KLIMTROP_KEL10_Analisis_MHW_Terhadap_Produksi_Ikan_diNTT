@@ -1,0 +1,133 @@
+{
+  "stats": [
+    {
+      "Unnamed: 0": "total_piksel_diobservasi",
+      "Nilai": 265040640.0
+    },
+    {
+      "Unnamed: 0": "total_piksel_valid",
+      "Nilai": 101739299.0
+    },
+    {
+      "Unnamed: 0": "persentase_valid",
+      "Nilai": 38.39
+    },
+    {
+      "Unnamed: 0": "min_mg_m3",
+      "Nilai": 0.0010000000474974
+    },
+    {
+      "Unnamed: 0": "p05_mg_m3",
+      "Nilai": 0.0959536209702491
+    },
+    {
+      "Unnamed: 0": "p25_mg_m3",
+      "Nilai": 0.1427865773439407
+    },
+    {
+      "Unnamed: 0": "median_p50_mg_m3",
+      "Nilai": 0.2071431279182434
+    },
+    {
+      "Unnamed: 0": "mean_mg_m3",
+      "Nilai": 0.2932835519313812
+    },
+    {
+      "Unnamed: 0": "p75_mg_m3",
+      "Nilai": 0.3541764616966247
+    },
+    {
+      "Unnamed: 0": "p90_mg_m3",
+      "Nilai": 0.5544495582580566
+    },
+    {
+      "Unnamed: 0": "p95_mg_m3",
+      "Nilai": 0.7120748162269592
+    },
+    {
+      "Unnamed: 0": "max_mg_m3",
+      "Nilai": 93.8349838256836
+    },
+    {
+      "Unnamed: 0": "std_mg_m3",
+      "Nilai": 0.2857620418071747
+    },
+    {
+      "Unnamed: 0": "iqr_mg_m3",
+      "Nilai": 0.211389884352684
+    }
+  ],
+  "comparison_summary": [
+    {
+      "Kondisi": "MHW",
+      "N_Hari": 545,
+      "Chla_Mean": 0.2217,
+      "Chla_Median": 0.2055,
+      "Chla_Std": 0.0559,
+      "Chla_IQR": 0.0608,
+      "Anomali_Mean": -0.0516,
+      "Anomali_Median": -0.0454
+    },
+    {
+      "Kondisi": "Non-MHW",
+      "N_Hari": 7036,
+      "Chla_Mean": 0.2903,
+      "Chla_Median": 0.2633,
+      "Chla_Std": 0.1117,
+      "Chla_IQR": 0.1491,
+      "Anomali_Mean": 0.004,
+      "Anomali_Median": -0.0036
+    }
+  ],
+  "seasonal_comparison": [
+    {
+      "Musim": "DJF (Monsun Barat)",
+      "N_MHW": 147,
+      "N_NonMHW": 1691,
+      "Chla_Median_MHW": 0.1937,
+      "Chla_Median_NonMHW": 0.2148,
+      "Anomali_Median_MHW": -0.0331,
+      "Anomali_Median_NonMHW": -0.0131,
+      "p_value": 0.0
+    },
+    {
+      "Musim": "MAM (Peralihan I)",
+      "N_MHW": 140,
+      "N_NonMHW": 1773,
+      "Chla_Median_MHW": 0.2019,
+      "Chla_Median_NonMHW": 0.236,
+      "Anomali_Median_MHW": -0.0358,
+      "Anomali_Median_NonMHW": -0.0066,
+      "p_value": 0.0
+    },
+    {
+      "Musim": "JJA (Monsun Timur / Upwelling)",
+      "N_MHW": 122,
+      "N_NonMHW": 1805,
+      "Chla_Median_MHW": 0.2931,
+      "Chla_Median_NonMHW": 0.409,
+      "Anomali_Median_MHW": -0.0969,
+      "Anomali_Median_NonMHW": 0.0076,
+      "p_value": 0.0
+    },
+    {
+      "Musim": "SON (Peralihan II)",
+      "N_MHW": 136,
+      "N_NonMHW": 1767,
+      "Chla_Median_MHW": 0.1977,
+      "Chla_Median_NonMHW": 0.2477,
+      "Anomali_Median_MHW": -0.0378,
+      "Anomali_Median_NonMHW": 0.0007,
+      "p_value": 0.0
+    }
+  ],
+  "suppression_summary": {
+    "mhw_mean": 0.2217,
+    "non_mhw_mean": 0.2903,
+    "diff_absolute": -0.0686,
+    "diff_percent": -23.6,
+    "mhw_n_days": 545,
+    "non_mhw_n_days": 7036,
+    "significance": "Signifikan (p < 0.001, uji non-parametrik Mann-Whitney U)"
+  }
+}
