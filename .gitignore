@@ -17,3 +17,18 @@ ENV/
 .DS_Store
 Thumbs.db
 desktop.ini
+*/desktop.ini
+*/**/desktop.ini
+
+# Large scientific data files & archives
+*.nc
+*.zip
+*.tar
+*.tar.gz
+*.h5
+*.hdf
+
+# Raw and interim data directories
+data/chla_ntt_daily/
+data/data_sst_ntt/
+data/interim/

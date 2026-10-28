@@ -1,0 +1,3 @@
+dataset,sumber,variabel,unit,resolusi_spasial,resolusi_temporal,periode_awal,periode_akhir,jumlah_hari,timestamp_duplikat,grid_lat,grid_lon,missing_pct,min_nilai,max_nilai,mean_nilai,file_output,status
+SST Gabungan,NOAA OISST v2.1,sst,Celsius,0.25° (~25 km),harian,2000-01-01,2020-12-31,7671,0,24,40,7.92,23.36,33.0,28.63,sst_daily_2000_2020_ntt.nc,OK
+Chlorophyll-a Gabungan,ESA CCI OC v6.0,chlor_a,mg/m³,~4 km (~0.0417°),harian,2000-01-01,2020-12-31,7669,0,144,240,61.61,0.001,93.835,0.2933,chlorophyll_a_daily_ntt.nc,OK

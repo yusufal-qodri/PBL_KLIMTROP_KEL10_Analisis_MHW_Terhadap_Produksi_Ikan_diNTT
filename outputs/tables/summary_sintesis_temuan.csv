@@ -1,0 +1,10 @@
+Komponen,Metrik,Nilai,Keterangan
+Karakteristik SST,Rentang Rata-rata Regional,25.08 – 31.64 °C,"Nilai harian minimum terjadi saat puncak upwelling JJA, maksimum pada musim peralihan"
+Karakteristik SST,Rata-rata Klimatologis,28.63 °C,Baseline 2000–2020 (21 tahun data NOAA OISST v2.1)
+Deteksi MHW,Total Kejadian (2000–2020),43 kejadian,"Kriteria Hobday et al. (2016): persentil 90, durasi ≥ 5 hari, gap 2 hari"
+Deteksi MHW,Total Hari MHW,589 hari,Mencakup ~7.7% dari rentang 21 tahun
+Deteksi MHW,Durasi Rata-rata per Kejadian,13.7 hari,Durasi terpanjang: 87 hari
+Deteksi MHW,Intensitas Maksimum Tertinggi (imax),2.06 °C,Teridentifikasi pada kejadian MHW Kategori III (Parah)
+Chlorophyll-a,Median Konsentrasi Global,0.207 mg/m³,Distribusi log-normal; nilai rata-rata aritmatika: 0.25–0.35 mg/m³
+Chlorophyll-a,Puncak Musiman Upwelling (JJA),0.35 – 0.60 mg/m³ (Regional),Mencapai > 1.5 mg/m³ di koridor Selat Sumba dan Laut Sawu
+Respon Gabungan,Perbedaan Median Chl-a saat MHW,Anomali Negatif signifikan (p < 0.05),"Kondisi MHW berasosiasi dengan penurunan produktivitas primer, terutama pada musim upwelling"

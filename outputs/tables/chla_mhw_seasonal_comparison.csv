@@ -1,0 +1,5 @@
+Musim,N_MHW,N_NonMHW,Chla_Median_MHW,Chla_Median_NonMHW,Anomali_Median_MHW,Anomali_Median_NonMHW,p_value
+DJF (Monsun Barat),147,1691,0.1937,0.2148,-0.0331,-0.0131,0.0
+MAM (Peralihan I),140,1773,0.2019,0.236,-0.0358,-0.0066,0.0
+JJA (Monsun Timur / Upwelling),122,1805,0.2931,0.409,-0.0969,0.0076,0.0
+SON (Peralihan II),136,1767,0.1977,0.2477,-0.0378,0.0007,0.0

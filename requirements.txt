@@ -1,0 +1,23 @@
+# Requirements untuk Pipeline Analisis MHW-NTT
+# =============================================
+# Instal: pip install -r requirements.txt
+
+# Data NetCDF multidimensi
+xarray>=2024.1.0
+netCDF4>=1.6.0
+h5netcdf>=1.3.0
+
+# Pengolahan data
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.10.0
+
+# Visualisasi
+matplotlib>=3.7.0
+
+# Pemetaan (opsional, dibutuhkan untuk peta dengan proyeksi)
+cartopy>=0.22.0
+geopandas>=0.14.0
+
+# Progress bar untuk file besar
+tqdm>=4.65.0
