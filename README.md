@@ -33,7 +33,9 @@ PBL/
 │       ├── sst_daily_2000_2020_ntt.nc       # Dataset SST harian gabungan (13.9 MB)
 │       ├── chlorophyll_a_daily_ntt.nc       # Dataset Klorofil-a harian gabungan (635.9 MB)
 │       ├── sst_climatology_threshold_ntt.nc # Klimatologi & ambang P90 per piksel (2.8 MB)
-│       ├── mhw_events_ntt.csv               # Tabel 41 kejadian MHW regional NTT
+│       ├── mhw_events_spatial_catalog_ntt.csv # Katalog 56 kejadian MHW regional berbasis spasial (>=15% luas NTT)
+│       ├── mhw_local_events_summary_ntt.csv # Ringkasan metrik kejadian MHW per sel grid lokal
+│       ├── mhw_events_ntt.csv               # Tabel kejadian MHW deret waktu rata-rata 1D
 │       ├── mhw_annual_metrics_ntt.csv       # Metrik tahunan kejadian MHW (2000-2020)
 │       └── mhw_chla_aligned_daily_ntt.nc    # Dataset gabungan SST-MHW-Chla terselaraskan (27.3 MB)
 ├── notebooks/
