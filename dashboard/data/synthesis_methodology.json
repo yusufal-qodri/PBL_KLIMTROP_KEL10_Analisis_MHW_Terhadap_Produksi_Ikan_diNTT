@@ -337,9 +337,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -350,9 +350,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -363,9 +363,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 29,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -376,9 +376,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -389,9 +389,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 29,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -402,9 +402,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -415,9 +415,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -428,9 +428,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -441,9 +441,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -454,9 +454,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -467,9 +467,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -480,9 +480,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -493,9 +493,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -506,9 +506,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -519,9 +519,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 29,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -532,9 +532,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -545,9 +545,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 28,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -558,9 +558,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -571,9 +571,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -584,9 +584,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -597,9 +597,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -610,9 +610,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -623,9 +623,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -636,9 +636,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -649,9 +649,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -662,9 +662,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -675,9 +675,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -688,9 +688,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -701,9 +701,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 28,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -714,9 +714,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -727,9 +727,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -740,9 +740,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -753,9 +753,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -766,9 +766,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -779,9 +779,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -792,9 +792,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -805,9 +805,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -818,9 +818,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -831,9 +831,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -844,9 +844,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -857,9 +857,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 28,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -870,9 +870,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -883,9 +883,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -896,9 +896,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -909,9 +909,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -922,9 +922,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -935,9 +935,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -948,9 +948,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -961,9 +961,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -974,9 +974,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -987,9 +987,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1000,9 +1000,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1013,9 +1013,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 29,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1026,9 +1026,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1039,9 +1039,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1052,9 +1052,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1065,9 +1065,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1078,9 +1078,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1091,9 +1091,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1104,9 +1104,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1117,9 +1117,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1130,9 +1130,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1143,9 +1143,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1156,9 +1156,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1169,9 +1169,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 28,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1182,9 +1182,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1195,9 +1195,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1208,9 +1208,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1221,9 +1221,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1234,9 +1234,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1247,9 +1247,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1260,9 +1260,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1273,9 +1273,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1286,9 +1286,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1299,9 +1299,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1312,9 +1312,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1325,9 +1325,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 28,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1338,9 +1338,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1351,9 +1351,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1364,9 +1364,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1377,9 +1377,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1390,9 +1390,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1403,9 +1403,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1416,9 +1416,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1429,9 +1429,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1442,9 +1442,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1455,9 +1455,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1468,9 +1468,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1481,9 +1481,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 28,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1494,9 +1494,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1507,9 +1507,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1520,9 +1520,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1533,9 +1533,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1546,9 +1546,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1559,9 +1559,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1572,9 +1572,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1585,9 +1585,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1598,9 +1598,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1611,9 +1611,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1624,9 +1624,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1637,9 +1637,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 29,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1650,9 +1650,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1663,9 +1663,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1676,9 +1676,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1689,9 +1689,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1702,9 +1702,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1715,9 +1715,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1728,9 +1728,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1741,9 +1741,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1754,9 +1754,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1767,9 +1767,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1780,9 +1780,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1793,9 +1793,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 28,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1806,9 +1806,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1819,9 +1819,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1832,9 +1832,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1845,9 +1845,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1858,9 +1858,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1871,9 +1871,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1884,9 +1884,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1897,9 +1897,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1910,9 +1910,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1923,9 +1923,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1936,9 +1936,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1949,9 +1949,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 28,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1962,9 +1962,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1975,9 +1975,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -1988,9 +1988,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2001,9 +2001,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2014,9 +2014,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2027,9 +2027,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2040,9 +2040,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2053,9 +2053,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2066,9 +2066,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2079,9 +2079,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2092,9 +2092,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2105,9 +2105,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 28,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2118,9 +2118,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2131,9 +2131,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2144,9 +2144,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2157,9 +2157,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2170,9 +2170,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2183,9 +2183,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2196,9 +2196,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2209,9 +2209,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2222,9 +2222,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2235,9 +2235,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2248,9 +2248,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2261,9 +2261,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 29,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2274,9 +2274,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2287,9 +2287,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2300,9 +2300,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2313,9 +2313,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2326,9 +2326,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2339,9 +2339,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2352,9 +2352,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2365,9 +2365,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2378,9 +2378,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2391,9 +2391,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2404,9 +2404,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2417,9 +2417,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 28,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2430,9 +2430,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2443,9 +2443,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2456,9 +2456,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2469,9 +2469,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2482,9 +2482,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2495,9 +2495,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2508,9 +2508,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2521,9 +2521,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2534,9 +2534,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2547,9 +2547,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2560,9 +2560,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2573,9 +2573,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 28,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2586,9 +2586,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2599,9 +2599,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2612,9 +2612,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2625,9 +2625,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2638,9 +2638,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2651,9 +2651,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2664,9 +2664,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2677,9 +2677,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2690,9 +2690,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2703,9 +2703,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2716,9 +2716,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2729,9 +2729,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 28,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2742,9 +2742,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2755,9 +2755,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2768,9 +2768,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2781,9 +2781,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2794,9 +2794,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2807,9 +2807,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2820,9 +2820,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2833,9 +2833,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2846,9 +2846,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2859,9 +2859,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2872,9 +2872,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2885,9 +2885,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 29,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2898,9 +2898,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2911,9 +2911,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2924,9 +2924,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2937,9 +2937,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2950,9 +2950,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2963,9 +2963,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2976,9 +2976,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -2989,9 +2989,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3002,9 +3002,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3015,9 +3015,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3028,9 +3028,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3041,9 +3041,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 28,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3054,9 +3054,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3067,9 +3067,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3080,9 +3080,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3093,9 +3093,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3106,9 +3106,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3119,9 +3119,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3132,9 +3132,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3145,9 +3145,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3158,9 +3158,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3171,9 +3171,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3184,9 +3184,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3197,9 +3197,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 28,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3210,9 +3210,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3223,9 +3223,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3236,9 +3236,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3249,9 +3249,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3262,9 +3262,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3275,9 +3275,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3288,9 +3288,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3301,9 +3301,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3314,9 +3314,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3327,9 +3327,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3340,9 +3340,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3353,9 +3353,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 28,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3366,9 +3366,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3379,9 +3379,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3392,9 +3392,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3405,9 +3405,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3418,9 +3418,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3431,9 +3431,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3444,9 +3444,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3457,9 +3457,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3470,9 +3470,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3483,9 +3483,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3496,9 +3496,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3509,9 +3509,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 29,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3522,9 +3522,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3535,9 +3535,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3548,9 +3548,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3561,9 +3561,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3574,9 +3574,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3587,9 +3587,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 31,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     },
     {
@@ -3600,9 +3600,9 @@
       "unit": "mg/m³",
       "resolusi": "~4 km",
       "n_timestep": 30,
-      "tanggal_awal": NaN,
-      "tanggal_akhir": NaN,
-      "missing_pct": NaN,
+      "tanggal_awal": null,
+      "tanggal_akhir": null,
+      "missing_pct": null,
       "status": "OK"
     }
   ],
@@ -3662,7 +3662,7 @@
     {
       "rule": "Tanpa Imputasi Nilai Hilang dengan Nol",
       "status": "Terpenuhi 100%",
-      "detail": "Data tutupan awan atau nilai hilang tidak pernah diganti dengan nol (NaN masking tetap dipertahankan)."
+      "detail": "Data tutupan awan atau nilai hilang tidak pernah diganti dengan nol (null masking tetap dipertahankan)."
     },
     {
       "rule": "Dokumentasi Transparan Baseline 21 Tahun",
