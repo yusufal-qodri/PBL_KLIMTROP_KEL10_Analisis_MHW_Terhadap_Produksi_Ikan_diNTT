@@ -8,11 +8,12 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<button id="menu-btn" type="button" aria-label="Buka menu" aria-expanded="false">☰</button>
+<div id="scrim"></div>
 <div id="app">
   <aside id="sidebar" aria-label="Menu dashboard"></aside>
   <div id="main">
     <header id="topbar">
-      <button id="menu-btn" aria-label="Buka menu">☰</button>
       <div class="topbar-title"><h1 id="page-title">Beranda</h1><div id="page-sub"></div></div>
       <div id="data-badge"></div>
     </header>
@@ -20,7 +21,7 @@
     <main id="view" tabindex="-1"></main>
   </div>
 </div>
-<div id="modal" class="modal hidden" role="dialog" aria-modal="true"><button id="modal-close" aria-label="Tutup">✕</button><img id="modal-img" alt=""><div id="modal-cap"></div></div>
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true"><div id="modal-bar"><span id="modal-title"></span><div id="modal-tools"></div><button id="modal-close" type="button" aria-label="Tutup">✕</button></div><div id="modal-body"></div></div>
 <script src="vendor/chart.umd.js"></script>
 <script src="app.js"></script>
 </body>

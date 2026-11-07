@@ -1,4 +1,9 @@
 {
+ "stats": {
+  "sst_valid_pct": 92.08,
+  "chla_valid_pct": 57.85,
+  "mhw_cell_days": 365409
+ },
  "version": 1,
  "shape": [
   24,

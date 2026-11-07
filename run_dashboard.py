@@ -43,6 +43,11 @@ class CustomHTTPHandler(http.server.SimpleHTTPRequestHandler):
         super().log_message(format, *args)
 
 def start_server():
+    if hasattr(sys.stdout, 'reconfigure'):
+        try:
+            sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+        except Exception:
+            pass
     current_port = PORT
     httpd = None
 
