@@ -1,7 +1,7 @@
 """
 grid_analysis.py
 ================
-Analisis PER GRID (sel 0.25 derajat) dari data pack harian, tanpa butuh NetCDF:
+Analisis PER GRID (resolusi mengikuti data SST) dari data pack harian, tanpa butuh NetCDF:
 
     python dashboard/tools/grid_analysis.py
 
@@ -30,7 +30,10 @@ from scipy import stats
 
 DASH = Path(__file__).resolve().parents[1]
 GR, OUT = DASH / "data" / "grids", DASH / "data" / "analysis"
-NODATA, NR, NC = -32768, 24, 40
+NODATA = -32768
+# NR, NC dibaca dari manifest.json agar otomatis mengikuti resolusi data
+_man = json.loads((GR / "manifest.json").read_text(encoding="utf-8")) if (GR / "manifest.json").exists() else {}
+NR, NC = _man.get("shape", [90, 160])
 CELLS = NR * NC
 MIN_N, THR = 10, 15.0
 SEASONS = {"ALL": None, "DJF": [12, 1, 2], "MAM": [3, 4, 5], "JJA": [6, 7, 8], "SON": [9, 10, 11]}
@@ -61,7 +64,10 @@ def grid(a, nd=4):
     return [[None if not np.isfinite(v) else round(float(v), nd) for v in row] for row in a.reshape(NR, NC)]
 
 def run():
+    global NR, NC, CELLS
     man = json.loads((GR / "manifest.json").read_text(encoding="utf-8"))
+    NR, NC = man.get("shape", [NR, NC])
+    CELLS = NR * NC
     years, sc = man["years"], man["scale"]
     rd = lambda sub, dt: np.concatenate([np.fromfile(GR / sub / f"{y}.bin", dtype=dt).reshape(-1, CELLS) for y in years])
     sst, chl, mask = rd("sst", "<i2"), rd("chla", "<i2"), rd("mask", "u1")

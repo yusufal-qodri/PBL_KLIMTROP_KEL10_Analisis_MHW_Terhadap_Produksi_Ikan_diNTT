@@ -94,16 +94,16 @@ def main():
         if not f.exists():
             sys.exit(f"[ERROR] Berkas tidak ditemukan: {f}\nJalankan notebook 01-04 terlebih dahulu.")
     print("Membuka NetCDF ...")
-    sst = xr.open_dataset(f_sst).sst.sortby("lat")
+    sst = xr.open_dataset(f_sst).sst.sortby("lat").load()
     sst_raw_time = str(sst.time.values[:2])
-    clim = xr.open_dataset(f_clim)
-    chl = xr.open_dataset(f_chl).chlor_a.sortby("lat")
+    clim = xr.open_dataset(f_clim).load()
+    chl = xr.open_dataset(f_chl).chlor_a.sortby("lat").load()
     cl, th = clim.climatology.sortby("lat"), clim.threshold.sortby("lat")
     lat, lon = sst.lat.values, sst.lon.values
     nr, nc = len(lat), len(lon)
     print(f"Grid {nr} x {nc}")
-    if (nr, nc) != (24, 40):
-        sys.exit("[ERROR] Dashboard mengharapkan grid 24 x 40 (0.25 derajat).")
+    # Grid size diperoleh langsung dari data NetCDF, tidak lagi hardcoded
+    print(f"Resolusi grid: {nr} lat x {nc} lon")
 
     # samakan waktu ke hari & reindex ke deret harian lengkap 2000-2020
     days = np.arange("2000-01-01", "2021-01-01", dtype="datetime64[D]")
@@ -122,8 +122,13 @@ def main():
     doy = (days - days.astype("datetime64[Y]")).astype(int) + 1     # 1..366
     T = len(days)
 
-    print("Menghitung mask MHW per sel (Hobday) ...")
-    mask = hobday_mask(S, cl[doy - 1], th[doy - 1])
+    print("Menghitung mask MHW per sel (menggunakan hasil resmi NB02 dari mhw_mask_daily_ntt.nc) ...")
+    f_mask = PROC / "mhw_mask_daily_ntt.nc"
+    if f_mask.exists():
+        ds_m = xr.open_dataset(f_mask)
+        mask = to_daily(ds_m.member.sortby("lat")).values.astype(np.uint8)
+    else:
+        mask = hobday_mask(S, cl[doy - 1], th[doy - 1])
 
     print("Menghitung baseline Chlorophyll a (hari non-MHW, jendela +-7 hari) ...")
     Cn = np.where(mask == 1, np.nan, C)

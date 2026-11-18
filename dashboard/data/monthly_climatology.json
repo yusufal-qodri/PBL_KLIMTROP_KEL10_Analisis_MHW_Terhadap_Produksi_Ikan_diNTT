@@ -2,97 +2,97 @@
   {
     "month": 1,
     "name": "Januari",
-    "sst_mean": 29.32,
-    "sst_min": 26.0,
-    "sst_max": 32.61,
-    "chla_mean": 0.2371
+    "sst_mean": 29.46,
+    "sst_min": 24.07,
+    "sst_max": 32.73,
+    "chla_mean": 0.2233
   },
   {
     "month": 2,
     "name": "Februari",
-    "sst_mean": 29.18,
-    "sst_min": 25.85,
-    "sst_max": 32.29,
-    "chla_mean": 0.2212
+    "sst_mean": 29.43,
+    "sst_min": 24.55,
+    "sst_max": 32.51,
+    "chla_mean": 0.2021
   },
   {
     "month": 3,
     "name": "Maret",
-    "sst_mean": 29.32,
-    "sst_min": 25.38,
-    "sst_max": 32.41,
-    "chla_mean": 0.2186
+    "sst_mean": 29.66,
+    "sst_min": 25.2,
+    "sst_max": 32.5,
+    "chla_mean": 0.2131
   },
   {
     "month": 4,
     "name": "April",
-    "sst_mean": 29.48,
-    "sst_min": 25.53,
-    "sst_max": 32.24,
-    "chla_mean": 0.2227
+    "sst_mean": 29.67,
+    "sst_min": 24.79,
+    "sst_max": 32.83,
+    "chla_mean": 0.2234
   },
   {
     "month": 5,
     "name": "Mei",
-    "sst_mean": 28.77,
-    "sst_min": 25.33,
-    "sst_max": 31.5,
-    "chla_mean": 0.2974
+    "sst_mean": 28.82,
+    "sst_min": 23.73,
+    "sst_max": 31.81,
+    "chla_mean": 0.2942
   },
   {
     "month": 6,
     "name": "Juni",
-    "sst_mean": 27.88,
-    "sst_min": 24.41,
-    "sst_max": 30.62,
-    "chla_mean": 0.3835
+    "sst_mean": 27.83,
+    "sst_min": 23.47,
+    "sst_max": 31.23,
+    "chla_mean": 0.3899
   },
   {
     "month": 7,
     "name": "Juli",
-    "sst_mean": 27.08,
-    "sst_min": 23.99,
-    "sst_max": 29.95,
-    "chla_mean": 0.4197
+    "sst_mean": 27.04,
+    "sst_min": 23.13,
+    "sst_max": 30.33,
+    "chla_mean": 0.4366
   },
   {
     "month": 8,
     "name": "Agustus",
     "sst_mean": 26.76,
-    "sst_min": 23.36,
-    "sst_max": 29.95,
-    "chla_mean": 0.4024
+    "sst_min": 22.38,
+    "sst_max": 29.84,
+    "chla_mean": 0.4344
   },
   {
     "month": 9,
     "name": "September",
-    "sst_mean": 27.5,
-    "sst_min": 24.39,
-    "sst_max": 30.8,
-    "chla_mean": 0.3152
+    "sst_mean": 27.4,
+    "sst_min": 21.72,
+    "sst_max": 31.07,
+    "chla_mean": 0.348
   },
   {
     "month": 10,
     "name": "Oktober",
-    "sst_mean": 28.61,
-    "sst_min": 24.89,
-    "sst_max": 31.75,
-    "chla_mean": 0.2512
+    "sst_mean": 28.59,
+    "sst_min": 23.07,
+    "sst_max": 32.66,
+    "chla_mean": 0.2732
   },
   {
     "month": 11,
     "name": "November",
-    "sst_mean": 29.76,
-    "sst_min": 26.27,
-    "sst_max": 32.35,
-    "chla_mean": 0.2141
+    "sst_mean": 29.86,
+    "sst_min": 24.15,
+    "sst_max": 33.17,
+    "chla_mean": 0.227
   },
   {
     "month": 12,
     "name": "Desember",
-    "sst_mean": 29.96,
-    "sst_min": 26.37,
-    "sst_max": 33.0,
-    "chla_mean": 0.2091
+    "sst_mean": 30.17,
+    "sst_min": 25.73,
+    "sst_max": 33.65,
+    "chla_mean": 0.2145
   }
 ]

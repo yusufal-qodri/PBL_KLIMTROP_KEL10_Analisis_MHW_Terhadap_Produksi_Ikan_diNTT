@@ -16,10 +16,10 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 print("Starting dashboard data extraction...")
 
-# 1. Buka Datasets NetCDF
-ds_sst = xr.open_dataset(PROJECT_ROOT / "data/processed/sst_daily_2000_2020_ntt.nc")
-ds_clim = xr.open_dataset(PROJECT_ROOT / "data/processed/sst_climatology_threshold_ntt.nc")
-ds_aligned = xr.open_dataset(PROJECT_ROOT / "data/processed/mhw_chla_aligned_daily_ntt.nc")
+# 1. Buka Datasets NetCDF (load ke memory untuk kecepatan tinggi)
+ds_sst = xr.open_dataset(PROJECT_ROOT / "data/processed/sst_daily_2000_2020_ntt.nc").load()
+ds_clim = xr.open_dataset(PROJECT_ROOT / "data/processed/sst_climatology_threshold_ntt.nc").load()
+ds_aligned = xr.open_dataset(PROJECT_ROOT / "data/processed/mhw_chla_aligned_daily_ntt.nc").load()
 
 lat_coords = [round(float(x), 4) for x in ds_sst.lat.values]
 lon_coords = [round(float(x), 4) for x in ds_sst.lon.values]
