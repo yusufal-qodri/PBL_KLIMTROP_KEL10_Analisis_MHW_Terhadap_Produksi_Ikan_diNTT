@@ -2,7 +2,7 @@
  "stats": {
   "sst_valid_pct": 92.08,
   "chla_valid_pct": 57.85,
-  "mhw_cell_days": 365409
+  "mhw_cell_days": 556814
  },
  "version": 1,
  "shape": [
@@ -106,6 +106,6 @@
  },
  "nodata": -32768,
  "chla_first_valid_day": "2000-01-02",
- "mhw_rule": "Hobday et al. (2016): SST > P90 musiman, durasi >= 5 hari, jeda <= 2 hari",
+ "mhw_rule": "Per sel (detect_mhw.py): SST > P90 musiman, durasi >= 5 hari, jeda <= 2 hari digabung bila SST jeda > klimatologi; mask = anggota kejadian (termasuk hari jeda)",
  "chla_baseline": "rata-rata hari non-MHW pada jendela +-7 hari-ke-tahun (2000-2020)"
 }

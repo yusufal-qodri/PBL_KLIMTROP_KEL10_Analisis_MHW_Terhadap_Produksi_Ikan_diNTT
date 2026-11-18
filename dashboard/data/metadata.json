@@ -90,16 +90,16 @@
   },
   "kpi": {
     "sst_mean": 28.63,
-    "sst_min": 25.1,
-    "sst_max": 31.4,
-    "mhw_events_count": 43,
-    "mhw_days_total": 545,
-    "mhw_mean_intensity": 1.18,
-    "mhw_max_intensity": 3.42,
-    "chla_mean": 0.285,
-    "chla_suppression_pct": -23.6,
-    "catch_annual_mean": 118520,
-    "catch_2020_total": 142357
+    "sst_min": 25.08,
+    "sst_max": 31.64,
+    "mhw_events_count": 45,
+    "mhw_days_total": 833,
+    "mhw_mean_intensity": 1.49,
+    "mhw_max_intensity": 3.23,
+    "chla_mean": 0.291,
+    "chla_suppression_pct": -31.2,
+    "catch_annual_mean": 106154,
+    "catch_2020_total": 182350
   },
-  "last_updated": "28 Oktober 2026"
+  "last_updated": "November 2026"
 }
