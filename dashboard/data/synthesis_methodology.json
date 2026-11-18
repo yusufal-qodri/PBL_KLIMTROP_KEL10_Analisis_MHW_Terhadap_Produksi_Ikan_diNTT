@@ -3,38 +3,38 @@
     {
       "Komponen": "Karakteristik SST",
       "Metrik": "Rentang Rata-rata Regional",
-      "Nilai": "25.08 – 31.64 °C",
+      "Nilai": "25.79 – 31.42 °C",
       "Keterangan": "Nilai harian minimum terjadi saat puncak upwelling JJA, maksimum pada musim peralihan"
     },
     {
       "Komponen": "Karakteristik SST",
       "Metrik": "Rata-rata Klimatologis",
-      "Nilai": "28.63 °C",
-      "Keterangan": "Baseline 2000–2020 (21 tahun data NOAA OISST v2.1)"
+      "Nilai": "28.72 °C",
+      "Keterangan": "Baseline 2000–2020 (21 tahun data Copernicus / ESA SST CCI v3.0 (resolusi 0.05°))"
     },
     {
       "Komponen": "Deteksi MHW",
       "Metrik": "Total Kejadian Regional (2000–2020)",
-      "Nilai": "45 kejadian",
+      "Nilai": "33 kejadian",
       "Keterangan": "Kriteria Hobday et al. (2016): ambang cakupan spasial ≥ 15% luas perairan NTT, durasi ≥ 5 hari"
     },
     {
       "Komponen": "Deteksi MHW",
       "Metrik": "Total Hari MHW Regional",
-      "Nilai": "864 hari",
-      "Keterangan": "Mencakup ~11.3% dari rentang 21 tahun"
+      "Nilai": "949 hari",
+      "Keterangan": "Mencakup ~12.4% dari rentang 21 tahun"
     },
     {
       "Komponen": "Deteksi MHW",
       "Metrik": "Durasi Rata-rata per Kejadian",
-      "Nilai": "18.5 hari",
-      "Keterangan": "Durasi terpanjang: 93 hari"
+      "Nilai": "28.2 hari",
+      "Keterangan": "Durasi terpanjang: 300 hari"
     },
     {
       "Komponen": "Deteksi MHW",
       "Metrik": "Intensitas Maksimum Tertinggi (imax)",
-      "Nilai": "3.23 °C",
-      "Keterangan": "Kejadian regional #33 (2016-05-22); nilai maksimum sel selama kejadian"
+      "Nilai": "3.96 °C",
+      "Keterangan": "Kejadian regional #24 (2016-02-07); nilai maksimum sel selama kejadian"
     },
     {
       "Komponen": "Chlorophyll-a",
@@ -51,19 +51,19 @@
     {
       "Komponen": "Respon Gabungan",
       "Metrik": "Perbedaan Median Chl-a saat MHW",
-      "Nilai": "Anomali -0.079 mg/m³; 100% sel turun (100% signifikan, FDR q<0.05)",
-      "Keterangan": "Per grid: 281,508 sel-hari MHW (di atas P90) vs 3,974,658 sel-hari non-MHW; hari jeda dikeluarkan"
+      "Nilai": "Anomali -0.105 mg/m³; 100% sel turun (98% signifikan, FDR q<0.05)",
+      "Keterangan": "Per grid: 3,274,395 sel-hari MHW (di atas P90) vs 38,669,179 sel-hari non-MHW; hari jeda dikeluarkan"
     },
     {
       "Komponen": "Deteksi MHW",
       "Metrik": "Hari MHW Regional vs Hari Jeda",
-      "Nilai": "784 vs 49 hari",
+      "Nilai": "925 vs 4 hari",
       "Keterangan": "Hari jeda (cakupan <15%) bagian kejadian tetapi bukan hari MHW"
     },
     {
       "Komponen": "Anomali SST per Grid",
       "Metrik": "Anomali Rata-rata Sel MHW (rata-rata kejadian)",
-      "Nilai": "+1.03 °C",
+      "Nilai": "+0.94 °C",
       "Keterangan": "Rata-rata SST periode kejadian dikurangi rata-rata SST 21 tahun pada tanggal yang sama, tiap grid"
     }
   ],
@@ -2602,10 +2602,10 @@
   "data_quality": [
     {
       "dataset": "SST Gabungan",
-      "sumber": "NOAA OISST v2.1",
+      "sumber": "Copernicus / ESA SST CCI v3.0 (C3S)",
       "variabel": "sst",
       "unit": "Celsius",
-      "resolusi_spasial": "0.25° (~25 km)",
+      "resolusi_spasial": "0.05° (~5 km)",
       "resolusi_temporal": "harian",
       "periode_awal": "2000-01-01",
       "periode_akhir": "2020-12-31",
@@ -2665,7 +2665,7 @@
     {
       "rule": "Pencegahan Resolusi Semu (Anti False-Resolution)",
       "status": "Terpenuhi 100%",
-      "detail": "Klorofil-a diagregasi ke grid SST 0.25° melalui block-averaging. SST tidak diinterpolasi semu ke grid halus."
+      "detail": "Klorofil-a diselaraskan ke grid SST 0.05° melalui regridding terdekat. SST beresolusi asli 0.05° (~5 km) dari Copernicus / ESA SST CCI v3.0 tanpa interpolasi semu."
     },
     {
       "rule": "Integritas Dataset Mentah Asli",
@@ -2675,8 +2675,8 @@
   ],
   "citations": [
     {
-      "name": "NOAA OISST v2.1",
-      "citation": "Huang, B., et al. (2021). Improvements of the Daily Optimum Interpolation Sea Surface Temperature (DOISST) Version 2.1. J. Climate, 34(8), 2923-2939."
+      "name": "Copernicus / ESA SST CCI v3.0 (C3S)",
+      "citation": "Merchant, C. J., et al. (2019). Satellite-based time-series of sea-surface temperature since 1981 for climate applications. Scientific Data, 6, 223. / Copernicus Climate Change Service."
     },
     {
       "name": "Deteksi MHW (Hobday et al., 2016)",

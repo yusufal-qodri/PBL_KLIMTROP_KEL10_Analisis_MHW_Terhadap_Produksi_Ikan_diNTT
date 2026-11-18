@@ -90,10 +90,44 @@ async function loadDatasets() {
     try { const r = await fetch(`data/analysis/${f}.json`); if (r.ok) S.an[k] = JSON.parse((await r.text()).replace(/\bNaN\b/g, 'null')); } catch (e) { /* opsional */ }
   }
   const g = S.D.grids;
-  if (g) S.landCell = g.sst_mean_all.map(r => r.map(v => v == null));
+  if (g && g.sst_mean_all) {
+    NR = g.sst_mean_all.length;
+    NC = g.sst_mean_all[0].length;
+    CELLS = NR * NC;
+    S.landCell = g.sst_mean_all.map(r => r.map(v => v == null));
+  }
+  if (S.D.meta && S.D.meta.region) {
+    const reg = S.D.meta.region;
+    if (reg.lat_coords && reg.lat_coords.length) {
+      NR = reg.lat_coords.length;
+      LAT0 = reg.lat_coords[0];
+      if (reg.lat_coords.length > 1) STEP = Math.round(Math.abs(reg.lat_coords[1] - reg.lat_coords[0]) * 1000) / 1000;
+    }
+    if (reg.lon_coords && reg.lon_coords.length) {
+      NC = reg.lon_coords.length;
+      LON0 = reg.lon_coords[0];
+    }
+    CELLS = NR * NC;
+  }
   try {
     const r = await fetch('data/grids/manifest.json');
-    if (r.ok) { S.pack = await r.json(); S.pack.files = {}; await probePack(); }
+    if (r.ok) {
+      S.pack = await r.json();
+      S.pack.files = {};
+      if (S.pack.shape) {
+        NR = S.pack.shape[0];
+        NC = S.pack.shape[1];
+        CELLS = NR * NC;
+      }
+      if (S.pack.lat && S.pack.lat.length) {
+        LAT0 = S.pack.lat[0];
+        if (S.pack.lat.length > 1) STEP = Math.round(Math.abs(S.pack.lat[1] - S.pack.lat[0]) * 1000) / 1000;
+      }
+      if (S.pack.lon && S.pack.lon.length) {
+        LON0 = S.pack.lon[0];
+      }
+      await probePack();
+    }
   } catch (e) { S.pack = null; /* mode terbatas */ }
 }
 async function probePack() {
@@ -111,7 +145,7 @@ const meta = () => S.D.meta;
 const extPct = d => S.an && S.an.extent ? S.an.extent.member_pct[diffDays(START, d)] : null;
 const isRegDay = d => { const v = extPct(d); return v == null ? null : v >= S.an.extent.threshold_pct; };
 const chkOf = id => S.an && S.an.check && S.an.check.events ? S.an.check.events.find(e => e.event_id === Number(id)) : null;
-const LAT0 = -12.875, LON0 = 117.625, STEP = 0.25, NR = 24, NC = 40;
+let LAT0 = -11.975, LON0 = 118.025, STEP = 0.05, NR = 90, NC = 160, CELLS = NR * NC;
 const dsAt = d => S.ds[diffDays(START, d)];
 function seriesRange(a, b) { a = clampDate(a); b = clampDate(b); const i = diffDays(START, a), j = diffDays(START, b); return S.ds.slice(i, j + 1); }
 const sampleDay = date => { const sd = S.D.grids.sample_days; return Object.values(sd).find(x => x.date === date); };
@@ -123,7 +157,7 @@ async function packFile(path, Type) {
   return P.files[path];
 }
 const packYear = async (kind, y) => packFile(`${kind}/${y}.bin`, kind === 'mask' ? Uint8Array : Int16Array);
-const NOD = -32768, CELLS = NR * NC;
+const NOD = -32768;
 const sc = kind => (S.pack.scale || { sst: 100, chla: 1000 })[kind];
 async function winAgg(start, end, pad = 0, filter = null) {
   /* satu lintasan per grid. Definisi (selaras scripts/detect_mhw.py):
@@ -181,7 +215,7 @@ async function winAgg(start, end, pad = 0, filter = null) {
   return o;
 }
 const toGrid = (arr, fn) => Array.from({ length: NR }, (_, r) => Array.from({ length: NC }, (_, c) => fn(r * NC + c)));
-const isLand = i => S.landCell[Math.floor(i / NC)][i % NC];
+const isLand = i => S.landCell && S.landCell[Math.floor(i / NC)] ? S.landCell[Math.floor(i / NC)][i % NC] : false;
 function aggGrid(o, what) {
   const avg = (s, n) => i => n[i] ? s[i] / n[i] : null;
   switch (what) {
@@ -242,8 +276,9 @@ async function statGrid(kind, start, end, stat, filter) {
 const MAPG = { ML: 46, MT: 8, MR: 10, MB: 28, W: 800, H: 480, SC: 2 };
 const LABELS = [['Sumba', 120.0, -9.75], ['Flores', 121.6, -8.55], ['Timor', 125.0, -9.7], ['Laut Sawu', 122.0, -9.95], ['Laut Flores', 120.4, -7.45]];
 function gridAt(grid, lat, lon) {
+  if (!grid) return { r: 0, c: 0, v: null };
   const c = Math.round((lon - LON0) / STEP), r = Math.round((lat - LAT0) / STEP);
-  if (r < 0 || c < 0 || r >= NR || c >= NC) return { r, c, v: null };
+  if (r < 0 || c < 0 || r >= NR || c >= NC || !grid[r]) return { r, c, v: null };
   return { r, c, v: grid[r][c] };
 }
 function drawMap(canvas, grid, def, opts = {}) {
@@ -264,22 +299,23 @@ function drawMap(canvas, grid, def, opts = {}) {
       const lat = -7 - (y + .5) / H * 6, gy = (lat - LAT0) / STEP, j0 = Math.floor(gy), fy = gy - j0;
       for (let x = 0; x < W; x++) {
         const lon = 117.5 + (x + .5) / W * 10, gx = (lon - LON0) / STEP, i0 = Math.floor(gx), fx = gx - i0, p = (y * W + x) * 4;
+        if (gy < -0.5 || gy > NR - 0.5 || gx < -0.5 || gx > NC - 0.5) { px[p + 3] = 0; continue; }
         const nr0 = Math.min(NR - 1, Math.max(0, Math.round(gy))), nc0 = Math.min(NC - 1, Math.max(0, Math.round(gx)));
-        if (def.neutral && def.neutral[nr0][nc0]) { px[p] = 241; px[p + 1] = 238; px[p + 2] = 226; px[p + 3] = 255; continue; }
-        if (def.nearest) {
-          const v0 = grid[nr0][nc0];
-          if (v0 == null || Number.isNaN(v0)) { if (!S.landCell[nr0][nc0]) { const hv = ((x + y) % 12) < 3; px[p] = hv ? 174 : 227; px[p + 1] = hv ? 183 : 231; px[p + 2] = hv ? 190 : 234; px[p + 3] = 255; } else px[p + 3] = 0; continue; }
+        if (def && def.neutral && def.neutral[nr0] && def.neutral[nr0][nc0]) { px[p] = 241; px[p + 1] = 238; px[p + 2] = 226; px[p + 3] = 255; continue; }
+        if (def && def.nearest) {
+          const v0 = grid[nr0] ? grid[nr0][nc0] : null;
+          if (v0 == null || Number.isNaN(v0)) { if (S.landCell && S.landCell[nr0] && !S.landCell[nr0][nc0]) { const hv = ((x + y) % 12) < 3; px[p] = hv ? 174 : 227; px[p + 1] = hv ? 183 : 231; px[p + 2] = hv ? 190 : 234; px[p + 3] = 255; } else px[p + 3] = 0; continue; }
           const t0 = Math.min(1, Math.max(0, (v0 - lo) / span)), k0 = Math.round(t0 * 255) * 3; px[p] = L[k0]; px[p + 1] = L[k0 + 1]; px[p + 2] = L[k0 + 2]; px[p + 3] = 255; continue;
         }
         let sw = 0, sv = 0;
         for (let dj = 0; dj < 2; dj++) for (let di = 0; di < 2; di++) {
-          const r = Math.min(NR - 1, Math.max(0, j0 + dj)), c = Math.min(NC - 1, Math.max(0, i0 + di)), v = grid[r][c];
+          const r = Math.min(NR - 1, Math.max(0, j0 + dj)), c = Math.min(NC - 1, Math.max(0, i0 + di)), v = grid[r] ? grid[r][c] : null;
           if (v == null || Number.isNaN(v)) continue;
           const w = (di ? fx : 1 - fx) * (dj ? fy : 1 - fy); sw += w; sv += w * v;
         }
         const nr = Math.min(NR - 1, Math.max(0, Math.round(gy))), nc = Math.min(NC - 1, Math.max(0, Math.round(gx)));
-        const nearNull = grid[nr][nc] == null || Number.isNaN(grid[nr][nc]);
-        if (nearNull && !S.landCell[nr][nc]) { const hv = ((x + y) % 12) < 3; px[p] = hv ? 174 : 227; px[p + 1] = hv ? 183 : 231; px[p + 2] = hv ? 190 : 234; px[p + 3] = 255; continue; }
+        const nearNull = !grid[nr] || grid[nr][nc] == null || Number.isNaN(grid[nr][nc]);
+        if (nearNull && S.landCell && S.landCell[nr] && !S.landCell[nr][nc]) { const hv = ((x + y) % 12) < 3; px[p] = hv ? 174 : 227; px[p + 1] = hv ? 183 : 231; px[p + 2] = hv ? 190 : 234; px[p + 3] = 255; continue; }
         if (sw < 1e-6) { px[p + 3] = 0; continue; }
         let v = sv / sw; if (lg) v = Math.log(Math.max(v, def.min));
         const t = Math.min(1, Math.max(0, (v - lo) / span)), k = Math.round(t * 255) * 3;
@@ -503,9 +539,10 @@ async function eventMaps(ev) {
     return { mode: 'pack', mhw: aggGrid(o, 'mhwMax'), chl: gridVals(ca).length ? ca : null, chlMean: aggGrid(o, 'chlMeanM'), neutral: no, sstValid: o.sstValid, o };
   }
   const g = S.D.grids;
+  if (!g || !g.sample_days) return { mode: 'none' };
   for (const sd of Object.values(g.sample_days)) if (sd.date >= ev.start_date && sd.date <= ev.end_date) {
-    const mo = +sd.date.slice(5, 7), cm = g.sst_monthly[mo], hm = g.chla_monthly[mo];
-    return { mode: 'sample', date: sd.date, mhw: sd.sst.map((r, i) => r.map((v, j) => v == null || cm[i][j] == null ? null : v - cm[i][j])), chl: sd.chla.map((r, i) => r.map((v, j) => v == null || hm[i][j] == null ? null : v - hm[i][j])) };
+    const mo = +sd.date.slice(5, 7), cm = g.sst_monthly ? g.sst_monthly[mo] : null, hm = g.chla_monthly ? g.chla_monthly[mo] : null;
+    return { mode: 'sample', date: sd.date, mhw: sd.sst.map((r, i) => r.map((v, j) => v == null || !cm || cm[i][j] == null ? null : v - cm[i][j])), chl: sd.chla.map((r, i) => r.map((v, j) => v == null || !hm || hm[i][j] == null ? null : v - hm[i][j])) };
   }
   return { mode: 'none' };
 }
@@ -599,10 +636,12 @@ function stepDate(scale, d, dir) {
   return clampDate(dir > 0 ? addDays(b, 1) : addDays(a, -1));
 }
 function sebaranFallback(scale, d) {
-  const g = S.D.grids, y = d.slice(0, 4), mo = +d.slice(5, 7);
-  if (scale === 'Tahunan') return { sst: g.sst_annual[y], chl: g.chla_annual[y], note: `rata-rata tahunan ${y}` };
-  if (scale === 'Bulanan') return { sst: g.sst_monthly[mo], chl: g.chla_monthly[mo], note: `klimatologi bulan ${MONF[mo - 1]} (rata-rata semua tahun 2000–2020), bukan bulan kalender tertentu` };
-  if (scale === 'Dekadal') { const y1 = +y, k = y1 < 2010 ? '2000_2009' : y1 < 2020 ? '2010_2019' : '2020'; return { sst: g.sst_decadal[k], chl: g.chla_decadal[k], note: `rata-rata ${k.replace('_', '–')}` }; }
+  const g = S.D.grids;
+  if (!g) return null;
+  const y = d.slice(0, 4), mo = +d.slice(5, 7);
+  if (scale === 'Tahunan') return { sst: g.sst_annual ? g.sst_annual[y] : null, chl: g.chla_annual ? g.chla_annual[y] : null, note: `rata-rata tahunan ${y}` };
+  if (scale === 'Bulanan') return { sst: g.sst_monthly ? g.sst_monthly[mo] : null, chl: g.chla_monthly ? g.chla_monthly[mo] : null, note: `klimatologi bulan ${MONF[mo - 1]} (rata-rata semua tahun 2000–2020), bukan bulan kalender tertentu` };
+  if (scale === 'Dekadal') { const y1 = +y, k = y1 < 2010 ? '2000_2009' : y1 < 2020 ? '2010_2019' : '2020'; return { sst: g.sst_decadal ? g.sst_decadal[k] : null, chl: g.chla_decadal ? g.chla_decadal[k] : null, note: `rata-rata ${k.replace('_', '–')}` }; }
   const sd = sampleDay(d); if (scale === 'Harian' && sd) return { sst: sd.sst, chl: sd.chla, note: sd.desc };
   return null;
 }
@@ -807,7 +846,7 @@ P.dampak = {
     }).join('');
     const thead = evGrid(S.events[0].event_id) ? '<th>Event</th><th>Periode</th><th>Hari</th><th>Cakupan</th><th>Sel MHW</th><th>Chl sel-hari MHW</th><th>Anomali Chl</th><th>% sel turun</th>' : '<th>Event</th><th>Periode</th><th>Hari</th><th>Cakupan</th><th></th><th>Chl rata-rata regional</th><th>Selisih vs tahun non-MHW</th><th></th>';
     const kp = eg && eg.anom_mean != null
-      ? `${kpi('Chlorophyll a pada sel-hari MHW', fmt(eg.chl_mean, 3) + ' mg/m³', eg.celldays + ' sel-hari · ' + eg.cells_with_chl + ' sel')}${kpi('Anomali vs baseline non-MHW', (eg.anom_mean >= 0 ? '+' : '') + fmt(eg.anom_mean, 3) + ' mg/m³', 'rata-rata seluruh sel-hari MHW')}${kpi('Sel dengan penurunan', fmt(eg.pct_cells_decrease, 0) + '%', 'dari sel yang mengalami MHW')}${kpi('Sel mengalami MHW', eg.cells_mhw, fmt(eg.cells_mhw / (S.an.extent ? S.an.extent.n_ocean_cells : 884) * 100, 0) + '% sel laut')}`
+      ? `${kpi('Chlorophyll a pada sel-hari MHW', fmt(eg.chl_mean, 3) + ' mg/m³', eg.celldays + ' sel-hari · ' + eg.cells_with_chl + ' sel')}${kpi('Anomali vs baseline non-MHW', (eg.anom_mean >= 0 ? '+' : '') + fmt(eg.anom_mean, 3) + ' mg/m³', 'rata-rata seluruh sel-hari MHW')}${kpi('Sel dengan penurunan', fmt(eg.pct_cells_decrease, 0) + '%', 'dari sel yang mengalami MHW')}${kpi('Sel mengalami MHW', eg.cells_mhw, fmt(eg.cells_mhw / (S.an && S.an.extent ? S.an.extent.n_ocean_cells : (S.landCell ? S.landCell.flat().filter(x => !x).length : CELLS)) * 100, 0) + '% sel laut')}`
       : `${kpi('Chlorophyll a selama event', m.chl != null ? fmt(m.chl, 3) + ' mg/m³' : '—', 'rata-rata regional · ' + m.chlN + ' hari data')}${kpi('Baseline tanggal sama (tanpa MHW)', m.base != null ? fmt(m.base, 3) + ' mg/m³' : '—', m.cands.length + ' tahun pembanding')}${kpi('Selisih', m.pct != null ? (m.pct >= 0 ? '+' : '') + fmt(m.pct, 1) + '%' : '—', m.delta != null ? fmt(m.delta, 3) + ' mg/m³' : '')}${kpi('SST anomali event', '+' + fmt(m.anom) + ' °C', 'rata-rata regional')}`;
     const gridSec = !hasG ? card('Analisis per grid (seluruh kejadian)', '', '<div class="nodata">Analisis per grid belum dibuat. Jalankan <code>python dashboard/tools/grid_analysis.py</code> (otomatis dijalankan oleh build_daily_grids.py).</div>')
       : `<section class="card"><div class="card-h"><h2>Analisis per grid: Chlorophyll a saat MHW vs non-MHW</h2><span>seluruh kejadian 2000–2020</span></div><div class="row">${seg('gs', Object.keys(GSN), st.gs)}</div><p class="note" style="margin:8px 0 0">${GSN[st.gs]} · ${PCT_NOTE}</p></section>
@@ -918,13 +957,13 @@ function varPage(kind) {
   const pick = x => isS ? x.sst : x.chla, def = g => isS ? DEF.sst(g) : DEF.chl(g), SCL = ['Seluruh periode', 'Bulanan', 'Tahunan', 'Musiman', 'Dekadal'];
   const dflt = st => { st.scale = st.scale || 'Musiman'; st.season = st.season || 'JJA'; st.month = st.month || 'Jun'; st.year = st.year || 2016; st.dec = st.dec || DECS[0]; st.stat = st.stat || 'Rata-rata'; st.cy = st.cy || 2016; return st; };
   const selOf = st => {
-    const G = S.D.grids, mo = MON.indexOf(st.month) + 1, sea = SEAS.find(s => s.k === st.season);
+    const G = S.D.grids || {}, mo = MON.indexOf(st.month) + 1, sea = SEAS.find(s => s.k === st.season);
     switch (st.scale) {
-      case 'Bulanan': return { a: START, b: END, f: d => +d.slice(5, 7) === mo, lbl: `bulan ${MONF[mo - 1]} (rata-rata semua tahun 2000–2020)`, g: G[gk + '_monthly'][mo] };
-      case 'Tahunan': return { a: `${st.year}-01-01`, b: `${st.year}-12-31`, f: null, lbl: `tahun ${st.year}`, g: G[gk + '_annual'][st.year] };
-      case 'Musiman': return { a: START, b: END, f: d => sea.m.includes(+d.slice(5, 7)), lbl: `${sea.k} · ${sea.per} · ${sea.n} (2000–2020)`, g: G[gk + '_seasonal'][sea.k] };
-      case 'Dekadal': { const [x, y] = st.dec.split('–'); return { a: `${x}-01-01`, b: `${y || x}-12-31`, f: null, lbl: `dekade ${st.dec}`, g: G[gk + '_decadal'][st.dec.replace('–', '_')] }; }
-      default: return { a: START, b: END, f: null, lbl: 'seluruh periode 2000–2020', g: G[gk + '_mean_all'] };
+      case 'Bulanan': return { a: START, b: END, f: d => +d.slice(5, 7) === mo, lbl: `bulan ${MONF[mo - 1]} (rata-rata semua tahun 2000–2020)`, g: G[gk + '_monthly'] ? G[gk + '_monthly'][mo] : null };
+      case 'Tahunan': return { a: `${st.year}-01-01`, b: `${st.year}-12-31`, f: null, lbl: `tahun ${st.year}`, g: G[gk + '_annual'] ? G[gk + '_annual'][st.year] : null };
+      case 'Musiman': return { a: START, b: END, f: d => sea.m.includes(+d.slice(5, 7)), lbl: `${sea.k} · ${sea.per} · ${sea.n} (2000–2020)`, g: G[gk + '_seasonal'] ? G[gk + '_seasonal'][sea.k] : null };
+      case 'Dekadal': { const [x, y] = st.dec.split('–'); return { a: `${x}-01-01`, b: `${y || x}-12-31`, f: null, lbl: `dekade ${st.dec}`, g: G[gk + '_decadal'] ? G[gk + '_decadal'][st.dec.replace('–', '_')] : null }; }
+      default: return { a: START, b: END, f: null, lbl: 'seluruh periode 2000–2020', g: G[gk + '_mean_all'] || null };
     }
   };
   const seasonTable = act => {
@@ -1029,7 +1068,7 @@ P.sintesis = {
       ...(S.an && S.an.check && S.an.check.summary ? (() => { const c = S.an.check.summary; return [['MHW', 'Hari MHW regional (≥15% luas laut)', c.regional_days, `dari ${c.catalog_days} hari durasi kejadian`], ['MHW', 'Hari jeda (cakupan <15%)', c.gap_days, 'bagian kejadian, bukan hari MHW']]; })() : [])];
     const sf = rowsS.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td><b>${r[2]}</b></td><td>${r[3]}</td></tr>`).join('');
     const gal = Object.entries(FIGS).map(([f, t]) => `<figure><img src="figures/${f}" alt="${esc(t)}" loading="lazy" data-zoom="${esc(t)}"><figcaption>${t}</figcaption></figure>`).join('');
-    return `${card('Ringkasan temuan', 'katalog spasial 56 kejadian', `<div class="tw"><table><thead><tr><th>Komponen</th><th>Metrik</th><th>Nilai</th><th>Keterangan</th></tr></thead><tbody>${sf}</tbody></table></div><div style="margin-top:10px"><button class="btn" data-act="csv-events">Ekspor ${S.events.length} kejadian MHW (CSV)</button> <button class="btn" data-act="csv-events1d">Ekspor katalog pembanding (rata-rata regional)</button></div>`)}
+    return `${card('Ringkasan temuan', 'katalog spasial ' + S.events.length + ' kejadian', `<div class="tw"><table><thead><tr><th>Komponen</th><th>Metrik</th><th>Nilai</th><th>Keterangan</th></tr></thead><tbody>${sf}</tbody></table></div><div style="margin-top:10px"><button class="btn" data-act="csv-events">Ekspor ${S.events.length} kejadian MHW (CSV)</button> <button class="btn" data-act="csv-events1d">Ekspor katalog pembanding (rata-rata regional)</button></div>`)}
     ${card('Galeri figur', 'klik gambar untuk memperbesar', `<div class="gal">${gal}</div>`)}`;
   },
   mount() { }
@@ -1051,7 +1090,7 @@ P.metodologi = {
     const dq = Y.data_quality.map(d => `<tr><td>${d.dataset}</td><td>${d.sumber}</td><td>${d.resolusi_spasial}</td><td>${d.resolusi_temporal}</td><td>${d.periode_awal} – ${d.periode_akhir}</td><td>${d.jumlah_hari}</td><td>${fmt(d.missing_pct, 2)}%</td></tr>`).join('');
     const tot = (Y.data_inventory || []).reduce((s, x) => s + (x.ukuran_MB || 0), 0);
     return `<div class="flow">${steps.map(s => `<div><b>${s[0]}</b><h3>${s[1]}</h3><p>${s[2]}</p></div>`).join('')}</div>
-    <div class="kpis">${kpi('Ambang MHW (per sel)', 'Persentil ke-90', 'musiman, jendela 31 hari')}${kpi('Durasi minimum', '5 hari', 'gap maksimum 2 hari · Hobday et al. (2016)')}${kpi('Kejadian regional', '≥ 15% luas laut', 'sel MHW serentak ≥ 5 hari → katalog 56 kejadian')}${kpi('Baseline', '2000–2020', '21 tahun')}${kpi('Domain', `${M.region.lon_min}–${M.region.lon_max}°BT`, `${-M.region.lat_max}–${-M.region.lat_min}°LS · grid 0.25°`)}</div>
+    <div class="kpis">${kpi('Ambang MHW (per sel)', 'Persentil ke-90', 'musiman, jendela 31 hari')}${kpi('Durasi minimum', '5 hari', 'gap maksimum 2 hari · Hobday et al. (2016)')}${kpi('Kejadian regional', '≥ 15% luas laut', `sel MHW serentak ≥ 5 hari → katalog ${S.events.length} kejadian`)}${kpi('Baseline', '2000–2020', '21 tahun')}${kpi('Domain', `${M.region.lon_min}–${M.region.lon_max}°BT`, `${-M.region.lat_max}–${-M.region.lat_min}°LS · grid ${STEP}°`)}</div>
     <div class="grid2">${card('Periode data', '', kv(Object.entries(M.periods).map(([k, v]) => [k.toUpperCase(), v])))}${card('Sitasi', '', `<ul class="plain">${Y.citations.map(c => `<li><b>${c.name}</b>: ${c.citation}</li>`).join('')}</ul>`)}</div>
     ${card('Definisi hari MHW (per grid)', 'agar tidak ada hari non-MHW yang terhitung MHW', DEFS)}
     ${checkCard()}

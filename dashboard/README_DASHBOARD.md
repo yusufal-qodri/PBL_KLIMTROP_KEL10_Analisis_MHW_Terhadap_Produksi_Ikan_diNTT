@@ -53,7 +53,7 @@ dengan garis pantai `data/ntt_coastline.geojson`.
   diberi warna paling pucat (0), tidak diarsir.
 
 ## Analisis per grid (versi ini)
-Semua perbandingan MHW vs non-MHW dihitung **per sel 0.25 derajat**, bukan dari rata-rata regional.
+Semua perbandingan MHW vs non-MHW dihitung **per sel 0.05 derajat (~5 km, Copernicus)**, bukan dari rata-rata regional.
 
 Definisi (agar tidak ada hari non-MHW yang terhitung MHW):
 - **Hari MHW sel** = SST > P90 sel itu, pada hari yang menjadi anggota kejadian (aturan `detect_mhw.py`).

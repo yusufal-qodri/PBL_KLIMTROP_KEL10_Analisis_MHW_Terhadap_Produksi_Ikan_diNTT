@@ -26,7 +26,7 @@ PBL/
 ├── config/
 │   └── project_config.py                    # Konfigurasi terpusat (koordinat, parameter MHW, path)
 ├── data/
-│   ├── data_sst_ntt/                        # Data mentah OISST NOAA v2.1 AVHRR (2000-2020, 21 file)
+│   ├── data_sst_ntt/                        # Data mentah SST Copernicus / ESA SST CCI v3.0 (2000-2020, 21 file)
 │   ├── chla_ntt_daily/                      # Data mentah MODIS-Aqua (216 file ZIP bulanan)
 │   ├── interim/                             # File perantara pemrosesan NetCDF tahunan
 │   └── processed/                           # Dataset NetCDF dan metrik hasil kurasi
@@ -90,7 +90,7 @@ Seluruh notebook ditulis dalam Bahasa Indonesia akademik terstruktur, dilengkapi
   - Peta pola spasial upwelling musiman di Selat Sumba, Laut Sawu, dan pesisir selatan Timor.
 
 ### [Notebook 4: Analisis Gabungan MHW dan Chlorophyll-a](file:///g:/My%20Drive/KLIMTROP/PBL/notebooks/04_Analisis_Gabungan_MHW_dan_Chlorophyll_a.ipynb)
-- **Tujuan:** Menyelaraskan dimensi temporal dan spasial antara SST (grid 0.25°) dan Chlorophyll-a (resolusi asli ~4 km) menggunakan metode agregasi blok (*box block-averaging*) ke grid target SST tanpa menciptakan resolusi semu. Mengklasifikasikan kondisi MHW vs Non-MHW pada periode tumpang tindih (2000–2020, 7.669 hari), serta menguji perbedaan distribusi klorofil-a secara non-parametrik (Mann-Whitney U).
+- **Tujuan:** Menyelaraskan dimensi temporal dan spasial antara SST (grid 0.05°) dan Chlorophyll-a (resolusi asli ~4 km) menggunakan metode penyelarasan grid ke target SST tanpa menciptakan resolusi semu. Mengklasifikasikan kondisi MHW vs Non-MHW pada periode tumpang tindih (2000–2020, 7.669 hari), serta menguji perbedaan distribusi klorofil-a secara non-parametrik (Mann-Whitney U).
 - **Keluaran Utama:**
   - `data/processed/mhw_chla_aligned_daily_ntt.nc` (dataset terselaraskan)
   - `outputs/tables/mhw_chla_comparison_summary.csv`
@@ -139,7 +139,7 @@ Seluruh notebook ditulis dalam Bahasa Indonesia akademik terstruktur, dilengkapi
 | **Tidak Ada Klaim Kausalitas Ikan** | **Terpenuhi** | Pembahasan perikanan murni deskriptif kualitatif berbasis preferensi termal literatur biologis, bukan regresi sebab-akibat langsung. |
 | **Tidak Mengganti NaN dengan Nol** | **Terpenuhi** | Seluruh data tutupan awan dan piksel hilang ditangani menggunakan masking `np.nan` dan fungsi aggregasi `nanmean`/`nanmedian`. |
 | **Dokumentasi Baseline 21 Tahun** | **Terpenuhi** | Ditegaskan di setiap notebook bahwa klimatologi dibangun dari 21 tahun pengamatan (2000–2020), bukan baseline WMO 30 tahun. |
-| **Pencegahan Resolusi Semu** | **Terpenuhi** | Klorofil-a diagregasi ke grid SST 0.25° menggunakan *block-averaging*, dan SST tidak pernah diinterpolasi semu ke grid 4 km. |
+| **Pencegahan Resolusi Semu** | **Terpenuhi** | Klorofil-a diselaraskan ke grid SST 0.05° melalui regridding terdekat, dan SST beresolusi asli 0.05° (~5 km) dari Copernicus / ESA SST CCI v3.0 tanpa interpolasi semu. |
 | **Data Mentah Utuh & Tak Terganggu**| **Terpenuhi** | Seluruh file di `data_sst_ntt/` dan `chla_ntt_daily/` tetap dalam keadaan asli (*read-only*). |
 
 ---
@@ -161,11 +161,11 @@ Dashboard interaktif berbasis web siap pakai sesuai spesifikasi [PRD.DASHBORD.md
 python run_dashboard.py
 `
 Perintah ini akan menyalakan web server lokal dan membuka browser secara otomatis di http://localhost:8000. Fitur dashboard:
-- **Peta Spasial Interaktif Grid 0.25°** (Lapisan SST, Chlorophyll-a, Total Hari MHW, dan Intensitas Maksimum).
+- **Peta Spasial Interaktif Grid 0.05°** (Lapisan SST, Chlorophyll-a, Total Hari MHW, dan Intensitas Maksimum).
 - **Inspektor Profil Titik Oseanografi** saat sel perairan diklik.
 - **Sistem Filter Waktu Global** (Mode Harian, Mingguan, Bulanan, Tahunan, dan Dekadal 10 Tahunan).
 - **8 Halaman Khusus Terintegrasi**: Overview, SST, MHW, Chlorophyll-a, Analisis Gabungan, Produksi Tangkapan Ikan, Sintesis Hasil, dan Metodologi.
-- **Tabel Interaktif 43 Kejadian MHW** dengan filter pencarian dan tombol ekspor CSV.
+- **Tabel Interaktif 33 Kejadian MHW** dengan filter pencarian dan tombol ekspor CSV.
 - **Galeri Gambar Sintesis Ilmiah Resolusi Tinggi (300 DPI)** dengan modal viewer.
 
 ### Eksekusi Verifikasi Pipeline
@@ -183,6 +183,6 @@ Jalankan sel-sel di setiap notebook secara berurutan mulai dari `01` hingga `06`
 
 ## 7. Ucapan Terima Kasih & Sitasi Data
 
-- **Data SST:** NOAA High-resolution Optimum Interpolation Sea Surface Temperature (OISST) v2.1 AVHRR Daily Dataset, National Centers for Environmental Information (NCEI).
+- **Data SST:** Copernicus Climate Change Service (C3S) / ESA Sea Surface Temperature Climate Change Initiative (SST CCI) v3.0 Daily Analysis Dataset (resolusi 0.05°).
 - **Data Chlorophyll-a:** MODIS-Aqua Level-3 Standard Mapped Images (SMI), NASA Ocean Biology Processing Group (OBPG).
 - **Kerangka Analisis MHW:** Hobday, A. J., et al. (2016). *A hierarchical approach to defining marine heatwaves*. Progress in Oceanography, 141, 227–238.

@@ -71,9 +71,9 @@ meta = {
         "zoom": 7
     },
     "periods": {
-        "sst": "2000-01-01 s/d 2020-12-31 (21 Tahun)",
-        "mhw": "2000-01-01 s/d 2020-12-31 (21 Tahun, Baseline 2000-2020)",
-        "chla": "2002-07-04 s/d 2020-12-30 (MODIS-Aqua / C3S CCI)",
+        "sst": "2000-01-01 s/d 2020-12-31 (21 Tahun, Copernicus / ESA SST CCI v3.0, Resolusi 0.05°)",
+        "mhw": "2000-01-01 s/d 2020-12-31 (21 Tahun, Baseline 2000-2020, Deteksi Per Grid 0.05°)",
+        "chla": "2000-01-01 s/d 2020-12-31 (ESA OC-CCI v6.0 / C3S Copernicus)",
         "fisheries": "2000 s/d 2020 (BPS & KKP NTT, Resolusi Tahunan)"
     },
     "kpi": {
@@ -210,6 +210,38 @@ for s_name, months in seasons.items():
     sst_seasonal[s_name] = sanitize_grid(sst_sub)
     chla_seasonal[s_name] = sanitize_grid(chla_sub)
 
+# Monthly grids (1..12)
+sst_monthly = {}
+chla_monthly = {}
+for m in range(1, 13):
+    sst_m = ds_sst.sst.sel(time=ds_sst.time.dt.month == m).mean(dim="time").values
+    chla_m = ds_aligned.chlor_a.sel(time=ds_aligned.time.dt.month == m).mean(dim="time").values
+    sst_monthly[m] = sanitize_grid(sst_m)
+    chla_monthly[m] = sanitize_grid(chla_m)
+
+# Annual grids (2000..2020)
+sst_annual = {}
+chla_annual = {}
+for y in range(2000, 2021):
+    sst_y = ds_sst.sst.sel(time=ds_sst.time.dt.year == y).mean(dim="time").values
+    chla_y = ds_aligned.chlor_a.sel(time=ds_aligned.time.dt.year == y).mean(dim="time").values
+    sst_annual[str(y)] = sanitize_grid(sst_y)
+    chla_annual[str(y)] = sanitize_grid(chla_y)
+
+# Decadal grids
+decades = {
+    "2000_2009": range(2000, 2010),
+    "2010_2019": range(2010, 2020),
+    "2020": [2020]
+}
+sst_decadal = {}
+chla_decadal = {}
+for d_name, d_years in decades.items():
+    sst_d = ds_sst.sst.sel(time=ds_sst.time.dt.year.isin(d_years)).mean(dim="time").values
+    chla_d = ds_aligned.chlor_a.sel(time=ds_aligned.time.dt.year.isin(d_years)).mean(dim="time").values
+    sst_decadal[d_name] = sanitize_grid(sst_d)
+    chla_decadal[d_name] = sanitize_grid(chla_d)
+
 # Sample Representative Days
 sample_days = {}
 sample_dates = [
@@ -248,6 +280,12 @@ spatial_payload = {
     "chla_mean_all": chla_mean_all_grid,
     "sst_seasonal": sst_seasonal,
     "chla_seasonal": chla_seasonal,
+    "sst_monthly": sst_monthly,
+    "chla_monthly": chla_monthly,
+    "sst_annual": sst_annual,
+    "chla_annual": chla_annual,
+    "sst_decadal": sst_decadal,
+    "chla_decadal": chla_decadal,
     "sample_days": sample_days
 }
 
@@ -423,7 +461,7 @@ synthesis_payload = {
         {
             "rule": "Pencegahan Resolusi Semu (Anti False-Resolution)",
             "status": "Terpenuhi 100%",
-            "detail": "Klorofil-a diagregasi ke grid SST 0.25° melalui block-averaging. SST tidak diinterpolasi semu ke grid halus."
+            "detail": "Klorofil-a diselaraskan ke grid SST 0.05° melalui regridding terdekat. SST beresolusi asli 0.05° (~5 km) dari Copernicus / ESA SST CCI v3.0 tanpa interpolasi semu."
         },
         {
             "rule": "Integritas Dataset Mentah Asli",
@@ -433,8 +471,8 @@ synthesis_payload = {
     ],
     "citations": [
         {
-            "name": "NOAA OISST v2.1",
-            "citation": "Huang, B., et al. (2021). Improvements of the Daily Optimum Interpolation Sea Surface Temperature (DOISST) Version 2.1. J. Climate, 34(8), 2923-2939."
+            "name": "Copernicus / ESA SST CCI v3.0 (C3S)",
+            "citation": "Merchant, C. J., et al. (2019). Satellite-based time-series of sea-surface temperature since 1981 for climate applications. Scientific Data, 6, 223. / Copernicus Climate Change Service."
         },
         {
             "name": "Deteksi MHW (Hobday et al., 2016)",

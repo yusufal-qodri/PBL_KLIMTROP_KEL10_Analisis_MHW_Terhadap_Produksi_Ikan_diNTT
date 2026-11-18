@@ -269,9 +269,9 @@
     "zoom": 7
   },
   "periods": {
-    "sst": "2000-01-01 s/d 2020-12-31 (21 Tahun)",
-    "mhw": "2000-01-01 s/d 2020-12-31 (21 Tahun, Baseline 2000-2020)",
-    "chla": "2002-07-04 s/d 2020-12-30 (MODIS-Aqua / C3S CCI)",
+    "sst": "2000-01-01 s/d 2020-12-31 (21 Tahun, Copernicus / ESA SST CCI v3.0, Resolusi 0.05°)",
+    "mhw": "2000-01-01 s/d 2020-12-31 (21 Tahun, Baseline 2000-2020, Deteksi Per Grid 0.05°)",
+    "chla": "2000-01-01 s/d 2020-12-31 (ESA OC-CCI v6.0 / C3S Copernicus)",
     "fisheries": "2000 s/d 2020 (BPS & KKP NTT, Resolusi Tahunan)"
   },
   "kpi": {

@@ -98,7 +98,7 @@ CHLA_QUALITY_OUTPUT = REPORTS_DIR / "chla_quality_report.csv"
 CHLA_STATS_OUTPUT = TABLES_DIR / "chla_descriptive_stats.csv"
 
 # Notebook 4 outputs
-COMBINED_GRID = "sst"  # Mereferensikan grid SST 0.25 deg
+COMBINED_GRID = "sst"  # Mereferensikan grid SST 0.05 deg (Copernicus / ESA SST CCI v3.0)
 COMBINED_OUTPUT = PROCESSED_DIR / "mhw_chla_aligned_daily_ntt.nc"
 COMBINED_COMPARISON_OUTPUT = TABLES_DIR / "mhw_chla_comparison_summary.csv"
 
