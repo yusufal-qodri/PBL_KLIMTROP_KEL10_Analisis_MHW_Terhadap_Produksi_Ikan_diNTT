@@ -273,10 +273,8 @@ async function statGrid(kind, start, end, stat, filter) {
 }
 
 /* ---------- peta canvas ---------- */
-const MAPG = { ML: 46, MT: 8, MR: 10, MB: 28, W: 800, H: 450, SC: 2 };
-const LON_MIN = 118.0, LON_MAX = 126.0, LAT_MIN = -12.0, LAT_MAX = -7.5;
-const LON_SPAN = LON_MAX - LON_MIN, LAT_SPAN = LAT_MAX - LAT_MIN;
-const LABELS = [['Sumba', 120.0, -9.75], ['Flores', 121.6, -8.55], ['Timor', 125.0, -9.7], ['Laut Sawu', 122.0, -9.95], ['Laut Flores', 120.4, -7.65]];
+const MAPG = { ML: 46, MT: 8, MR: 10, MB: 28, W: 800, H: 480, SC: 2 };
+const LABELS = [['Sumba', 120.0, -9.75], ['Flores', 121.6, -8.55], ['Timor', 125.0, -9.7], ['Laut Sawu', 122.0, -9.95], ['Laut Flores', 120.4, -7.45]];
 
 function gridAt(grid, lat, lon) {
   if (!grid) return { r: 0, c: 0, v: null };
@@ -301,9 +299,9 @@ function drawMap(canvas, grid, def, opts = {}) {
     const maxVal = (def && def.max != null) ? def.max : 1;
     const lo = lg ? Math.log(Math.max(1e-6, minVal)) : minVal, hi = lg ? Math.log(Math.max(1e-6, maxVal)) : maxVal, span = hi - lo || 1;
     for (let y = 0; y < H; y++) {
-      const lat = LAT_MAX - (y + .5) / H * LAT_SPAN, gy = (lat - LAT0) / STEP, j0 = Math.floor(gy), fy = gy - j0;
+      const lat = -7 - (y + .5) / H * 6, gy = (lat - LAT0) / STEP, j0 = Math.floor(gy), fy = gy - j0;
       for (let x = 0; x < W; x++) {
-        const lon = LON_MIN + (x + .5) / W * LON_SPAN, gx = (lon - LON0) / STEP, i0 = Math.floor(gx), fx = gx - i0, p = (y * W + x) * 4;
+        const lon = 117.5 + (x + .5) / W * 10, gx = (lon - LON0) / STEP, i0 = Math.floor(gx), fx = gx - i0, p = (y * W + x) * 4;
         if (gy < -0.5 || gy > NR - 0.5 || gx < -0.5 || gx > NC - 0.5) { px[p + 3] = 0; continue; }
         const nr0 = Math.min(NR - 1, Math.max(0, Math.round(gy))), nc0 = Math.min(NC - 1, Math.max(0, Math.round(gx)));
         if (def && def.neutral && def.neutral[nr0] && def.neutral[nr0][nc0]) { px[p] = 241; px[p + 1] = 238; px[p + 2] = 226; px[p + 3] = 255; continue; }
@@ -331,8 +329,8 @@ function drawMap(canvas, grid, def, opts = {}) {
     ctx.imageSmoothingEnabled = true; ctx.drawImage(off, ML, MT, W, H);
   }
 
-  const X = lon => ML + (lon - LON_MIN) / LON_SPAN * W;
-  const Y = lat => MT + (LAT_MAX - lat) / LAT_SPAN * H;
+  const X = lon => ML + (lon - 117.5) / 10 * W;
+  const Y = lat => MT + (-7 - lat) / 6 * H;
 
   ctx.save(); ctx.beginPath(); ctx.rect(ML, MT, W, H); ctx.clip();
   ctx.strokeStyle = 'rgba(255,255,255,.28)'; ctx.lineWidth = .6;
@@ -373,8 +371,8 @@ function drawMap(canvas, grid, def, opts = {}) {
     canvas._wired = true;
     canvas.addEventListener('click', e => {
       const b = canvas.getBoundingClientRect(), sx = TW / b.width, mx = (e.clientX - b.left) * sx, my = (e.clientY - b.top) * sx;
-      const lon = LON_MIN + (mx - ML) / W * LON_SPAN, lat = LAT_MAX - (my - MT) / H * LAT_SPAN, out = canvas.parentElement.parentElement.querySelector('.inspect');
-      if (!out || lon < LON_MIN || lon > LON_MAX || lat < LAT_MIN || lat > LAT_MAX) return;
+      const lon = 117.5 + (mx - ML) / W * 10, lat = -7 - (my - MT) / H * 6, out = canvas.parentElement.parentElement.querySelector('.inspect');
+      if (!out || lon < 117.5 || lon > 127.5 || lat > -7 || lat < -13) return;
       const { r, c, v } = gridAt(canvas._grid, lat, lon), u = (canvas._def && canvas._def.unit) || '';
       const sub = typeof detectSubRegion === 'function' ? detectSubRegion(lat, lon) : '';
       out.textContent = `Sel ${fmt(Math.abs(LAT0 + r * STEP), 3)}°LS, ${fmt(LON0 + c * STEP, 3)}°BT${sub ? ' · ' + sub : ''}: ` + (v == null ? (S.landCell && S.landCell[r] && S.landCell[r][c] ? 'daratan / tanpa data laut' : 'tanpa data (tertutup awan, tidak diisi nol)') : `${fmt(v, canvas._def ? canvas._def.dec ?? 3 : 3)} ${u}`);
