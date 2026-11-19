@@ -273,129 +273,10 @@ async function statGrid(kind, start, end, stat, filter) {
 }
 
 /* ---------- peta canvas ---------- */
-const MAPG = { ML: 46, MT: 8, MR: 10, MB: 28, W: 800, H: 480, SC: 2 };
-const LABELS = [['Sumba', 120.0, -9.75], ['Flores', 121.6, -8.55], ['Timor', 125.0, -9.7], ['Laut Sawu', 122.0, -9.95], ['Laut Flores', 120.4, -7.45]];
-
-/* ---------- modul batas spasial dinamis (dynamic map extent) ---------- */
-const SpatialExtent = {
-  getDefault() {
-    return {
-      lonMin: LON0,
-      lonMax: LON0 + (NC - 1) * STEP,
-      latMin: LAT0,
-      latMax: LAT0 + (NR - 1) * STEP,
-      valid: true
-    };
-  },
-
-  getGridExtent(grid, opts = {}) {
-    const dflt = opts.defaultExtent || this.getDefault();
-    if (!grid || !Array.isArray(grid) || !grid.length) {
-      return this.fitToAspect(dflt, opts.targetAspect, opts.pad);
-    }
-    let rMin = -1, rMax = -1, cMin = -1, cMax = -1;
-    const filter = typeof opts.filter === 'function'
-      ? opts.filter
-      : ((v, r, c) => (v != null && !Number.isNaN(v)) || (opts.def && opts.def.neutral && opts.def.neutral[r] && opts.def.neutral[r][c]));
-
-    for (let r = 0; r < grid.length; r++) {
-      const row = grid[r];
-      if (!row) continue;
-      for (let c = 0; c < row.length; c++) {
-        if (filter(row[c], r, c)) {
-          if (rMin === -1 || r < rMin) rMin = r;
-          if (rMax === -1 || r > rMax) rMax = r;
-          if (cMin === -1 || c < cMin) cMin = c;
-          if (cMax === -1 || c > cMax) cMax = c;
-        }
-      }
-    }
-
-    if (rMin === -1) {
-      return this.fitToAspect({ ...dflt, valid: false }, opts.targetAspect, opts.pad);
-    }
-
-    const latA = LAT0 + rMin * STEP, latB = LAT0 + rMax * STEP;
-    const lonA = LON0 + cMin * STEP, lonB = LON0 + cMax * STEP;
-
-    const raw = {
-      lonMin: Math.min(lonA, lonB),
-      lonMax: Math.max(lonA, lonB),
-      latMin: Math.min(latA, latB),
-      latMax: Math.max(latA, latB),
-      valid: true
-    };
-
-    return this.fitToAspect(raw, opts.targetAspect, opts.pad);
-  },
-
-  combineExtents(extents, opts = {}) {
-    const validExts = (extents || []).filter(e => e && e.valid !== false);
-    if (!validExts.length) return this.fitToAspect(this.getDefault(), opts.targetAspect, opts.pad);
-
-    const raw = {
-      lonMin: Math.min(...validExts.map(e => e.lonMin)),
-      lonMax: Math.max(...validExts.map(e => e.lonMax)),
-      latMin: Math.min(...validExts.map(e => e.latMin)),
-      latMax: Math.max(...validExts.map(e => e.latMax)),
-      valid: true
-    };
-
-    return this.fitToAspect(raw, opts.targetAspect, opts.pad);
-  },
-
-  fitToAspect(ext, targetAspect = 800 / 480, pad = 0.08) {
-    if (!ext) ext = this.getDefault();
-    let lonMin = ext.lonMin - pad;
-    let lonMax = ext.lonMax + pad;
-    let latMin = ext.latMin - pad;
-    let latMax = ext.latMax + pad;
-
-    let lonSpan = lonMax - lonMin;
-    let latSpan = latMax - latMin;
-
-    if (targetAspect && targetAspect > 0 && latSpan > 0) {
-      const curAspect = lonSpan / latSpan;
-      if (curAspect < targetAspect) {
-        const extra = (latSpan * targetAspect - lonSpan) / 2;
-        lonMin -= extra;
-        lonMax += extra;
-      } else if (curAspect > targetAspect) {
-        const extra = (lonSpan / targetAspect - latSpan) / 2;
-        latMin -= extra;
-        latMax += extra;
-      }
-    }
-
-    lonSpan = lonMax - lonMin;
-    latSpan = latMax - latMin;
-
-    return {
-      lonMin: Math.round(lonMin * 10000) / 10000,
-      lonMax: Math.round(lonMax * 10000) / 10000,
-      latMin: Math.round(latMin * 10000) / 10000,
-      latMax: Math.round(latMax * 10000) / 10000,
-      lonSpan: Math.round(lonSpan * 10000) / 10000,
-      latSpan: Math.round(latSpan * 10000) / 10000,
-      valid: ext.valid !== false
-    };
-  },
-
-  getAxisTicks(min, max, count = 5) {
-    const span = max - min;
-    const rough = span / count;
-    let step = 1;
-    if (rough < 0.75) step = 0.5;
-    else if (rough > 1.5) step = 2;
-    const ticks = [];
-    const start = Math.ceil(min / step) * step;
-    for (let v = start; v <= max + 1e-5; v += step) {
-      ticks.push(Math.round(v * 10) / 10);
-    }
-    return ticks;
-  }
-};
-if (typeof window !== 'undefined') window.SpatialExtent = SpatialExtent;
+const MAPG = { ML: 46, MT: 8, MR: 10, MB: 28, W: 800, H: 450, SC: 2 };
+const LON_MIN = 118.0, LON_MAX = 126.0, LAT_MIN = -12.0, LAT_MAX = -7.5;
+const LON_SPAN = LON_MAX - LON_MIN, LAT_SPAN = LAT_MAX - LAT_MIN;
+const LABELS = [['Sumba', 120.0, -9.75], ['Flores', 121.6, -8.55], ['Timor', 125.0, -9.7], ['Laut Sawu', 122.0, -9.95], ['Laut Flores', 120.4, -7.65]];
 
 function gridAt(grid, lat, lon) {
   if (!grid) return { r: 0, c: 0, v: null };
@@ -411,10 +292,6 @@ function drawMap(canvas, grid, def, opts = {}) {
   ctx.setTransform(SC, 0, 0, SC, 0, 0);
   ctx.fillStyle = '#EAF1F5'; ctx.fillRect(0, 0, TW, TH);
 
-  // Penentuan batas spasial dinamis (dynamic extent)
-  const ext = opts.extent || SpatialExtent.getGridExtent(grid, { targetAspect: W / H, pad: opts.pad ?? 0.08, def });
-  const lonSpan = ext.lonSpan, latSpan = ext.latSpan;
-
   const off = document.createElement('canvas'); off.width = W; off.height = H;
   const octx = off.getContext('2d');
   if (octx && octx.createImageData && grid) {
@@ -424,9 +301,9 @@ function drawMap(canvas, grid, def, opts = {}) {
     const maxVal = (def && def.max != null) ? def.max : 1;
     const lo = lg ? Math.log(Math.max(1e-6, minVal)) : minVal, hi = lg ? Math.log(Math.max(1e-6, maxVal)) : maxVal, span = hi - lo || 1;
     for (let y = 0; y < H; y++) {
-      const lat = ext.latMax - (y + .5) / H * latSpan, gy = (lat - LAT0) / STEP, j0 = Math.floor(gy), fy = gy - j0;
+      const lat = LAT_MAX - (y + .5) / H * LAT_SPAN, gy = (lat - LAT0) / STEP, j0 = Math.floor(gy), fy = gy - j0;
       for (let x = 0; x < W; x++) {
-        const lon = ext.lonMin + (x + .5) / W * lonSpan, gx = (lon - LON0) / STEP, i0 = Math.floor(gx), fx = gx - i0, p = (y * W + x) * 4;
+        const lon = LON_MIN + (x + .5) / W * LON_SPAN, gx = (lon - LON0) / STEP, i0 = Math.floor(gx), fx = gx - i0, p = (y * W + x) * 4;
         if (gy < -0.5 || gy > NR - 0.5 || gx < -0.5 || gx > NC - 0.5) { px[p + 3] = 0; continue; }
         const nr0 = Math.min(NR - 1, Math.max(0, Math.round(gy))), nc0 = Math.min(NC - 1, Math.max(0, Math.round(gx)));
         if (def && def.neutral && def.neutral[nr0] && def.neutral[nr0][nc0]) { px[p] = 241; px[p + 1] = 238; px[p + 2] = 226; px[p + 3] = 255; continue; }
@@ -454,16 +331,13 @@ function drawMap(canvas, grid, def, opts = {}) {
     ctx.imageSmoothingEnabled = true; ctx.drawImage(off, ML, MT, W, H);
   }
 
-  const X = lon => ML + (lon - ext.lonMin) / lonSpan * W;
-  const Y = lat => MT + (ext.latMax - lat) / latSpan * H;
+  const X = lon => ML + (lon - LON_MIN) / LON_SPAN * W;
+  const Y = lat => MT + (LAT_MAX - lat) / LAT_SPAN * H;
 
   ctx.save(); ctx.beginPath(); ctx.rect(ML, MT, W, H); ctx.clip();
   ctx.strokeStyle = 'rgba(255,255,255,.28)'; ctx.lineWidth = .6;
-  const lonTicks = SpatialExtent.getAxisTicks(ext.lonMin, ext.lonMax, 5);
-  const latTicks = SpatialExtent.getAxisTicks(ext.latMin, ext.latMax, 4);
-
-  for (const lo of lonTicks) { ctx.beginPath(); ctx.moveTo(X(lo), MT); ctx.lineTo(X(lo), MT + H); ctx.stroke(); }
-  for (const la of latTicks) { ctx.beginPath(); ctx.moveTo(ML, Y(la)); ctx.lineTo(ML + W, Y(la)); ctx.stroke(); }
+  for (const lo of [118, 120, 122, 124, 126]) { ctx.beginPath(); ctx.moveTo(X(lo), MT); ctx.lineTo(X(lo), MT + H); ctx.stroke(); }
+  for (const la of [-8, -9, -10, -11, -12]) { ctx.beginPath(); ctx.moveTo(ML, Y(la)); ctx.lineTo(ML + W, Y(la)); ctx.stroke(); }
 
   const feats = (S.D.coast && S.D.coast.features) || [];
   ctx.fillStyle = '#E6E6E6'; ctx.strokeStyle = '#444'; ctx.lineWidth = .8; ctx.lineJoin = 'round';
@@ -482,7 +356,6 @@ function drawMap(canvas, grid, def, opts = {}) {
   ctx.fillStyle = '#2B2B2B'; ctx.font = '600 11px system-ui,sans-serif'; ctx.textAlign = 'center';
   ctx.lineJoin = 'round';
   for (const [t, lo, la] of LABELS) {
-    if (lo < ext.lonMin || lo > ext.lonMax || la < ext.latMin || la > ext.latMax) continue;
     const sea = t.startsWith('Laut'); ctx.font = (sea ? 'italic 11px' : '600 11px') + ' system-ui,sans-serif';
     if (sea) { ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(11,37,54,.75)'; ctx.strokeText(t, X(lo), Y(la)); ctx.fillStyle = '#fff'; }
     else { ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(255,255,255,.85)'; ctx.strokeText(t, X(lo), Y(la)); ctx.fillStyle = '#222'; }
@@ -492,23 +365,16 @@ function drawMap(canvas, grid, def, opts = {}) {
 
   ctx.strokeStyle = '#8FA1AE'; ctx.lineWidth = 1; ctx.strokeRect(ML, MT, W, H);
   ctx.fillStyle = '#4A5D6B'; ctx.font = '11px system-ui,sans-serif';
-  ctx.textAlign = 'center';
-  for (const lo of lonTicks) ctx.fillText(lo + '°BT', X(lo), MT + H + 17);
-  ctx.textAlign = 'right';
-  for (const la of latTicks) ctx.fillText(Math.abs(la) + '°LS', ML - 5, Y(la) + 4);
+  ctx.textAlign = 'center'; for (const lo of [118, 120, 122, 124, 126]) ctx.fillText(lo + '°BT', X(lo), MT + H + 17);
+  ctx.textAlign = 'right'; for (const la of [-8, -9, -10, -11, -12]) ctx.fillText(-la + '°LS', ML - 5, Y(la) + 4);
 
-  canvas._grid = grid; canvas._def = def; canvas._fmt = opts.fmt; canvas._extent = ext;
+  canvas._grid = grid; canvas._def = def; canvas._fmt = opts.fmt;
   if (!canvas._wired) {
     canvas._wired = true;
     canvas.addEventListener('click', e => {
       const b = canvas.getBoundingClientRect(), sx = TW / b.width, mx = (e.clientX - b.left) * sx, my = (e.clientY - b.top) * sx;
-      const curExt = canvas._extent || ext;
-      const curLonSpan = curExt.lonSpan || (curExt.lonMax - curExt.lonMin);
-      const curLatSpan = curExt.latSpan || (curExt.latMax - curExt.latMin);
-      const lon = curExt.lonMin + (mx - ML) / W * curLonSpan;
-      const lat = curExt.latMax - (my - MT) / H * curLatSpan;
-      const out = canvas.parentElement.parentElement.querySelector('.inspect');
-      if (!out || lon < curExt.lonMin || lon > curExt.lonMax || lat < curExt.latMin || lat > curExt.latMax) return;
+      const lon = LON_MIN + (mx - ML) / W * LON_SPAN, lat = LAT_MAX - (my - MT) / H * LAT_SPAN, out = canvas.parentElement.parentElement.querySelector('.inspect');
+      if (!out || lon < LON_MIN || lon > LON_MAX || lat < LAT_MIN || lat > LAT_MAX) return;
       const { r, c, v } = gridAt(canvas._grid, lat, lon), u = (canvas._def && canvas._def.unit) || '';
       const sub = typeof detectSubRegion === 'function' ? detectSubRegion(lat, lon) : '';
       out.textContent = `Sel ${fmt(Math.abs(LAT0 + r * STEP), 3)}°LS, ${fmt(LON0 + c * STEP, 3)}°BT${sub ? ' · ' + sub : ''}: ` + (v == null ? (S.landCell && S.landCell[r] && S.landCell[r][c] ? 'daratan / tanpa data laut' : 'tanpa data (tertutup awan, tidak diisi nol)') : `${fmt(v, canvas._def ? canvas._def.dec ?? 3 : 3)} ${u}`);
@@ -706,18 +572,12 @@ const NEUTRAL_NOTE = 'Krem = sel yang tidak punya hari MHW (di atas P90) pada pe
 async function paintEventMaps(ev, idA, idB, subA, subB) {
   const r = await eventMaps(ev), per = frange(ev.start_date, ev.end_date);
   if (r.mode === 'pack') {
-    const extA = SpatialExtent.getGridExtent(r.mhw, { def: DEF.mhw(r.mhw) });
-    const extB = SpatialExtent.getGridExtent(r.chl || r.chlMean, { def: r.chl ? DEF.chlAnom(r.chl) : DEF.chl(r.chlMean) });
-    const sharedExt = SpatialExtent.combineExtents([extA, extB]);
-    showMap(idA, r.mhw, DEF.mhw(r.mhw), { msg: mhwMsg(r), extent: sharedExt });
-    if (r.chl) { showMap(idB, r.chl, { ...DEF.chlAnom(r.chl), neutral: r.neutral, neutralNote: NEUTRAL_NOTE }, { extent: sharedExt }); $(subB).textContent = `anomali pada sel-hari MHW · ${per}`; }
-    else { showMap(idB, r.chlMean, DEF.chl(r.chlMean), { msg: 'Chlorophyll a tidak tersedia pada sel-hari MHW periode ini (awan/tanpa data satelit).', extent: sharedExt }); $(subB).textContent = per; }
+    showMap(idA, r.mhw, DEF.mhw(r.mhw), { msg: mhwMsg(r) });
+    if (r.chl) { showMap(idB, r.chl, { ...DEF.chlAnom(r.chl), neutral: r.neutral, neutralNote: NEUTRAL_NOTE }); $(subB).textContent = `anomali pada sel-hari MHW · ${per}`; }
+    else { showMap(idB, r.chlMean, DEF.chl(r.chlMean), { msg: 'Chlorophyll a tidak tersedia pada sel-hari MHW periode ini (awan/tanpa data satelit).' }); $(subB).textContent = per; }
     $(subA).textContent = `intensitas maks. per sel (di atas P90) · ${per}`;
   } else if (r.mode === 'sample') {
-    const extA = SpatialExtent.getGridExtent(r.mhw, { def: DEF.sstAnom(r.mhw) });
-    const extB = SpatialExtent.getGridExtent(r.chl, { def: DEF.chlAnom(r.chl) });
-    const sharedExt = SpatialExtent.combineExtents([extA, extB]);
-    showMap(idA, r.mhw, DEF.sstAnom(r.mhw), { extent: sharedExt }); showMap(idB, r.chl, DEF.chlAnom(r.chl), { extent: sharedExt });
+    showMap(idA, r.mhw, DEF.sstAnom(r.mhw)); showMap(idB, r.chl, DEF.chlAnom(r.chl));
     $(subA).textContent = `hari contoh ${fdate(r.date)} · anomali vs klimatologi bulanan`; $(subB).textContent = `hari contoh ${fdate(r.date)} · anomali vs klimatologi bulanan`;
   } else {
     showMap(idA, null, null, { msg: NOPACK_MSG }); showMap(idB, null, null, { msg: NOPACK_MSG });
@@ -839,11 +699,8 @@ P.sebaran = {
       $('#s-sst-kv').innerHTML = $('#s-chl-kv').innerHTML = '<div class="note">Tidak ada grid untuk ditampilkan.</div>';
     } else {
       const cvAvail = win.some(x => x.chla != null);
-      const extA = SpatialExtent.getGridExtent(g.sst, { def: DEF.sst(g.sst) });
-      const extB = SpatialExtent.getGridExtent(g.chl, { def: DEF.chl(g.chl) });
-      const sharedExt = SpatialExtent.combineExtents([extA, extB]);
-      showMap('s-sst', g.sst, DEF.sst(g.sst, S.pack ? null : null), { extent: sharedExt });
-      showMap('s-chl', g.chl, DEF.chl(g.chl), { msg: cvAvail ? 'Seluruh sel tertutup awan / tanpa data pada periode ini.' : 'Chlorophyll a tidak tersedia pada periode ini (data satelit belum ada atau tertutup awan).', extent: sharedExt });
+      showMap('s-sst', g.sst, DEF.sst(g.sst, S.pack ? null : null));
+      showMap('s-chl', g.chl, DEF.chl(g.chl), { msg: cvAvail ? 'Seluruh sel tertutup awan / tanpa data pada periode ini.' : 'Chlorophyll a tidak tersedia pada periode ini (data satelit belum ada atau tertutup awan).' });
       ssub.textContent = csub.textContent = note;
       const sv = vstats(gridVals(g.sst)), cv = vstats(gridVals(g.chl));
       $('#s-sst-kv').innerHTML = statKV(sv, '°C', 2); $('#s-chl-kv').innerHTML = statKV(cv, 'mg/m³', 3);
@@ -1046,11 +903,8 @@ P.dampak = {
     chart('d-chart', { data: { labels, datasets: ds }, options: { scales: { y: { title: { display: true, text: 'mg/m³' } }, y2: { display: false, min: 0, max: 1 }, x: { title: { display: true, text: 'hari sejak onset' }, ticks: { maxTicksLimit: 10 } } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 14, font: { size: 11 } } } } } });
     if (A && A.grid) {
       const g = A.grid[st.gs], [lo, hi] = rangeOf(g.pct, false, true);
-      const extA = SpatialExtent.getGridExtent(g.pct);
-      const extB = SpatialExtent.getGridExtent(g.dir);
-      const sharedExt = SpatialExtent.combineExtents([extA, extB]);
-      showMap('d-pct', g.pct, { cmap: 'brbg', min: lo, max: hi, unit: '%', dec: 1 }, { msg: 'Tidak ada sel yang memenuhi syarat uji.', extent: sharedExt });
-      showMap('d-dir', g.dir, { cmap: 'brbg', min: -1, max: 1, nearest: true, labelLo: 'Menurun signifikan', labelHi: 'Naik signifikan · putih = tidak signifikan', dec: 0 }, { msg: 'Tidak ada sel yang memenuhi syarat uji.', extent: sharedExt });
+      showMap('d-pct', g.pct, { cmap: 'brbg', min: lo, max: hi, unit: '%', dec: 1 }, { msg: 'Tidak ada sel yang memenuhi syarat uji.' });
+      showMap('d-dir', g.dir, { cmap: 'brbg', min: -1, max: 1, nearest: true, labelLo: 'Menurun signifikan', labelHi: 'Naik signifikan · putih = tidak signifikan', dec: 0 }, { msg: 'Tidak ada sel yang memenuhi syarat uji.' });
       const c = $('#d-dir'); if (c) c._fmtDir = true;
     }
     if (A && A.pooled) {
@@ -1091,10 +945,8 @@ P.banding = {
       const mix = (what) => os.length === 1 ? aggGrid(os[0], what) : toGrid(0, i => mean(os.map(o => aggGrid(o, what)[Math.floor(i / NC)][i % NC])));
       const C = mix('sstAnomN'), D = mix('chlAnomN'), neuC = toGrid(0, i => !isLand(i) && C[Math.floor(i / NC)][i % NC] == null);
       const dS = DEF.sstAnom(A.concat(C)), dC = DEF.chlAnom(B.concat(D)), nn = { neutral: neu, neutralNote: NEUTRAL_NOTE }, nc = { neutral: neuC, neutralNote: 'Krem = sel yang mengalami MHW lokal pada periode pembanding (dikecualikan).' };
-      const exts = [A, B, C, D].map(gr => gr ? SpatialExtent.getGridExtent(gr) : null).filter(Boolean);
-      const sharedExt = SpatialExtent.combineExtents(exts);
-      showMap('c-a', A, { ...dS, ...nn }, { extent: sharedExt }); showMap('c-b', B, { ...dC, ...nn }, { msg: 'Chlorophyll a tidak tersedia pada sel-hari MHW (awan/tanpa data).', extent: sharedExt });
-      showMap('c-c', C, { ...dS, ...nc }, { extent: sharedExt }); showMap('c-d', D, { ...dC, ...nc }, { msg: 'Chlorophyll a tidak tersedia (awan/tanpa data).', extent: sharedExt });
+      showMap('c-a', A, { ...dS, ...nn }); showMap('c-b', B, { ...dC, ...nn }, { msg: 'Chlorophyll a tidak tersedia pada sel-hari MHW (awan/tanpa data).' });
+      showMap('c-c', C, { ...dS, ...nc }); showMap('c-d', D, { ...dC, ...nc }, { msg: 'Chlorophyll a tidak tersedia (awan/tanpa data).' });
       $('#c-a-sub').textContent = $('#c-b-sub').textContent = per; $('#c-c-sub').textContent = $('#c-d-sub').textContent = labC;
       const pm = pooled(oe, 'M'), pns = os.map(o => pooled(o, 'N')), n = pns.reduce((s, p) => s + p.n, 0), pn = { chl: n ? pns.reduce((s, p) => s + (p.chl || 0) * p.n, 0) / n : null, sstAnom: mean(pns.map(p => p.sstAnom)), anom: mean(pns.map(p => p.anom)), n };
       const d = pc(pm.chl, pn.chl);
@@ -1165,12 +1017,10 @@ function varPage(kind) {
       const st = dflt(stOf(key)), sl = selOf(st);
       let g = sl.g;
       if (S.pack && (st.stat !== 'Rata-rata' || !g)) g = await statGrid(isS ? 'sst' : 'chla', sl.a, sl.b, st.stat, sl.f);
-      const grids = SEAS.map(s => (S.D.grids && S.D.grids[gk + '_seasonal'] ? S.D.grids[gk + '_seasonal'][s.k] : null) || []);
-      const allGrids = [g, ...grids].filter(gr => gr && gridVals(gr).length);
-      const sharedExt = SpatialExtent.combineExtents(allGrids.map(gr => SpatialExtent.getGridExtent(gr, { def: def(gr) })));
-      showMap('v-main', g, def(g), { msg: 'Tidak ada data.', extent: sharedExt }); $('#v-main-sub').textContent = sl.lbl;
+      showMap('v-main', g, def(g), { msg: 'Tidak ada data.' }); $('#v-main-sub').textContent = sl.lbl;
       const v = vstats(gridVals(g)); $('#v-skv').innerHTML = statKV(v, unit, dec);
-      const shared = def(grids.flat()); SEAS.forEach((s, i) => showMap(`v-${s.k}`, grids[i], shared, { extent: sharedExt }));
+      const grids = SEAS.map(s => (S.D.grids && S.D.grids[gk + '_seasonal'] ? S.D.grids[gk + '_seasonal'][s.k] : null) || []);
+      const shared = def(grids.flat()); SEAS.forEach((s, i) => showMap(`v-${s.k}`, grids[i], shared));
       const mc = S.D.monthly, ds = [];
       if (isS) ds.push({ type: 'bar', label: 'Rata-rata', data: mc.map(x => x.sst_mean), backgroundColor: COL.orange }, { type: 'line', label: 'Minimum', data: mc.map(x => x.sst_min), borderColor: '#3B6FB6', pointRadius: 2, borderWidth: 1.5 }, { type: 'line', label: 'Maksimum', data: mc.map(x => x.sst_max), borderColor: COL.red, pointRadius: 2, borderWidth: 1.5 });
       else ds.push({ type: 'bar', label: 'Rata-rata', data: mc.map(x => x.chla_mean), backgroundColor: COL.green });
