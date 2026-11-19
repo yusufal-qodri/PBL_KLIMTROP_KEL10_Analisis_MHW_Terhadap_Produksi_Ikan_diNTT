@@ -290,6 +290,10 @@ function drawMap(canvas, grid, def, opts = {}) {
   ctx.setTransform(SC, 0, 0, SC, 0, 0);
   ctx.fillStyle = '#EAF1F5'; ctx.fillRect(0, 0, TW, TH);
 
+  const X = lon => ML + (lon - 117.5) / 10 * W;
+  const Y = lat => MT + (-7 - lat) / 6 * H;
+
+  // --- (1) Raster layer ---
   const off = document.createElement('canvas'); off.width = W; off.height = H;
   const octx = off.getContext('2d');
   if (octx && octx.createImageData && grid) {
@@ -307,7 +311,7 @@ function drawMap(canvas, grid, def, opts = {}) {
         if (def && def.neutral && def.neutral[nr0] && def.neutral[nr0][nc0]) { px[p] = 241; px[p + 1] = 238; px[p + 2] = 226; px[p + 3] = 255; continue; }
         if (def && def.nearest) {
           const v0 = grid[nr0] ? grid[nr0][nc0] : null;
-          if (v0 == null || Number.isNaN(v0)) { if (S.landCell && S.landCell[nr0] && !S.landCell[nr0][nc0]) { const hv = ((x + y) % 12) < 3; px[p] = hv ? 174 : 227; px[p + 1] = hv ? 183 : 231; px[p + 2] = hv ? 190 : 234; px[p + 3] = 255; } else px[p + 3] = 0; continue; }
+          if (v0 == null || Number.isNaN(v0)) { px[p + 3] = 0; continue; }
           const t0 = Math.min(1, Math.max(0, (v0 - lo) / span)), k0 = Math.round(t0 * 255) * 3; px[p] = L[k0]; px[p + 1] = L[k0 + 1]; px[p + 2] = L[k0 + 2]; px[p + 3] = 255; continue;
         }
         let sw = 0, sv = 0;
@@ -316,9 +320,6 @@ function drawMap(canvas, grid, def, opts = {}) {
           if (v == null || Number.isNaN(v)) continue;
           const w = (di ? fx : 1 - fx) * (dj ? fy : 1 - fy); sw += w; sv += w * v;
         }
-        const nr = Math.min(NR - 1, Math.max(0, Math.round(gy))), nc = Math.min(NC - 1, Math.max(0, Math.round(gx)));
-        const nearNull = !grid[nr] || grid[nr][nc] == null || Number.isNaN(grid[nr][nc]);
-        if (nearNull && S.landCell && S.landCell[nr] && !S.landCell[nr][nc]) { const hv = ((x + y) % 12) < 3; px[p] = hv ? 174 : 227; px[p + 1] = hv ? 183 : 231; px[p + 2] = hv ? 190 : 234; px[p + 3] = 255; continue; }
         if (sw < 1e-6) { px[p + 3] = 0; continue; }
         let v = sv / sw; if (lg) v = Math.log(Math.max(v, def.min));
         const t = Math.min(1, Math.max(0, (v - lo) / span)), k = Math.round(t * 255) * 3;
@@ -329,28 +330,70 @@ function drawMap(canvas, grid, def, opts = {}) {
     ctx.imageSmoothingEnabled = true; ctx.drawImage(off, ML, MT, W, H);
   }
 
-  const X = lon => ML + (lon - 117.5) / 10 * W;
-  const Y = lat => MT + (-7 - lat) / 6 * H;
+  // --- (2) Cloud/ocean no-data hatch (grey stripes) for ocean pixels with no data ---
+  // Rendered as subtle grey over transparent raster pixels (awan)
+  if (grid && S.landCell) {
+    const nodata = document.createElement('canvas'); nodata.width = W; nodata.height = H;
+    const nctx = nodata.getContext('2d');
+    if (nctx && nctx.createImageData) {
+      const nim = nctx.createImageData(W, H), np = nim.data;
+      for (let y = 0; y < H; y++) {
+        const lat = -7 - (y + .5) / H * 6, gy = (lat - LAT0) / STEP;
+        for (let x = 0; x < W; x++) {
+          const lon = 117.5 + (x + .5) / W * 10, gx = (lon - LON0) / STEP, p = (y * W + x) * 4;
+          if (gy < -0.5 || gy > NR - 0.5 || gx < -0.5 || gx > NC - 0.5) continue;
+          const nr0 = Math.min(NR - 1, Math.max(0, Math.round(gy))), nc0 = Math.min(NC - 1, Math.max(0, Math.round(gx)));
+          if (S.landCell[nr0] && S.landCell[nr0][nc0]) continue; // land — skip; GeoJSON covers it
+          const row = grid[nr0]; const val = row ? row[nc0] : null;
+          if (val == null || Number.isNaN(val)) {
+            const hv = ((x + y) % 12) < 3;
+            np[p] = hv ? 174 : 210; np[p + 1] = hv ? 183 : 215; np[p + 2] = hv ? 190 : 220; np[p + 3] = 220;
+          }
+        }
+      }
+      nctx.putImageData(nim, 0, 0);
+      ctx.save(); ctx.beginPath(); ctx.rect(ML, MT, W, H); ctx.clip();
+      ctx.drawImage(nodata, ML, MT, W, H);
+      ctx.restore();
+    }
+  }
 
   ctx.save(); ctx.beginPath(); ctx.rect(ML, MT, W, H); ctx.clip();
+  // --- (3) Grid lines ---
   ctx.strokeStyle = 'rgba(255,255,255,.28)'; ctx.lineWidth = .6;
   for (const lo of [118, 120, 122, 124, 126]) { ctx.beginPath(); ctx.moveTo(X(lo), MT); ctx.lineTo(X(lo), MT + H); ctx.stroke(); }
   for (const la of [-8, -9, -10, -11, -12]) { ctx.beginPath(); ctx.moveTo(ML, Y(la)); ctx.lineTo(ML + W, Y(la)); ctx.stroke(); }
 
+  // --- (4) Land polygons from GeoJSON (smooth, drawn OVER raster) ---
   const feats = (S.D.coast && S.D.coast.features) || [];
-  ctx.fillStyle = '#E6E6E6'; ctx.strokeStyle = '#444'; ctx.lineWidth = .8; ctx.lineJoin = 'round';
+  ctx.fillStyle = '#E6E6E6'; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  // First fill all land polygons (no stroke) to cleanly mask raster
   for (const f of feats) {
     const g = f.geometry, polys = g.type === 'MultiPolygon' ? g.coordinates : [g.coordinates];
+    ctx.beginPath();
     for (const poly of polys) {
-      ctx.beginPath();
       for (const ring of poly) {
         ring.forEach(([lo, la], i) => i ? ctx.lineTo(X(lo), Y(la)) : ctx.moveTo(X(lo), Y(la)));
+        ctx.closePath();
       }
-      ctx.closePath();
     }
-    ctx.fill('evenodd'); ctx.stroke();
+    ctx.fill('evenodd');
+  }
+  // Then stroke all coastlines on top for clean edge
+  ctx.strokeStyle = '#555'; ctx.lineWidth = .85;
+  for (const f of feats) {
+    const g = f.geometry, polys = g.type === 'MultiPolygon' ? g.coordinates : [g.coordinates];
+    ctx.beginPath();
+    for (const poly of polys) {
+      for (const ring of poly) {
+        ring.forEach(([lo, la], i) => i ? ctx.lineTo(X(lo), Y(la)) : ctx.moveTo(X(lo), Y(la)));
+        ctx.closePath();
+      }
+    }
+    ctx.stroke();
   }
 
+  // --- (5) Geographic labels ---
   ctx.fillStyle = '#2B2B2B'; ctx.font = '600 11px system-ui,sans-serif'; ctx.textAlign = 'center';
   ctx.lineJoin = 'round';
   for (const [t, lo, la] of LABELS) {
