@@ -33,3 +33,9 @@ data/chla_ntt_daily/
 data/data_sst_ntt/
 data/interim/
 
+# Large binary grid packs (too large for GitHub — total ~1.2 GB)
+dashboard/data/grids/
+
+# Output figures (large PNGs causing git index errors)
+outputs/figures/
+

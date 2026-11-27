@@ -48,11 +48,11 @@ for d in [INTERIM_DIR, PROCESSED_DIR, FIGURES_DIR, TABLES_DIR, REPORTS_DIR, LOGS
 # =============================================================================
 # 2. PARAMETER GEOGRAFIS & WAKTU
 # =============================================================================
-# Bounding box tentatif perairan NTT (dapat dikonfirmasi kembali)
-LON_MIN = 117.5
-LON_MAX = 127.5
-LAT_MIN = -13.0
-LAT_MAX = -7.0
+# Bounding box perairan NTT
+LON_MIN = 118.0
+LON_MAX = 126.0
+LAT_MIN = -12.0
+LAT_MAX = -7.5
 
 # Rentang tahun target
 SST_START_YEAR = 2000

@@ -1,6 +1,6 @@
 periode,valid_min_pct,valid_median_pct,valid_maks_pct,pct_piksel_valid_di_bawah_20
-Tahunan,0.0,42.1,57.8,4.1
-DJF,0.0,20.3,32.9,45.2
-MAM,0.0,41.4,59.0,4.4
-JJA,0.0,58.3,81.7,3.3
-SON,0.0,48.6,67.7,3.5
+Tahunan,0.0,43.3,57.8,5.6
+DJF,0.0,21.2,32.9,36.1
+MAM,0.0,42.3,59.0,5.9
+JJA,0.0,59.8,81.7,4.4
+SON,0.0,50.2,67.7,4.8

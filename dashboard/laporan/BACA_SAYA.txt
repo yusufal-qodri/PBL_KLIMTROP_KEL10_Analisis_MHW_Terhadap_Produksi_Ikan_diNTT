@@ -1,0 +1,5 @@
+Letakkan PDF laporan kelompok di folder ini dengan nama:
+
+    laporan.pdf
+
+PDF ini otomatis tampil penuh di menu "Sintesis Hasil".

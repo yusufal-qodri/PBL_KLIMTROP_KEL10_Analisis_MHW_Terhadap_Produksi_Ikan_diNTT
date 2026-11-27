@@ -5,8 +5,8 @@ Deteksi MHW,Total Kejadian Regional (2000–2020),33 kejadian,"Kriteria Hobday e
 Deteksi MHW,Total Hari MHW Regional,949 hari,Mencakup ~12.4% dari rentang 21 tahun
 Deteksi MHW,Durasi Rata-rata per Kejadian,28.2 hari,Durasi terpanjang: 300 hari
 Deteksi MHW,Intensitas Maksimum Tertinggi (imax),3.96 °C,Kejadian regional #24 (2016-02-07); nilai maksimum sel selama kejadian
-Chlorophyll-a,Median Konsentrasi Global,0.207 mg/m³,Distribusi log-normal; nilai rata-rata aritmatika: 0.25–0.35 mg/m³
-Chlorophyll-a,Puncak Musiman Upwelling (JJA),0.38 – 0.41 mg/m³ (Regional),Mencapai > 1.5 mg/m³ di koridor Selat Sumba dan Laut Sawu
+Chlorophyll-a,Median Konsentrasi Global,0.223 mg/m³,Distribusi log-normal; nilai rata-rata aritmatika: 0.25–0.35 mg/m³
+Chlorophyll-a,Puncak Musiman Upwelling (JJA),0.38 – 0.43 mg/m³ (Regional),Mencapai > 1.5 mg/m³ di koridor Selat Sumba dan Laut Sawu
 Respon Gabungan,Perbedaan Median Chl-a saat MHW,"Anomali -0.105 mg/m³; 100% sel turun (98% signifikan, FDR q<0.05)","Per grid: 3,274,395 sel-hari MHW (di atas P90) vs 38,669,179 sel-hari non-MHW; hari jeda dikeluarkan"
 Deteksi MHW,Hari MHW Regional vs Hari Jeda,925 vs 4 hari,Hari jeda (cakupan <15%) bagian kejadian tetapi bukan hari MHW
 Anomali SST per Grid,Anomali Rata-rata Sel MHW (rata-rata kejadian),+0.94 °C,"Rata-rata SST periode kejadian dikurangi rata-rata SST 21 tahun pada tanggal yang sama, tiap grid"
