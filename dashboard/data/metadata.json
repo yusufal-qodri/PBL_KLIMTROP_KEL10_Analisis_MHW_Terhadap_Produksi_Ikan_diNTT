@@ -4,10 +4,10 @@
   "description": "Dashboard Interaktif SST, Marine Heatwave, Chlorophyll-a, dan Produksi Tangkapan Ikan di Perairan Nusa Tenggara Timur",
   "region": {
     "name": "Perairan Nusa Tenggara Timur",
-    "lat_min": -13.0,
-    "lat_max": -7.0,
-    "lon_min": 117.5,
-    "lon_max": 127.5,
+    "lat_min": -12.0,
+    "lat_max": -7.5,
+    "lon_min": 118.0,
+    "lon_max": 126.0,
     "lat_coords": [
       -11.975,
       -11.925,

@@ -1,0 +1,5 @@
+Letakkan diagram alir (format PNG) di folder ini dengan nama:
+
+    diagram_alir.png
+
+Gambar otomatis tampil di menu "Metodologi" (bagian paling atas) dan bisa diklik untuk diperbesar.

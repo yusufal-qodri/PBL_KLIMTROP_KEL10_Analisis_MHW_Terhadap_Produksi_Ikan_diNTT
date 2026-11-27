@@ -78,3 +78,4 @@ ul.plain{margin:0;padding-left:18px;font-size:13px;line-height:1.7}.ok{color:#0A
 
 .pdfwrap{width:100%}
 .pdfframe{display:block;width:100%;height:calc(100vh - 170px);min-height:600px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.flowimg{display:block;max-width:100%;height:auto;margin:0 auto;cursor:zoom-in;border-radius:8px}
