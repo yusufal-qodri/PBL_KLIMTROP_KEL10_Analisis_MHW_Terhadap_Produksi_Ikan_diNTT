@@ -3,13 +3,13 @@
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const S = { D: {}, pack: null, page: 'beranda', st: {}, charts: [], cache: {} };
-const MON = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
-const MONF = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+const MONF = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 const SEAS = [
-  { k: 'DJF', n: 'Monsun Barat', per: 'Des–Feb', m: [12,1,2] },
-  { k: 'MAM', n: 'Peralihan I', per: 'Mar–Mei', m: [3,4,5] },
-  { k: 'JJA', n: 'Monsun Timur / Upwelling', per: 'Jun–Agu', m: [6,7,8] },
-  { k: 'SON', n: 'Peralihan II', per: 'Sep–Nov', m: [9,10,11] }
+  { k: 'DJF', n: 'Monsun Barat', per: 'Des–Feb', m: [12, 1, 2] },
+  { k: 'MAM', n: 'Peralihan I', per: 'Mar–Mei', m: [3, 4, 5] },
+  { k: 'JJA', n: 'Monsun Timur / Upwelling', per: 'Jun–Agu', m: [6, 7, 8] },
+  { k: 'SON', n: 'Peralihan II', per: 'Sep–Nov', m: [9, 10, 11] }
 ];
 const START = '2000-01-01', END = '2020-12-31';
 const fmt = (x, d = 2) => (x == null || Number.isNaN(x)) ? '—' : Number(x).toLocaleString('id-ID', { minimumFractionDigits: d, maximumFractionDigits: d });
@@ -43,10 +43,10 @@ const stOf = page => { const k = ST_ALIAS[page] || page; return (S.st[k] = S.st[
 
 /* ---------- warna ---------- */
 const CMAPS = {
-  viridis: ['#440154','#482878','#3E4A89','#31688E','#26828E','#1F9E89','#35B779','#6DCD59','#B4DE2C','#FDE725'],
-  ylorrd: ['#FFFFCC','#FFEDA0','#FED976','#FEB24C','#FD8D3C','#FC4E2A','#E31A1C','#BD0026','#800026'],
-  rdylbu: ['#313695','#4575B4','#74ADD1','#ABD9E9','#E0F3F8','#FFFFBF','#FEE090','#FDAE61','#F46D43','#D73027','#A50026'],
-  brbg: ['#543005','#8C510A','#BF812D','#DFC27D','#F6E8C3','#F5F5F5','#C7EAE5','#80CDC1','#35978F','#01665E','#003C30']
+  viridis: ['#440154', '#482878', '#3E4A89', '#31688E', '#26828E', '#1F9E89', '#35B779', '#6DCD59', '#B4DE2C', '#FDE725'],
+  ylorrd: ['#FFFFCC', '#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026'],
+  rdylbu: ['#313695', '#4575B4', '#74ADD1', '#ABD9E9', '#E0F3F8', '#FFFFBF', '#FEE090', '#FDAE61', '#F46D43', '#D73027', '#A50026'],
+  brbg: ['#543005', '#8C510A', '#BF812D', '#DFC27D', '#F6E8C3', '#F5F5F5', '#C7EAE5', '#80CDC1', '#35978F', '#01665E', '#003C30']
 };
 const LUT = {};
 function lut(name) {
@@ -75,7 +75,7 @@ function legendHTML(def) {
 
 /* ---------- data ---------- */
 async function loadDatasets() {
-  const files = [['meta','metadata'],['annual','annual_summary'],['events','mhw_events'],['evs','mhw_events_spatial'],['doy','climatology_doy'],['monthly','monthly_climatology'],['grids','spatial_grids'],['series','daily_regional_series'],['chl','chla_analysis'],['fish','fisheries_data'],['syn','synthesis_methodology'],['coast','ntt_coastline']];
+  const files = [['meta', 'metadata'], ['annual', 'annual_summary'], ['events', 'mhw_events'], ['evs', 'mhw_events_spatial'], ['doy', 'climatology_doy'], ['monthly', 'monthly_climatology'], ['grids', 'spatial_grids'], ['series', 'daily_regional_series'], ['chl', 'chla_analysis'], ['fish', 'fisheries_data'], ['syn', 'synthesis_methodology'], ['coast', 'ntt_coastline']];
   await Promise.all(files.map(async ([k, f]) => {
     try { const r = await fetch(`data/${f}.${f === 'ntt_coastline' ? 'geojson' : 'json'}`); S.D[k] = JSON.parse((await r.text()).replace(/\bNaN\b/g, 'null')); }
     catch (e) { console.error('Gagal memuat', f, e); }
@@ -175,12 +175,14 @@ async function winAgg(start, end, pad = 0, filter = null) {
      yang sama selama 2000-2020 (klimatologi harian sederhana, sst_daymean_doy.bin). filter(tanggal) opsional: hanya hari terpilih. */
   start = clampDate(start); end = clampDate(end);
   const F = () => new Float64Array(CELLS), U = () => new Uint16Array(CELLS);
-  const o = { sstSum: F(), sstN: U(), anSum: F(), anN: U(), chSum: F(), chN: U(), caSum: F(), caN: U(),
+  const o = {
+    sstSum: F(), sstN: U(), anSum: F(), anN: U(), chSum: F(), chN: U(), caSum: F(), caN: U(),
     strictMax: new Float32Array(CELLS).fill(-1), strictDays: U(), memDays: U(),
     anMSum: F(), anMN: U(), chMSum: F(), chMN: U(), caMSum: F(), caMN: U(),
     anNSum: F(), anNN: U(), chNSum: F(), chNN: U(), caNSum: F(), caNN: U(),
     adSum: F(), adN: U(), adMax: new Float32Array(CELLS).fill(-99), adMSum: F(), adMN: U(), memRun: U(), memMaxRun: U(),
-    days: [], dayAnom: [], dayAnomM: [], dayCells: [], noDaymean: false, sstValid: 0, nDays: 0 };
+    days: [], dayAnom: [], dayAnomM: [], dayCells: [], noDaymean: false, sstValid: 0, nDays: 0
+  };
   const clim = await packFile('clim_doy.bin', Int16Array), base = await packFile('chla_base_doy.bin', Int16Array), thr = await packFile('thresh_doy.bin', Int16Array);
   let dm = null; try { dm = await packFile('sst_daymean_doy.bin', Int16Array); } catch (e) { dm = null; } o.noDaymean = !dm;
   const a0 = clampDate(addDays(start, -pad)), b0 = clampDate(addDays(end, pad)), y0 = +a0.slice(0, 4), y1 = +b0.slice(0, 4), ssc = sc('sst'), csc = sc('chla');
@@ -556,7 +558,7 @@ const NOHATCH_DEFAULT = 'Arsir abu-abu = sel laut tanpa data (tertutup awan atau
 const MAPTXT = {
   /* Beranda */
   'beranda/b-mhw': { click: 'Klik peta untuk membaca intensitas maksimum Marine Heatwaves (°C) pada sel yang dipilih.', hatch: 'Arsir abu-abu = sel laut tanpa data SST pada periode kejadian.', zero: 'Warna paling pucat (0) = sel tidak mengalami Marine Heatwaves selama kejadian ini.' },
-  'beranda/b-chl': { click: 'Klik peta untuk membaca anomali Chlorophyll a (mg/m³) pada sel yang dipilih.', hatch: 'Arsir abu-abu = sel yang mengalami Marine Heatwaves tetapi tidak punya data Chlorophyll a (tertutup awan), tidak diisi nol.', neutral: 'Krem = sel yang tidak punya hari Marine Heatwaves (di atas P90) selama kejadian ini, bukan data yang hilang.' },
+  'beranda/b-chl': { click: 'Klik peta untuk membaca anomali Chlorophyll a (mg/m³) pada sel yang dipilih.', hatch: 'Arsir abu-abu = sel yang mengalami Marine Heatwaves', neutral: '' },
   /* Sebaran Data */
   'sebaran/s-sst': { click: 'Klik peta untuk membaca nilai SST (°C) pada sel yang dipilih.', hatch: 'Arsir abu-abu = sel laut tanpa data SST pada periode yang dipilih.' },
   'sebaran/s-chl': { click: 'Klik peta untuk membaca nilai Chlorophyll a (mg/m³) pada sel yang dipilih.', hatch: 'Arsir abu-abu = piksel tertutup awan atau tanpa data Chlorophyll a pada periode yang dipilih, tidak diganti nol.' },
@@ -567,23 +569,23 @@ const MAPTXT = {
   'mhw-anomali/m-ev': { click: 'Klik peta untuk membaca anomali SST (°C) pada sel yang dipilih.', hatch: 'Arsir abu-abu = sel laut tanpa data SST pada periode kejadian.' },
   'mhw-anomali/m-yr': { click: 'Klik peta untuk membaca anomali SST (°C) pada sel yang dipilih, dihitung dari hari-hari kejadian di tahun itu.', hatch: 'Arsir abu-abu = sel laut tanpa data SST pada hari-hari kejadian di tahun yang dipilih.' },
   /* Peta Kejadian Marine Heatwaves: Durasi kejadian */
-  'mhw-durasi/m-ev': { click: 'Klik peta untuk membaca durasi (hari) pada sel yang dipilih.', hatch: 'Arsir abu-abu = sel laut tanpa data SST pada periode kejadian.', neutral: 'Krem = sel yang tidak mengalami Marine Heatwaves pada kejadian ini, bukan data yang hilang.' },
+  'mhw-durasi/m-ev': { click: 'Klik peta untuk membaca durasi (hari) pada sel yang dipilih.', hatch: 'Arsir abu-abu = sel laut tanpa data SST pada periode kejadian.', neutral: 'Arsir abu-abu = sel yang tidak mengalami Marine Heatwaves pada kejadian ini, bukan data yang hilang.' },
   'mhw-durasi/m-yr': { click: 'Klik peta untuk membaca durasi (hari) pada sel yang dipilih, dipotong di batas tahun.', hatch: 'Arsir abu-abu = sel laut tanpa data SST sepanjang tahun yang dipilih.', neutral: 'Krem = sel yang tidak mengalami Marine Heatwaves sepanjang tahun yang dipilih, bukan data yang hilang.' },
   /* Chlorophyll a vs Marine Heatwaves */
   'dampak/d-mhw': { click: 'Klik peta untuk membaca intensitas maksimum Marine Heatwaves (°C) pada sel yang dipilih.', hatch: 'Arsir abu-abu = sel laut tanpa data SST pada periode kejadian.', zero: 'Warna paling pucat (0) = sel tidak mengalami Marine Heatwaves selama kejadian ini.' },
-  'dampak/d-chl': { click: 'Klik peta untuk membaca anomali Chlorophyll a (mg/m³) pada sel-hari Marine Heatwaves di sel yang dipilih.', hatch: 'Arsir abu-abu = sel yang mengalami Marine Heatwaves tetapi tidak punya data Chlorophyll a (tertutup awan), tidak diisi nol.', neutral: 'Krem = sel yang tidak punya hari Marine Heatwaves (di atas P90) selama kejadian ini, bukan data yang hilang.' },
+  'dampak/d-chl': { click: 'Klik peta untuk membaca anomali Chlorophyll a (mg/m³) pada sel-hari Marine Heatwaves di sel yang dipilih.', hatch: 'Arsir abu-abu = sel yang mengalami Marine Heatwaves.', neutral: '' },
   'dampak/d-pct': { click: 'Klik peta untuk membaca perubahan Chlorophyll a (%) terhadap baseline pada sel yang dipilih.', hatch: 'Arsir abu-abu = sel yang tidak memenuhi syarat uji (kurang dari 10 hari Marine Heatwaves atau 10 hari non-Marine Heatwaves) atau tanpa data Chlorophyll a.' },
   'dampak/d-dir': { click: 'Klik peta untuk membaca arah perubahan pada sel yang dipilih (−1 menurun signifikan, 0 tidak signifikan, 1 naik signifikan).', hatch: 'Arsir abu-abu = sel yang tidak diuji karena data tidak cukup.' },
   /* Marine Heatwaves vs Non-Marine Heatwaves */
-  'banding/c-a': { click: 'Klik peta untuk membaca anomali SST (°C) pada sel-hari Marine Heatwaves di sel yang dipilih.', hatch: 'Arsir abu-abu = sel laut tanpa data SST.', neutral: 'Krem = sel yang tidak punya hari Marine Heatwaves (di atas P90) pada periode kejadian, bukan data yang hilang.' },
-  'banding/c-b': { click: 'Klik peta untuk membaca anomali Chlorophyll a (mg/m³) pada sel-hari Marine Heatwaves di sel yang dipilih.', hatch: 'Arsir abu-abu = sel Marine Heatwaves tanpa data Chlorophyll a (tertutup awan), tidak diisi nol.', neutral: 'Krem = sel yang tidak punya hari Marine Heatwaves (di atas P90) pada periode kejadian, bukan data yang hilang.' },
-  'banding/c-c': { click: 'Klik peta untuk membaca anomali SST (°C) pada periode pembanding di sel yang dipilih.', hatch: 'Arsir abu-abu = sel laut tanpa data SST pada periode pembanding.', neutral: 'Krem = sel yang tetap mengalami Marine Heatwaves lokal pada periode pembanding, sehingga dikecualikan.' },
-  'banding/c-d': { click: 'Klik peta untuk membaca anomali Chlorophyll a (mg/m³) pada periode pembanding di sel yang dipilih.', hatch: 'Arsir abu-abu = sel tanpa data Chlorophyll a (tertutup awan) pada periode pembanding, tidak diisi nol.', neutral: 'Krem = sel yang tetap mengalami Marine Heatwaves lokal pada periode pembanding, sehingga dikecualikan.' },
+  'banding/c-a': { click: 'Klik peta untuk membaca anomali SST (°C) pada sel-hari Marine Heatwaves di sel yang dipilih.', hatch: 'Arsir abu-abu = sel laut tanpa data SST.', neutral: 'Arsir abu-abu = sel yang tidak punya hari Marine Heatwaves (di atas P90) pada periode kejadian, bukan data yang hilang.' },
+  'banding/c-b': { click: 'Klik peta untuk membaca anomali Chlorophyll a (mg/m³) pada sel-hari Marine Heatwaves di sel yang dipilih.', hatch: 'Arsir abu-abu = sel lokal mengalami Marine Heatwaves.', neutral: '' },
+  'banding/c-c': { click: 'Klik peta untuk membaca anomali SST (°C) pada periode pembanding di sel yang dipilih.', hatch: 'Arsir abu-abu = sel laut tanpa data SST pada periode pembanding.', neutral: 'Arsir abu-abu = sel yang tetap mengalami Marine Heatwaves lokal pada periode pembanding, sehingga dikecualikan.' },
+  'banding/c-d': { click: 'Klik peta untuk membaca anomali Chlorophyll a (mg/m³) pada periode pembanding di sel yang dipilih.', hatch: 'Arsir abu-abu = sel lokal mengalami Marine Heatwaves.', neutral: '' },
   /* Marine Heatwaves vs Non-Marine Heatwaves (peta penuh) */
   'banding-penuh/c-a': { click: 'Klik peta untuk membaca anomali SST (°C) pada periode kejadian di sel yang dipilih (rata-rata periode dikurangi rata-rata bulan kalender yang sama, 2000–2020).', hatch: 'Arsir abu-abu = sel laut tanpa data SST pada periode kejadian.' },
   'banding-penuh/c-b': { click: 'Klik peta untuk membaca anomali Chlorophyll a (mg/m³) pada periode kejadian di sel yang dipilih (rata-rata periode dikurangi rata-rata bulan kalender yang sama, 2000–2020).', hatch: 'Arsir abu-abu = sel tanpa data Chlorophyll a (tertutup awan) pada periode kejadian, tidak diisi nol.' },
   'banding-penuh/c-c': { click: 'Klik peta untuk membaca anomali SST (°C) pada periode pembanding di sel yang dipilih (rata-rata periode dikurangi rata-rata bulan kalender yang sama, 2000–2020).', hatch: 'Arsir abu-abu = sel laut tanpa data SST pada periode pembanding.' },
-  'banding-penuh/c-d': { click: 'Klik peta untuk membaca anomali Chlorophyll a (mg/m³) pada periode pembanding di sel yang dipilih (rata-rata periode dikurangi rata-rata bulan kalender yang sama, 2000–2020).', hatch: 'Arsir abu-abu = sel tanpa data Chlorophyll a (tertutup awan) pada periode pembanding, tidak diisi nol.' },
+  'banding-penuh/c-d': { click: 'Klik peta untuk membaca anomali Chlorophyll a (mg/m³) pada periode pembanding di sel yang dipilih (rata-rata periode dikurangi rata-rata bulan kalender yang sama, 2000–2020).', hatch: 'Arsir abu-abu = sel lokal mengalami Marine Heatwaves.' },
   /* SST */
   'sst/v-main': { click: 'Klik peta untuk membaca nilai SST (°C) pada sel yang dipilih.', hatch: 'Arsir abu-abu = sel laut tanpa data SST pada pilihan waktu ini.' },
   'sst/v-DJF': { click: 'Klik peta untuk membaca SST (°C) musim DJF (Monsun Barat) pada sel yang dipilih.', hatch: 'Arsir abu-abu = sel laut tanpa data SST pada musim DJF.' },
@@ -815,23 +817,31 @@ function extentChart(id, ev, pad = 30) {
   const dates = []; for (let d = clampDate(addDays(ev.start_date, -pad)); d <= clampDate(addDays(ev.end_date, pad)); d = addDays(d, 1)) dates.push(d);
   const at = (arr, d) => arr[diffDays(START, d)], thr = E.threshold_pct;
   const top = Math.min(100, Math.max(30, Math.ceil(Math.max(...dates.map(d => at(E.member_pct, d))) * 1.15 / 10) * 10));
-  chart(id, { data: { labels: dates, datasets: [
-    { type: 'bar', label: 'Periode kejadian katalog', data: dates.map(d => inEventDate(d) ? top : null), backgroundColor: dates.map(d => at(E.member_pct, d) >= thr ? 'rgba(10,124,140,.16)' : 'rgba(255,176,0,.32)'), barPercentage: 1, categoryPercentage: 1, order: 9 },
-    { type: 'line', label: 'Sel anggota kejadian (aturan Hobday, termasuk sel jeda)', data: dates.map(d => at(E.member_pct, d)), borderColor: COL.red, pointRadius: 0, borderWidth: 2 },
-    { type: 'line', label: 'Sel yang benar-benar di atas P90', data: dates.map(d => at(E.strict_pct, d)), borderColor: '#F57C32', pointRadius: 0, borderWidth: 1.6 },
-    { type: 'line', label: `Ambang kejadian regional (${thr}%)`, data: dates.map(() => thr), borderColor: '#222', borderDash: [5, 3], pointRadius: 0, borderWidth: 1.2 }] },
-    options: { scales: { y: { min: 0, max: top, title: { display: true, text: '% sel laut' } }, x: { ticks: { maxTicksLimit: 8, callback(v) { return fdate(this.getLabelForValue(v)); } } } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 14, font: { size: 11 } } } } } });
+  chart(id, {
+    data: {
+      labels: dates, datasets: [
+        { type: 'bar', label: 'Periode kejadian katalog', data: dates.map(d => inEventDate(d) ? top : null), backgroundColor: dates.map(d => at(E.member_pct, d) >= thr ? 'rgba(10,124,140,.16)' : 'rgba(255,176,0,.32)'), barPercentage: 1, categoryPercentage: 1, order: 9 },
+        { type: 'line', label: 'Sel anggota kejadian (aturan Hobday, termasuk sel jeda)', data: dates.map(d => at(E.member_pct, d)), borderColor: COL.red, pointRadius: 0, borderWidth: 2 },
+        { type: 'line', label: 'Sel yang benar-benar di atas P90', data: dates.map(d => at(E.strict_pct, d)), borderColor: '#F57C32', pointRadius: 0, borderWidth: 1.6 },
+        { type: 'line', label: `Ambang kejadian regional (${thr}%)`, data: dates.map(() => thr), borderColor: '#222', borderDash: [5, 3], pointRadius: 0, borderWidth: 1.2 }]
+    },
+    options: { scales: { y: { min: 0, max: top, title: { display: true, text: '% sel laut' } }, x: { ticks: { maxTicksLimit: 8, callback(v) { return fdate(this.getLabelForValue(v)); } } } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 14, font: { size: 11 } } } } }
+  });
 }
 const EXTENT_NOTE = '<p class="note" style="margin:6px 0 0">Pita biru = hari Marine Heatwaves regional (≥15% luas laut berstatus Marine Heatwaves).<br>Pita kuning = hari jeda: kejadian masih berlanjut karena aturan jeda ≤2 hari, tetapi cakupan &lt;15% sehingga <b>tidak dihitung sebagai hari Marine Heatwaves</b>.</p>';
 function regionalEventChart(id, ev, pad = 30) {
   const a = addDays(ev.start_date, -pad), b = addDays(ev.end_date, pad), w = seriesRange(a, b);
   const lo = Math.floor(Math.min(...w.map(x => x.sst)) - .3), hi = Math.ceil(Math.max(...w.map(x => x.thresh)) + .3);
-  chart(id, { data: { labels: w.map(x => x.date), datasets: [
-    { type: 'bar', label: 'Awal / akhir kejadian katalog', data: w.map(x => (x.date === ev.start_date || x.date === ev.end_date) ? hi : null), backgroundColor: COL.navy, barPercentage: .35, categoryPercentage: 1, order: 9 },
-    { type: 'line', label: 'SST rata-rata regional', data: w.map(x => x.sst), borderColor: COL.red, pointRadius: 0, borderWidth: 2 },
-    { type: 'line', label: 'Klimatologi', data: w.map(x => x.clim), borderColor: COL.teal, pointRadius: 0, borderWidth: 1.5 },
-    { type: 'line', label: 'Ambang P90 (rata-rata regional)', data: w.map(x => x.thresh), borderColor: '#E04A24', borderDash: [5, 3], pointRadius: 0, borderWidth: 1.5 }] },
-    options: { scales: { y: { min: lo, max: hi, title: { display: true, text: '°C' } }, x: { ticks: { maxTicksLimit: 8, callback(v) { return fdate(this.getLabelForValue(v)); } } } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 14, font: { size: 11 } } } } } });
+  chart(id, {
+    data: {
+      labels: w.map(x => x.date), datasets: [
+        { type: 'bar', label: 'Awal / akhir kejadian katalog', data: w.map(x => (x.date === ev.start_date || x.date === ev.end_date) ? hi : null), backgroundColor: COL.navy, barPercentage: .35, categoryPercentage: 1, order: 9 },
+        { type: 'line', label: 'SST rata-rata regional', data: w.map(x => x.sst), borderColor: COL.red, pointRadius: 0, borderWidth: 2 },
+        { type: 'line', label: 'Klimatologi', data: w.map(x => x.clim), borderColor: COL.teal, pointRadius: 0, borderWidth: 1.5 },
+        { type: 'line', label: 'Ambang P90 (rata-rata regional)', data: w.map(x => x.thresh), borderColor: '#E04A24', borderDash: [5, 3], pointRadius: 0, borderWidth: 1.5 }]
+    },
+    options: { scales: { y: { min: lo, max: hi, title: { display: true, text: '°C' } }, x: { ticks: { maxTicksLimit: 8, callback(v) { return fdate(this.getLabelForValue(v)); } } } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 14, font: { size: 11 } } } } }
+  });
 }
 const REG_NOTE = '<p class="note" style="margin:6px 0 0">Ini rata-rata SST seluruh NTT sebagai konteks. Marine Heatwaves ditentukan per sel: rata-rata regional bisa di bawah ambang walau sebagian sel sedang Marine Heatwaves, jadi garis ini <b>bukan</b> penanda hari Marine Heatwaves.</p>';
 const evGrid = id => S.an && S.an.evg ? S.an.evg.find(e => e.event_id === Number(id)) : null;
@@ -1025,11 +1035,15 @@ function mhwPage(kind) {
         if (vals.length) chart('m-hist', histConfig(vals, MCFG[kind].color, MCFG[kind].unit)); else setBoxNodata('m-hist', 'Tidak ada sel yang mengalami Marine Heatwaves.');
         if (kind === 'ano' && o) {
           const top = Math.ceil(Math.max(...o.dayAnom.filter(v => v != null), ...o.dayAnomM.filter(v => v != null), 1));
-          chart('m-day', { data: { labels: o.days, datasets: [
-            { type: 'bar', label: 'Periode kejadian katalog', data: o.days.map(d => d >= ev.start_date && d <= ev.end_date ? top : null), backgroundColor: 'rgba(10,124,140,.12)', barPercentage: 1, categoryPercentage: 1, order: 9 },
-            { type: 'line', label: 'Rata-rata semua sel', data: o.dayAnom, borderColor: COL.teal, pointRadius: 0, borderWidth: 2 },
-            { type: 'line', label: 'Rata-rata sel yang sedang Marine Heatwaves', data: o.dayAnomM, borderColor: COL.red, pointRadius: 0, borderWidth: 2 }] },
-            options: { scales: { y: { title: { display: true, text: '°C (SST − rata-rata 21 tahun)' } }, x: { ticks: { maxTicksLimit: 8, callback(v) { return fdate(this.getLabelForValue(v)); } } } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 14, font: { size: 11 } } } } } });
+          chart('m-day', {
+            data: {
+              labels: o.days, datasets: [
+                { type: 'bar', label: 'Periode kejadian katalog', data: o.days.map(d => d >= ev.start_date && d <= ev.end_date ? top : null), backgroundColor: 'rgba(10,124,140,.12)', barPercentage: 1, categoryPercentage: 1, order: 9 },
+                { type: 'line', label: 'Rata-rata semua sel', data: o.dayAnom, borderColor: COL.teal, pointRadius: 0, borderWidth: 2 },
+                { type: 'line', label: 'Rata-rata sel yang sedang Marine Heatwaves', data: o.dayAnomM, borderColor: COL.red, pointRadius: 0, borderWidth: 2 }]
+            },
+            options: { scales: { y: { title: { display: true, text: '°C (SST − rata-rata 21 tahun)' } }, x: { ticks: { maxTicksLimit: 8, callback(v) { return fdate(this.getLabelForValue(v)); } } } }, plugins: { legend: { position: 'bottom', labels: { boxWidth: 14, font: { size: 11 } } } } }
+          });
         }
       } else {
         const msg = r && r.msg ? r.msg : null;
@@ -1143,76 +1157,94 @@ P.dampak = {
 function bandingPage(full) {
   const KEY = full ? 'banding-penuh' : 'banding';
   return {
-  title: full ? 'Perbandingan Marine Heatwaves vs Non-Marine Heatwaves (peta penuh)' : 'Perbandingan Marine Heatwaves vs Non-Marine Heatwaves',
-  sub: full ? 'Sama dengan halaman perbandingan, tetapi semua peta terisi penuh dan perhitungan anomali mengikuti logika notebook (baseline bulan kalender yang sama, 2000–2020)' : 'Periode kejadian Marine Heatwaves dibandingkan dengan tanggal yang sama pada tahun tanpa Marine Heatwaves',
-  html() {
-    const st = stOf(KEY); if (!st.ev) st.ev = sortEv('Terlama')[0].event_id;
-    const ev = evById(st.ev), m = evMetrics(ev), sy = +ev.start_date.slice(0, 4);
-    if (!m.cands.length) return `${evStrip(KEY)}${card('Tahun pembanding', '', '<p>Tidak ada tahun tanpa Marine Heatwaves pada rentang tanggal yang sama untuk kejadian ini.</p>')}`;
-    if (!st.cmp || (st.cmp !== 'avg' && !m.cands.find(c => c.year === Number(st.cmp)))) st.cmp = String(m.cands.slice().sort((a, b) => Math.abs(a.year - sy) - Math.abs(b.year - sy))[0].year);
-    const opts = ['avg', ...m.cands.map(c => String(c.year))];
-    const cur = st.cmp === 'avg' ? null : m.cands.find(c => c.year === Number(st.cmp));
-    const cmpLab = cur ? `${frange(cur.start, cur.end)}` : `rata-rata ${m.cands.length} tahun tanpa Marine Heatwaves`;
-    const rows = m.cands.map(c => `<tr class="click ${cur && c.year === cur.year ? 'on' : ''}" data-set="cmp" data-val="${c.year}"><td>${c.year}</td><td>${frange(c.start, c.end)}</td><td>${fmt(c.chl, 3)}</td><td>${(c.anom >= 0 ? '+' : '') + fmt(c.anom)}</td></tr>`).join('');
-    return `${evStrip(KEY)}
+    title: full ? 'Perbandingan Marine Heatwaves vs Non-Marine Heatwaves (peta penuh)' : 'Perbandingan Marine Heatwaves vs Non-Marine Heatwaves',
+    sub: full ? 'Sama dengan halaman perbandingan, tetapi semua peta terisi penuh dan perhitungan anomali mengikuti logika notebook (baseline bulan kalender yang sama, 2000–2020)' : 'Periode kejadian Marine Heatwaves dibandingkan dengan tanggal yang sama pada tahun tanpa Marine Heatwaves',
+    html() {
+      const st = stOf(KEY); if (!st.ev) st.ev = sortEv('Terlama')[0].event_id;
+      const ev = evById(st.ev), m = evMetrics(ev), sy = +ev.start_date.slice(0, 4);
+      if (!m.cands.length) return `${evStrip(KEY)}${card('Tahun pembanding', '', '<p>Tidak ada tahun tanpa Marine Heatwaves pada rentang tanggal yang sama untuk kejadian ini.</p>')}`;
+      if (!st.cmp || (st.cmp !== 'avg' && !m.cands.find(c => c.year === Number(st.cmp)))) st.cmp = String(m.cands.slice().sort((a, b) => Math.abs(a.year - sy) - Math.abs(b.year - sy))[0].year);
+      const opts = ['avg', ...m.cands.map(c => String(c.year))];
+      const cur = st.cmp === 'avg' ? null : m.cands.find(c => c.year === Number(st.cmp));
+      const cmpLab = cur ? `${frange(cur.start, cur.end)}` : `rata-rata ${m.cands.length} tahun tanpa Marine Heatwaves`;
+      const rows = m.cands.map(c => {
+        const d = m.chl != null && c.chl ? (m.chl - c.chl) / c.chl * 100 : null;
+        return `<tr class="click ${cur && c.year === cur.year ? 'on' : ''}" data-set="cmp" data-val="${c.year}"><td>${c.year}</td><td>${frange(c.start, c.end)}</td><td>${d == null ? '—' : (d >= 0 ? '+' : '') + fmt(d, 1) + '%'}</td><td>+${fmt(m.anom)} vs ${(c.anom >= 0 ? '+' : '') + fmt(c.anom)} °C</td></tr>`;
+      }).join('');
+      return `${evStrip(KEY)}
     <section class="card"><div>${pill('Event #' + ev.event_id + ', ' + frange(ev.start_date, ev.end_date) + ' (' + ev.duration + ' hari)')} <span style="font-size:13px">dibandingkan dengan tanggal yang sama: <b>${cmpLab}</b> ${full ? '(tanpa kejadian Marine Heatwaves regional)' : '(tanpa Marine Heatwaves)'}</span></div>
     <div style="margin-top:10px">${lab('Tahun pembanding (otomatis hanya tahun tanpa kejadian Marine Heatwaves regional pada rentang tanggal yang sama)')}<div class="yrs">${opts.map(o => `<button data-set="cmp" data-val="${o}" class="${o === st.cmp ? 'on' : ''}" style="min-width:${o === 'avg' ? 240 : 56}px">${o === 'avg' ? 'Rata-rata semua tahun non-Marine Heatwaves' : o}</button>`).join('')}</div></div></section>
     <div class="grid2">${mapCard('c-a', (full ? 'A) SST anomali, periode kejadian (semua sel)' : 'A) SST anomali, sel-hari Marine Heatwaves'), '<span id="c-a-sub"></span>')}${mapCard('c-b', (full ? 'B) Anomali Chlorophyll a, periode kejadian (semua sel)' : 'B) Anomali Chlorophyll a, sel-hari Marine Heatwaves'), '<span id="c-b-sub"></span>')}${mapCard('c-c', (full ? 'C) Anomali SST, periode pembanding (semua sel)' : 'C) Anomali SST, tanpa Marine Heatwaves'), '<span id="c-c-sub"></span>')}${mapCard('c-d', (full ? 'D) Anomali Chlorophyll a, periode pembanding (semua sel)' : 'D) Anomali Chlorophyll a, tanpa Marine Heatwaves'), '<span id="c-d-sub"></span>')}</div>
     <div class="kpis" id="c-kpis"></div>
     <div class="grid2">${card('SST rata-rata regional', 'konteks, sejajar hari sejak onset', chartBox('c-sst'))}${card('Chlorophyll a rata-rata regional', 'konteks, dalam mg/m³', chartBox('c-chl'))}</div>
-    <div class="grid2">${card('Tahun pembanding yang tersedia', 'klik untuk memilih, rata-rata regional', `<div class="tw"><table><thead><tr><th>Tahun</th><th>Periode</th><th>Chl (mg/m³)</th><th>SST anomali °C</th></tr></thead><tbody>${rows}</tbody></table></div>`)}${card('Cara membaca', '', (full ? '<p class="note" style="font-size:13px">Halaman ini mengikuti logika notebook anomali klorofil. Untuk tiap sel, nilai periode adalah rata-rata semua hari berdata pada periode itu. Baseline adalah rata-rata <b>semua hari pada bulan kalender yang sama</b> (bulan awal sampai bulan akhir periode, sebagai bulan penuh) selama 2000–2020, termasuk tahun kejadian dan hari Marine Heatwaves. Anomali = rata-rata periode dikurangi baseline; aturan yang sama dipakai untuk SST dan Chlorophyll a. <b>Keempat peta menampilkan semua sel laut</b>: tidak ada sel krem dan tidak ada pengecualian; arsir abu-abu hanya berarti sel tanpa data (mis. tertutup awan). Peta A dan B memakai periode kejadian terpilih; peta C dan D memakai tanggal kalender yang sama pada tahun pembanding tanpa kejadian Marine Heatwaves regional (di bawah 15% luas laut). Angka pada kartu di bawah peta adalah rata-rata antar sel (tiap sel bobotnya sama), seperti di notebook. Skala warna A–C dan B–D identik. Grafik regional di bawah hanya konteks. Pembandingan bersifat deskriptif, bukan pembuktian sebab-akibat.</p>' : '<p class="note" style="font-size:13px">Peta A dan B hanya menampilkan sel-hari Marine Heatwaves (di atas P90) pada periode kejadian; sel yang tidak Marine Heatwaves diberi warna krem. Peta C dan D memakai tanggal kalender yang sama pada tahun yang tidak mengalami kejadian Marine Heatwaves regional, dan hanya sel yang sama sekali tidak anggota kejadian Marine Heatwaves pada periode itu; sel yang tetap mengalami Marine Heatwaves lokal di tahun pembanding dikecualikan (krem). Skala warna A–C dan B–D identik. Grafik regional hanya konteks. Pembandingan bersifat deskriptif, bukan pembuktian sebab-akibat.</p>'))}</div>`;
-  },
-  async mount() {
-    const st = stOf(KEY), ev = evById(st.ev), m = evMetrics(ev); if (!m.cands.length) return;
-    const cur = st.cmp === 'avg' ? null : m.cands.find(c => c.year === Number(st.cmp)), per = frange(ev.start_date, ev.end_date);
-    const wins = cur ? [cur] : m.cands, labC = cur ? frange(cur.start, cur.end) : `rata-rata ${wins.length} tahun`, kp = $('#c-kpis');
-    const pc = (a, b) => (a != null && b ? (a - b) / b * 100 : null), sgn = v => (v >= 0 ? '+' : '') + fmt(v, 3);
-    if (S.pack) {
-      const oe = full ? await nbAgg(ev.start_date, ev.end_date) : await winAgg(ev.start_date, ev.end_date), neu = full ? null : aggGrid(oe, 'noMhw');
-      const A = full ? oe.gSstAnom : aggGrid(oe, 'sstAnomM'), B = full ? oe.gChlAnom : aggGrid(oe, 'chlAnomM'), os = []; for (const c of wins) os.push(full ? await nbAgg(c.start, c.end) : await winAgg(c.start, c.end));
-      const mix = (what) => { const gs = os.map(o => full ? o[what] : aggGrid(o, what)); if (gs.length === 1) return gs[0]; const nr = gs[0].length, nc = gs[0][0].length; return toGridShape(nr, nc, i => mean(gs.map(g => g[Math.floor(i / nc)][i % nc]))); };
-      const C = mix(full ? 'gSstAnom' : 'sstAnomN'), D = mix(full ? 'gChlAnom' : 'chlAnomN'), neuC = full ? null : toGrid(0, i => !isLand(i) && C[Math.floor(i / NC)][i % NC] == null);
-      const dS = DEF.sstAnom(A.concat(C)), dC = DEF.chlAnom(B.concat(D)), chlMeta = full && oe.chlMeta ? { gridMeta: oe.chlMeta } : {}, nn = full ? {} : { neutral: neu, neutralNote: NEUTRAL_NOTE }, nc = full ? {} : { neutral: neuC, neutralNote: '' };
-      showMap('c-a', A, { ...dS, ...nn }); showMap('c-b', B, { ...dC, ...chlMeta, ...nn }, { msg: full ? 'Chlorophyll a tidak tersedia pada periode kejadian (awan/tanpa data).' : 'Chlorophyll a tidak tersedia pada sel-hari Marine Heatwaves (awan/tanpa data).' });
-      showMap('c-c', C, { ...dS, ...nc }); showMap('c-d', D, { ...dC, ...chlMeta, ...nc }, { msg: 'Chlorophyll a tidak tersedia (awan/tanpa data).' });
-      $('#c-a-sub').textContent = $('#c-b-sub').textContent = per; $('#c-c-sub').textContent = $('#c-d-sub').textContent = labC;
-      const sg = (v, d) => v == null ? '—' : (v >= 0 ? '+' : '') + fmt(v, d), nz = n => n.toLocaleString('id-ID');
-      let pa, pb, TA, TB;
-      if (full) {
-        /* halaman peta penuh: logika notebook, rata-rata antar sel (tiap sel bobotnya sama) */
-        pa = { cells: oe.cellsChl, chl: oe.nbChl, anom: oe.nbChlAnom, sstAnom: oe.nbSstAnom };
-        pb = { cells: Math.round(mean(os.map(o => o.cellsChl)) || 0), chl: mean(os.map(o => o.nbChl)), anom: mean(os.map(o => o.nbChlAnom)), sstAnom: mean(os.map(o => o.nbSstAnom)) };
-        TA = 'periode kejadian'; TB = 'periode pembanding';
+    <div class="grid2">${card('Tahun pembanding yang tersedia', 'klik untuk memilih', `<div class="tw"><table><thead><tr><th>Tahun</th><th>Periode</th><th>Selisih rata-rata klorofil-a</th><th>Rata-rata anomali SST</th></tr></thead><tbody id="c-cmp-rows">${rows}</tbody></table></div>`)}${card('Cara membaca', '', `<ol class="plain" style="margin:0;padding-left:18px;font-size:13px;line-height:1.65"><li>Pilih kejadian di bagian atas. Kejadian bisa dicari lewat nomor atau tahun, dan diurutkan Terlama, Terkuat, atau Terbaru. Semua peta, angka, dan grafik di bawahnya ikut berubah mengikuti kejadian yang dipilih.</li><li>Pilih tahun pembanding. Yang muncul hanya tahun tanpa kejadian Marine Heatwaves regional pada rentang tanggal yang sama, jadi yang dibandingkan adalah musim yang sama. Pilihan awalnya rata-rata semua tahun non-Marine Heatwaves.</li><li>Baca empat peta. Kolom kiri adalah SST, kolom kanan Chlorophyll a. A dan B menunjukkan kondisi saat Marine Heatwaves, C dan D menunjukkan kondisi pembanding. Bandingkan A dengan C, dan B dengan D. Skala warna A–C dan B–D sama, jadi warnanya bisa dibandingkan langsung.</li><li>Arsir abu-abu berarti sel itu tidak ikut dihitung, bukan bernilai nol. Di A dan B artinya sel tidak punya hari Marine Heatwaves. Di C dan D artinya sel tetap mengalami Marine Heatwaves lokal di tahun pembanding.</li><li>Baca enam kartu angka di bawah peta sebagai ringkasan keempat peta: rata-rata klorofil-a, rata-rata anomalinya, selisihnya dalam persen, dan anomali SST. Angkanya adalah rata-rata seluruh sel-hari (satu sel pada satu hari).</li><li>Lihat grafik regional. Garis merah adalah saat Marine Heatwaves dan garis hijau tosca adalah tahun pembanding, dengan sumbu x hari sejak onset. Grafik ini hanya konteks, bukan penentu hari Marine Heatwaves.</li><li>Tabel tahun pembanding bisa diklik untuk mengganti tahun pembanding.</li></ol>`)}</div>`;
+    },
+    async mount() {
+      const st = stOf(KEY), ev = evById(st.ev), m = evMetrics(ev); if (!m.cands.length) return;
+      const cur = st.cmp === 'avg' ? null : m.cands.find(c => c.year === Number(st.cmp)), per = frange(ev.start_date, ev.end_date);
+      const wins = cur ? [cur] : m.cands, labC = cur ? frange(cur.start, cur.end) : `rata-rata ${wins.length} tahun`, kp = $('#c-kpis');
+      const pc = (a, b) => (a != null && b ? (a - b) / b * 100 : null), sgn = v => (v >= 0 ? '+' : '') + fmt(v, 3);
+      if (S.pack) {
+        const oe = full ? await nbAgg(ev.start_date, ev.end_date) : await winAgg(ev.start_date, ev.end_date), neu = full ? null : aggGrid(oe, 'noMhw');
+        const A = full ? oe.gSstAnom : aggGrid(oe, 'sstAnomM'), B = full ? oe.gChlAnom : aggGrid(oe, 'chlAnomM'), os = []; for (const c of wins) os.push(full ? await nbAgg(c.start, c.end) : await winAgg(c.start, c.end));
+        const mix = (what) => { const gs = os.map(o => full ? o[what] : aggGrid(o, what)); if (gs.length === 1) return gs[0]; const nr = gs[0].length, nc = gs[0][0].length; return toGridShape(nr, nc, i => mean(gs.map(g => g[Math.floor(i / nc)][i % nc]))); };
+        const C = mix(full ? 'gSstAnom' : 'sstAnomN'), D = mix(full ? 'gChlAnom' : 'chlAnomN'), neuC = full ? null : toGrid(0, i => !isLand(i) && C[Math.floor(i / NC)][i % NC] == null);
+        const dS = DEF.sstAnom(A.concat(C)), dC = DEF.chlAnom(B.concat(D)), chlMeta = full && oe.chlMeta ? { gridMeta: oe.chlMeta } : {}, nn = full ? {} : { neutral: neu, neutralNote: NEUTRAL_NOTE }, nc = full ? {} : { neutral: neuC, neutralNote: '' };
+        showMap('c-a', A, { ...dS, ...nn }); showMap('c-b', B, { ...dC, ...chlMeta, ...nn }, { msg: full ? 'Chlorophyll a tidak tersedia pada periode kejadian (awan/tanpa data).' : 'Chlorophyll a tidak tersedia pada sel-hari Marine Heatwaves (awan/tanpa data).' });
+        showMap('c-c', C, { ...dS, ...nc }); showMap('c-d', D, { ...dC, ...chlMeta, ...nc }, { msg: 'Chlorophyll a tidak tersedia (awan/tanpa data).' });
+        $('#c-a-sub').textContent = $('#c-b-sub').textContent = per; $('#c-c-sub').textContent = $('#c-d-sub').textContent = labC;
+        const sg = (v, d) => v == null ? '—' : (v >= 0 ? '+' : '') + fmt(v, d), nz = n => n.toLocaleString('id-ID');
+        let pa, pb, TA, TB;
+        if (full) {
+          /* halaman peta penuh: logika notebook, rata-rata antar sel (tiap sel bobotnya sama) */
+          pa = { cells: oe.cellsChl, chl: oe.nbChl, anom: oe.nbChlAnom, sstAnom: oe.nbSstAnom };
+          pb = { cells: Math.round(mean(os.map(o => o.cellsChl)) || 0), chl: mean(os.map(o => o.nbChl)), anom: mean(os.map(o => o.nbChlAnom)), sstAnom: mean(os.map(o => o.nbSstAnom)) };
+          TA = 'periode kejadian'; TB = 'periode pembanding';
+        } else {
+          pa = pooled(oe, 'M'); const pns = os.map(o => pooled(o, 'N')), n = pns.reduce((s, p) => s + p.n, 0);
+          pb = { chl: n ? pns.reduce((s, p) => s + (p.chl || 0) * p.n, 0) / n : null, sstAnom: mean(pns.map(p => p.sstAnom)), anom: mean(pns.map(p => p.anom)), n };
+          TA = 'sel-hari Marine Heatwaves'; TB = 'sel non-Marine Heatwaves';
+        }
+        const d = pc(pa.chl, pb.chl), dAn = pa.anom != null && pb.anom != null ? pa.anom - pb.anom : null, decChl = full ? 4 : 3;
+        kp.innerHTML = kpi('Rata-rata klorofil-a, ' + TA, pa.chl != null ? fmt(pa.chl, decChl) + ' mg/m³' : '—', full ? `rata-rata antar ${nz(pa.cells)} sel, ${per}` : `${nz(pa.n)} sel-hari, ${per}`)
+          + kpi('Rata-rata klorofil-a, ' + TB, pb.chl != null ? fmt(pb.chl, decChl) + ' mg/m³' : '—', full ? `rata-rata antar ${nz(pb.cells)} sel, ${labC}` : `${nz(pb.n)} sel-hari, ${labC}`)
+          + kpi('Rata-rata anomali klorofil-a, ' + TA, pa.anom != null ? sg(pa.anom, decChl) + ' mg/m³' : '—', full ? 'rata-rata periode dikurangi rata-rata bulan kalender yang sama, 2000–2020' : 'terhadap baseline harian tiap sel')
+          + kpi('Rata-rata anomali klorofil-a, ' + TB, pb.anom != null ? sg(pb.anom, decChl) + ' mg/m³' : '—', full ? 'rata-rata periode dikurangi rata-rata bulan kalender yang sama, 2000–2020' : 'terhadap baseline harian tiap sel')
+          + kpi('Selisih rata-rata klorofil-a', d == null ? '—' : sg(d, 1) + '%', `${TA} dibanding ${TB}` + (dAn != null ? `; selisih anomali ${sg(dAn, decChl)} mg/m³` : ''))
+          + kpi('Rata-rata anomali SST', `${sg(pa.sstAnom, 2)} vs ${sg(pb.sstAnom, 2)} °C`, `${TA} vs ${TB}`);
+        const tb = $('#c-cmp-rows');
+        if (tb) {
+          const allOs = wins.length === m.cands.length ? os : null;
+          const rowVals = [];
+          for (let i = 0; i < m.cands.length; i++) {
+            const c = m.cands[i];
+            const oc = allOs ? allOs[i] : (cur && c.year === cur.year ? os[0] : (full ? await nbAgg(c.start, c.end) : await winAgg(c.start, c.end)));
+            const pcCand = full ? { chl: oc.nbChl, sstAnom: oc.nbSstAnom } : pooled(oc, 'N');
+            const dc = pc(pa.chl, pcCand.chl);
+            rowVals.push(`<tr class="click ${cur && c.year === cur.year ? 'on' : ''}" data-set="cmp" data-val="${c.year}"><td>${c.year}</td><td>${frange(c.start, c.end)}</td><td>${dc == null ? '—' : sg(dc, 1) + '%'}</td><td>${sg(pa.sstAnom, 2)} vs ${sg(pcCand.sstAnom, 2)} °C</td></tr>`);
+          }
+          if ($('#c-cmp-rows') === tb) tb.innerHTML = rowVals.join('');
+        }
       } else {
-        pa = pooled(oe, 'M'); const pns = os.map(o => pooled(o, 'N')), n = pns.reduce((s, p) => s + p.n, 0);
-        pb = { chl: n ? pns.reduce((s, p) => s + (p.chl || 0) * p.n, 0) / n : null, sstAnom: mean(pns.map(p => p.sstAnom)), anom: mean(pns.map(p => p.anom)), n };
-        TA = 'sel-hari Marine Heatwaves'; TB = 'sel non-Marine Heatwaves';
+        const r = await eventMaps(ev);
+        if (r.mode === 'sample') { showMap('c-a', r.mhw, DEF.sstAnom(r.mhw)); showMap('c-b', r.chl, DEF.chlAnom(r.chl)); $('#c-a-sub').textContent = $('#c-b-sub').textContent = 'hari contoh ' + fdate(r.date); }
+        else { for (const id of ['c-a', 'c-b']) showMap(id, null, null, { msg: NOPACK_MSG }); $('#c-a-sub').textContent = $('#c-b-sub').textContent = per; }
+        for (const id of ['c-c', 'c-d']) showMap(id, null, null, { msg: 'Peta per grid tahun pembanding membutuhkan data pack harian. Lihat grafik regional di bawah.' });
+        $('#c-c-sub').textContent = $('#c-d-sub').textContent = labC;
+        const cChl = cur ? cur.chl : m.base, cAn = cur ? cur.anom : m.baseAnom, d = pc(m.chl, cChl);
+        kp.innerHTML = kpi('Chlorophyll a, rata-rata regional saat event', fmt(m.chl, 3) + ' mg/m³', per) + kpi('Chlorophyll a tanpa Marine Heatwaves (regional)', fmt(cChl, 3) + ' mg/m³', labC) + kpi('Selisih', d == null ? '—' : (d >= 0 ? '+' : '') + fmt(d, 1) + '%', 'pendekatan regional (mode terbatas)') + kpi('SST anomali (regional)', `+${fmt(m.anom)} vs ${cAn >= 0 ? '+' : ''}${fmt(cAn)} °C`, 'saat event vs tanpa Marine Heatwaves');
       }
-      const d = pc(pa.chl, pb.chl), dAn = pa.anom != null && pb.anom != null ? pa.anom - pb.anom : null, decChl = full ? 4 : 3;
-      kp.innerHTML = kpi('Rata-rata klorofil-a, ' + TA, pa.chl != null ? fmt(pa.chl, decChl) + ' mg/m³' : '—', full ? `rata-rata antar ${nz(pa.cells)} sel, ${per}` : `${nz(pa.n)} sel-hari, ${per}`)
-        + kpi('Rata-rata klorofil-a, ' + TB, pb.chl != null ? fmt(pb.chl, decChl) + ' mg/m³' : '—', full ? `rata-rata antar ${nz(pb.cells)} sel, ${labC}` : `${nz(pb.n)} sel-hari, ${labC}`)
-        + kpi('Rata-rata anomali klorofil-a, ' + TA, pa.anom != null ? sg(pa.anom, decChl) + ' mg/m³' : '—', full ? 'rata-rata periode dikurangi rata-rata bulan kalender yang sama, 2000–2020' : 'terhadap baseline harian tiap sel')
-        + kpi('Rata-rata anomali klorofil-a, ' + TB, pb.anom != null ? sg(pb.anom, decChl) + ' mg/m³' : '—', full ? 'rata-rata periode dikurangi rata-rata bulan kalender yang sama, 2000–2020' : 'terhadap baseline harian tiap sel')
-        + kpi('Selisih rata-rata klorofil-a', d == null ? '—' : sg(d, 1) + '%', `${TA} dibanding ${TB}` + (dAn != null ? `; selisih anomali ${sg(dAn, decChl)} mg/m³` : ''))
-        + kpi('Rata-rata anomali SST', `${sg(pa.sstAnom, 2)} vs ${sg(pb.sstAnom, 2)} °C`, `${TA} vs ${TB}`);
-    } else {
-      const r = await eventMaps(ev);
-      if (r.mode === 'sample') { showMap('c-a', r.mhw, DEF.sstAnom(r.mhw)); showMap('c-b', r.chl, DEF.chlAnom(r.chl)); $('#c-a-sub').textContent = $('#c-b-sub').textContent = 'hari contoh ' + fdate(r.date); }
-      else { for (const id of ['c-a', 'c-b']) showMap(id, null, null, { msg: NOPACK_MSG }); $('#c-a-sub').textContent = $('#c-b-sub').textContent = per; }
-      for (const id of ['c-c', 'c-d']) showMap(id, null, null, { msg: 'Peta per grid tahun pembanding membutuhkan data pack harian. Lihat grafik regional di bawah.' });
-      $('#c-c-sub').textContent = $('#c-d-sub').textContent = labC;
-      const cChl = cur ? cur.chl : m.base, cAn = cur ? cur.anom : m.baseAnom, d = pc(m.chl, cChl);
-      kp.innerHTML = kpi('Chlorophyll a, rata-rata regional saat event', fmt(m.chl, 3) + ' mg/m³', per) + kpi('Chlorophyll a tanpa Marine Heatwaves (regional)', fmt(cChl, 3) + ' mg/m³', labC) + kpi('Selisih', d == null ? '—' : (d >= 0 ? '+' : '') + fmt(d, 1) + '%', 'pendekatan regional (mode terbatas)') + kpi('SST anomali (regional)', `+${fmt(m.anom)} vs ${cAn >= 0 ? '+' : ''}${fmt(cAn)} °C`, 'saat event vs tanpa Marine Heatwaves');
+      const to = ev.duration - 1, labels = []; for (let o = 0; o <= to; o++) labels.push(o);
+      const mk = (pick) => {
+        const e = offsetSeries(ev.start_date, 0, to, pick), arr = wins.map(c => offsetSeries(c.start, 0, to, pick)); return [
+          { label: 'Saat Marine Heatwaves (' + ev.start_date.slice(0, 4) + ')', data: e, borderColor: COL.red, pointRadius: 0, borderWidth: 2 },
+          { label: 'Tanpa Marine Heatwaves (' + (cur ? cur.year : 'rata-rata') + ')', data: labels.map((_, i) => mean(arr.map(a => a[i]))), borderColor: COL.green, pointRadius: 0, borderWidth: 2 }];
+      };
+      const opt = u => ({ scales: { y: { title: { display: true, text: u } }, x: { title: { display: true, text: 'hari sejak onset' }, ticks: { maxTicksLimit: 10 } } }, plugins: { legend: { position: 'bottom' } } });
+      chart('c-sst', { type: 'line', data: { labels, datasets: mk(x => x.sst) }, options: opt('°C') });
+      chart('c-chl', { type: 'line', data: { labels, datasets: mk(x => x.chla) }, options: opt('mg/m³') });
     }
-    const to = ev.duration - 1, labels = []; for (let o = 0; o <= to; o++) labels.push(o);
-    const mk = (pick) => { const e = offsetSeries(ev.start_date, 0, to, pick), arr = wins.map(c => offsetSeries(c.start, 0, to, pick)); return [
-      { label: 'Saat Marine Heatwaves (' + ev.start_date.slice(0, 4) + ')', data: e, borderColor: COL.red, pointRadius: 0, borderWidth: 2 },
-      { label: 'Tanpa Marine Heatwaves (' + (cur ? cur.year : 'rata-rata') + ')', data: labels.map((_, i) => mean(arr.map(a => a[i]))), borderColor: COL.green, pointRadius: 0, borderWidth: 2 }]; };
-    const opt = u => ({ scales: { y: { title: { display: true, text: u } }, x: { title: { display: true, text: 'hari sejak onset' }, ticks: { maxTicksLimit: 10 } } }, plugins: { legend: { position: 'bottom' } } });
-    chart('c-sst', { type: 'line', data: { labels, datasets: mk(x => x.sst) }, options: opt('°C') });
-    chart('c-chl', { type: 'line', data: { labels, datasets: mk(x => x.chla) }, options: opt('mg/m³') });
-  }
-};
+  };
 }
 P.banding = bandingPage(false); P['banding-penuh'] = bandingPage(true);
 
@@ -1256,7 +1288,7 @@ function varPage(kind) {
       <div class="note"><b>Peta per musim</b> (skala warna sama untuk keempat musim)</div><div class="grid2">${mini}</div>
       <div class="grid2">${card(`${nm} rata-rata bulanan`, `klimatologi 2000–2020, dalam ${unit}`, chartBox('v-month'))}${card(isS ? 'Siklus musiman SST dan ambang Marine Heatwaves' : 'Chlorophyll a bulanan vs tahun terpilih', `<select data-in="cy" aria-label="Tahun">${cycleYears.map(y => `<option ${y === Number(st.cy) ? 'selected' : ''}>${y}</option>`).join('')}</select>`, chartBox('v-cycle'))}</div>
       ${isS ? `<div class="kpis">${kpi('SST rata-rata regional', fmt(vstats(S.ds.map(x => x.sst)).mean) + ' ± ' + fmt(vstats(S.ds.map(x => x.sst)).std) + ' °C', '2000–2020, deret harian')}${kpi('Rentang harian', fmt(vstats(S.ds.map(x => x.sst)).min) + '–' + fmt(vstats(S.ds.map(x => x.sst)).max) + ' °C', 'minimum–maksimum regional')}${kpi('Baseline klimatologi', '21 tahun', '2000–2020 (bukan standar 30 tahun WMO)')}${kpi('Ambang Marine Heatwaves', 'P90 musiman', 'Hobday et al. (2016), min. 5 hari, gap 2 hari')}</div>`
-        : `<div class="kpis">${kpi('Rata-rata piksel', fmt(sg('mean_mg_m3'), 3) + ' mg/m³', 'seluruh piksel valid')}${kpi('Median', fmt(sg('median_p50_mg_m3'), 3) + ' mg/m³', 'distribusi log-normal')}${kpi('Piksel valid', fmt(sg('persentase_valid'), 1) + '%', 'sisanya tertutup awan / tanpa data')}${kpi('Persentil 90 / 95', fmt(sg('p90_mg_m3'), 2) + ' / ' + fmt(sg('p95_mg_m3'), 2), 'mg/m³')}</div>
+          : `<div class="kpis">${kpi('Rata-rata piksel', fmt(sg('mean_mg_m3'), 3) + ' mg/m³', 'seluruh piksel valid')}${kpi('Median', fmt(sg('median_p50_mg_m3'), 3) + ' mg/m³', 'distribusi log-normal')}${kpi('Piksel valid', fmt(sg('persentase_valid'), 1) + '%', 'sisanya tertutup awan / tanpa data')}${kpi('Persentil 90 / 95', fmt(sg('p90_mg_m3'), 2) + ' / ' + fmt(sg('p95_mg_m3'), 2), 'mg/m³')}</div>
         ${card('Statistik deskriptif Chlorophyll a', 'seluruh piksel valid 2000–2020, dalam mg/m³', kv([['Total piksel diobservasi', fmt(sg('total_piksel_diobservasi'), 0)], ['Total piksel valid', fmt(sg('total_piksel_valid'), 0)], ['Minimum', fmt(sg('min_mg_m3'), 3)], ['Persentil 5', fmt(sg('p05_mg_m3'), 3)], ['Persentil 25', fmt(sg('p25_mg_m3'), 3)], ['Median', fmt(sg('median_p50_mg_m3'), 3)], ['Rata-rata', fmt(sg('mean_mg_m3'), 3)], ['Persentil 75', fmt(sg('p75_mg_m3'), 3)], ['Persentil 90', fmt(sg('p90_mg_m3'), 3)], ['Maksimum', fmt(sg('max_mg_m3'), 2)], ['Simpangan baku', fmt(sg('std_mg_m3'), 3)], ['IQR', fmt(sg('iqr_mg_m3'), 3)]]))}`}`;
     },
     async mount() {
@@ -1273,10 +1305,14 @@ function varPage(kind) {
       chart('v-month', { data: { labels: MON, datasets: ds }, options: { scales: { y: { beginAtZero: !isS, title: { display: true, text: unit } } }, plugins: { legend: { position: 'bottom' } } } });
       const yr = Number(st.cy), w = S.ds.filter(x => x.date.startsWith(String(yr)));
       if (isS) {
-        const doyL = S.D.doy; chart('v-cycle', { type: 'line', data: { labels: doyL.map(d => d.doy), datasets: [
-          { label: 'Klimatologi', data: doyL.map(d => d.climatology), borderColor: COL.teal, pointRadius: 0, borderWidth: 2 },
-          { label: 'Ambang P90', data: doyL.map(d => d.threshold), borderColor: '#E04A24', borderDash: [5, 3], pointRadius: 0, borderWidth: 1.5 },
-          { label: 'SST ' + yr, data: w.map(x => x.sst), borderColor: '#7A1414', pointRadius: 0, borderWidth: 1.3 }] }, options: { scales: { x: { title: { display: true, text: 'hari ke-' }, ticks: { maxTicksLimit: 12 } }, y: { title: { display: true, text: '°C' } } }, plugins: { legend: { position: 'bottom' } } } });
+        const doyL = S.D.doy; chart('v-cycle', {
+          type: 'line', data: {
+            labels: doyL.map(d => d.doy), datasets: [
+              { label: 'Klimatologi', data: doyL.map(d => d.climatology), borderColor: COL.teal, pointRadius: 0, borderWidth: 2 },
+              { label: 'Ambang P90', data: doyL.map(d => d.threshold), borderColor: '#E04A24', borderDash: [5, 3], pointRadius: 0, borderWidth: 1.5 },
+              { label: 'SST ' + yr, data: w.map(x => x.sst), borderColor: '#7A1414', pointRadius: 0, borderWidth: 1.3 }]
+          }, options: { scales: { x: { title: { display: true, text: 'hari ke-' }, ticks: { maxTicksLimit: 12 } }, y: { title: { display: true, text: '°C' } } }, plugins: { legend: { position: 'bottom' } } }
+        });
       } else {
         const m = MON.map((_, i) => mean(w.filter(x => +x.date.slice(5, 7) === i + 1).map(x => x.chla)));
         chart('v-cycle', { type: 'line', data: { labels: MON, datasets: [{ label: 'Klimatologi', data: mc.map(x => x.chla_mean), borderColor: COL.teal, borderWidth: 2, pointRadius: 2 }, { label: String(yr), data: m, borderColor: COL.green, borderWidth: 2, pointRadius: 2 }] }, options: { scales: { y: { title: { display: true, text: unit } } }, plugins: { legend: { position: 'bottom' } } } });
@@ -1356,7 +1392,7 @@ const ICON = { 'banding-penuh': 'M4 4v12M16 4v12M4 10h12M7 7l-3 3 3 3M13 7l3 3-3
 function buildSidebar() {
   const ico = k => `<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="${ICON[k]}"/></svg>`;
   const link = (k, t) => `<a class="nav-link" href="#${k}" data-page="${k}">${ico(k)}${t}</a>`;
-  $('#sidebar').innerHTML = `<div class="brand"><b>NTT Marine Insight</b><span>Kelompok 10</span></div>` + NAV.map(([g, it]) => `<div class="nav-group">${g}</div>` + it.map(x => Array.isArray(x) ? link(x[0], x[1]) : `<div class="nav-parent">${ico(x.icon)}${x.group}</div>` + x.items.map(([k, t]) => `<a class="nav-link nav-sub" href="#${k}" data-page="${k}">${t}</a>`).join('')).join('')).join('');
+  $('#sidebar').innerHTML = `<div class="brand"><b>Klimatologi Tropika</b><span>Kelompok 10</span></div>` + NAV.map(([g, it]) => `<div class="nav-group">${g}</div>` + it.map(x => Array.isArray(x) ? link(x[0], x[1]) : `<div class="nav-parent">${ico(x.icon)}${x.group}</div>` + x.items.map(([k, t]) => `<a class="nav-link nav-sub" href="#${k}" data-page="${k}">${t}</a>`).join('')).join('')).join('');
 }
 const GRIDPAGES = ['beranda', 'sebaran', 'mhw', 'mhw-anomali', 'mhw-durasi', 'dampak', 'banding', 'banding-penuh', 'sst', 'chla'];
 function setBanner(page) {
@@ -1372,18 +1408,44 @@ function fixSubs() {
     el.innerHTML = el.textContent.split('\n').map(esc).join('<br>'); el.style.textAlign = 'left';
   });
 }
+let revealObs = null;
+function initScrollReveal() {
+  if (revealObs) { revealObs.disconnect(); revealObs = null; }
+  const els = $$('#view .card, #view .kpi, #view > .note, #view .flow > div, #view .gal figure');
+  if (!els.length) return;
+  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced || typeof IntersectionObserver === 'undefined') {
+    els.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+  const vh = window.innerHeight || 800;
+  els.forEach(el => {
+    const r = el.getBoundingClientRect();
+    el.classList.add('reveal-item');
+    if (r.top < vh * 0.96) el.classList.add('is-visible');
+  });
+  revealObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      revealObs.unobserve(entry.target);
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' });
+  els.forEach(el => { if (!el.classList.contains('is-visible')) revealObs.observe(el); });
+}
 async function show(page) {
   if (!P[page]) page = 'beranda';
   const same = S.page === page, sl = same && $('.strip') ? $('.strip').scrollLeft : 0;
   S.page = page; S.charts.forEach(c => c.destroy()); S.charts = [];
   $$('.nav-link').forEach(a => a.classList.toggle('active', a.dataset.page === page));
-  $('#page-title').textContent = P[page].title; $('#page-sub').textContent = P[page].sub; document.title = `${P[page].title} — NTT Marine Insight`;
+  $('#page-title').textContent = P[page].title; $('#page-sub').textContent = P[page].sub; document.title = `${P[page].title} — Klimatologi Tropika`;
   setBanner(page);
   try {
     $('#view').innerHTML = P[page].html();
     const s2 = $('.strip'); if (s2 && sl) s2.scrollLeft = sl;
     await P[page].mount();
     fixSubs();
+    initScrollReveal();
   } catch (e) { console.error(e); $('#view').insertAdjacentHTML('afterbegin', `<div class="banner">Terjadi kesalahan saat menampilkan halaman: ${esc(e.message)}</div>`); }
 }
 async function rerender() { const y = window.scrollY; await show(S.page); window.scrollTo(0, y); }
